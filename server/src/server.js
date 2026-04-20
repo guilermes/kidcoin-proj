@@ -1,9 +1,9 @@
 import express from "express";
-import path from "path";
+import path from "node:path";
 import { fileURLToPath } from "url";
 import sql from "mssql";
 import dotenv from "dotenv";
-import routes from "./src/routes.js";
+import routes from "./src/routes/routes.js";
 
 dotenv.config();
 
