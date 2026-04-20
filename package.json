@@ -10,8 +10,12 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.8",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
     "formik": "^2.4.6",
+    "mssql": "^12.3.1",
     "next": "^15.5.15",
+    "path": "^0.12.7",
     "react": "19.1.0",
     "react-bootstrap": "^2.10.10",
     "react-dom": "19.1.0"
