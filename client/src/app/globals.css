@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FDF1D6;
+  --foreground: #171717;
+  --blue-kidcoin: #7FB5B5;
+  --yellow-kidcoin: #D4AF37;
+  --primary-font-color: #3b3b3b;
+  --green-kidcoin: #A8C686;
+  --cream-kidcoin: #fdf1d6;
+  --pink-kidcoin: #F6B7B1;
+  --cereja-kidcoin: #C94C4C;
+
+}
+
+.landing_page_menu{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--blue-kidcoin);
+  color: #ffffff;
+  padding: 16px 0px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.landing_page_menu ul{
+  display: flex;
+  gap: 1.5rem;
+}
+
+.yellow-btn{
+  background-color: var(--yellow-kidcoin);
+  font-weight: bold;
+  padding: 5px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4 #3b3b3b;
+  border: solid 1px #3b3b3b;
+  font-size: 16px;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Passion One", Geneva, Tahoma, sans-serif;
+}
+
+@keyframes float {
+	0% {
+		
+		transform: translatey(0px);
+	}
+	50% {
+		
+		transform: translatey(-20px);
+	}
+	100% {
+		
+		transform: translatey(0px);
+	}
+}
+
+.img-animation {
+  animation: float 1.7s infinite;
+}
