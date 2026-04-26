@@ -2,6 +2,20 @@
   "name": "kidcoin",
   "version": "0.1.0",
   "private": true,
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/guilermes/kidcoin-proj#readme",
+  "bugs": {
+    "url": "https://github.com/guilermes/kidcoin-proj/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guilermes/kidcoin-proj.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
@@ -31,19 +45,5 @@
     "eslint-config-next": "15.5.4",
     "tailwindcss": "^4",
     "typescript": "^5"
-  },
-  "description": "",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/guilermes/kidcoin-proj.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/guilermes/kidcoin-proj/issues"
-  },
-  "homepage": "https://github.com/guilermes/kidcoin-proj#readme"
+  }
 }

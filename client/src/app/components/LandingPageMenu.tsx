@@ -3,14 +3,14 @@
 import { useRouter } from "next/navigation";
 import PrimaryBtn from "./PrimaryBtn"
 
-export default function LandingPageMenu(){
+export default function LandingPageMenu() {
     const router = useRouter();
 
-     const toLoginPage = () => {
+    const toLoginPage = () => {
         router.push("/login")
-  };
+    };
 
-    return(
+    return (
         <>
             <nav className="landing_page_menu">
                 <div>
@@ -19,7 +19,7 @@ export default function LandingPageMenu(){
                     </a>
                 </div>
                 <ul>
-                    <li><a href="">Cadastre-se</a></li>
+                    <li><a href="/signup">Cadastre-se</a></li>
                     <li><PrimaryBtn onClick={toLoginPage}>Entrar</PrimaryBtn></li>
                 </ul>
             </nav>
