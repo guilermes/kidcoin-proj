@@ -4,25 +4,25 @@ import { useRouter } from "next/navigation";
 import PrimaryBtnLG from "./PrimaryBtnLG";
 import Image from "next/image";
 
-export default function Hero (){
+export default function Hero() {
 
-     const router = useRouter()
+    const router = useRouter()
 
-    const toLoginPage = () =>{
+    const toLoginPage = () => {
         router.push("/login")
     };
 
-    return(
+    return (
         <>
-        <div className="flex items-center justify-center h-screen">
-            <div className="flex flex-col items-center justify-center h-screen w-120">
-                <h2 className="text-4xl text-center text-(--primary-font-color)">Aprender sobre dinheiro ficou incrivelmente divertido!</h2>
-                <PrimaryBtnLG onClick={toLoginPage}>JOGAR AGORA</PrimaryBtnLG>
+            <div className="flex items-center justify-center h-screen">
+                <div className="flex flex-col items-center justify-center h-screen w-120">
+                    <h2 className="text-4xl text-center text-(--primary-font-color)">Aprender sobre dinheiro ficou incrivelmente divertido!</h2>
+                    <PrimaryBtnLG onClick={toLoginPage}>JOGAR AGORA</PrimaryBtnLG>
+                </div>
+                <div>
+                    <Image src="/assets/main-char.png" width="20" height="20" alt="Personagem Kidcoin" className="img-animation" />
+                </div>
             </div>
-            <div>
-                <Image src="/@public/assets/main-char.png" width="20" height="20"alt="Personagem Kidcoin" className="img-animation"/>
-            </div>
-        </div>
         </>
     );
 }

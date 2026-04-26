@@ -1,0 +1,13 @@
+__turbopack_load_page_chunks__("/_app", [
+  "static/chunks/0m3t_next_dist_compiled_0z23tqu._.js",
+  "static/chunks/0m3t_next_dist_shared_lib_05z3q88._.js",
+  "static/chunks/0m3t_next_dist_client_0sg1y5j._.js",
+  "static/chunks/0m3t_next_dist_05o_82m._.js",
+  "static/chunks/0m3t_next_app_06vp_yz.js",
+  "static/chunks/[next]_entry_page-loader_ts_0m~1xrk._.js",
+  "static/chunks/0m3t_react-dom_0mq77t5._.js",
+  "static/chunks/0m3t_0.qcziz._.js",
+  "static/chunks/[root-of-the-server]__0-ju_i-._.js",
+  "static/chunks/Desktop_kidcoin-proj_client_src_pages__app_07xvfw~._.js",
+  "static/chunks/turbopack-Desktop_kidcoin-proj_client_src_pages__app_0axdp-4._.js"
+])

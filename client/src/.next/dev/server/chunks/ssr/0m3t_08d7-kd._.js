@@ -1,0 +1,8031 @@
+module.exports = [
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+module.exports = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/module.compiled.js [app-ssr] (ecmascript)").vendored['react-ssr'].ReactJsxDevRuntime;
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/node_modules/@swc/helpers/cjs/_interop_require_wildcard.cjs [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+function _getRequireWildcardCache(nodeInterop) {
+    if (typeof WeakMap !== "function") return null;
+    var cacheBabelInterop = new WeakMap();
+    var cacheNodeInterop = new WeakMap();
+    return (_getRequireWildcardCache = function(nodeInterop) {
+        return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
+    })(nodeInterop);
+}
+function _interop_require_wildcard(obj, nodeInterop) {
+    if (!nodeInterop && obj && obj.__esModule) return obj;
+    if (obj === null || typeof obj !== "object" && typeof obj !== "function") return {
+        default: obj
+    };
+    var cache = _getRequireWildcardCache(nodeInterop);
+    if (cache && cache.has(obj)) return cache.get(obj);
+    var newObj = {
+        __proto__: null
+    };
+    var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
+    for(var key in obj){
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
+            var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
+            if (desc && (desc.get || desc.set)) Object.defineProperty(newObj, key, desc);
+            else newObj[key] = obj[key];
+        }
+    }
+    newObj.default = obj;
+    if (cache) cache.set(obj, newObj);
+    return newObj;
+}
+exports._ = _interop_require_wildcard;
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/segment.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+0 && (module.exports = {
+    DEFAULT_SEGMENT_KEY: null,
+    NOT_FOUND_SEGMENT_KEY: null,
+    PAGE_SEGMENT_KEY: null,
+    addSearchParamsIfPageSegment: null,
+    computeSelectedLayoutSegment: null,
+    getSegmentValue: null,
+    getSelectedLayoutSegmentPath: null,
+    isGroupSegment: null,
+    isParallelRouteSegment: null
+});
+function _export(target, all) {
+    for(var name in all)Object.defineProperty(target, name, {
+        enumerable: true,
+        get: all[name]
+    });
+}
+_export(exports, {
+    DEFAULT_SEGMENT_KEY: function() {
+        return DEFAULT_SEGMENT_KEY;
+    },
+    NOT_FOUND_SEGMENT_KEY: function() {
+        return NOT_FOUND_SEGMENT_KEY;
+    },
+    PAGE_SEGMENT_KEY: function() {
+        return PAGE_SEGMENT_KEY;
+    },
+    addSearchParamsIfPageSegment: function() {
+        return addSearchParamsIfPageSegment;
+    },
+    computeSelectedLayoutSegment: function() {
+        return computeSelectedLayoutSegment;
+    },
+    getSegmentValue: function() {
+        return getSegmentValue;
+    },
+    getSelectedLayoutSegmentPath: function() {
+        return getSelectedLayoutSegmentPath;
+    },
+    isGroupSegment: function() {
+        return isGroupSegment;
+    },
+    isParallelRouteSegment: function() {
+        return isParallelRouteSegment;
+    }
+});
+function getSegmentValue(segment) {
+    return Array.isArray(segment) ? segment[1] : segment;
+}
+function isGroupSegment(segment) {
+    // Use array[0] for performant purpose
+    return segment[0] === '(' && segment.endsWith(')');
+}
+function isParallelRouteSegment(segment) {
+    return segment.startsWith('@') && segment !== '@children';
+}
+function addSearchParamsIfPageSegment(segment, searchParams) {
+    const isPageSegment = segment.includes(PAGE_SEGMENT_KEY);
+    if (isPageSegment) {
+        const stringifiedQuery = JSON.stringify(searchParams);
+        return stringifiedQuery !== '{}' ? PAGE_SEGMENT_KEY + '?' + stringifiedQuery : PAGE_SEGMENT_KEY;
+    }
+    return segment;
+}
+function computeSelectedLayoutSegment(segments, parallelRouteKey) {
+    if (!segments || segments.length === 0) {
+        return null;
+    }
+    // For 'children', use first segment; for other parallel routes, use last segment
+    const rawSegment = parallelRouteKey === 'children' ? segments[0] : segments[segments.length - 1];
+    // If the default slot is showing, return null since it's not technically "selected" (it's a fallback)
+    // Returning an internal value like `__DEFAULT__` would be confusing
+    return rawSegment === DEFAULT_SEGMENT_KEY ? null : rawSegment;
+}
+function getSelectedLayoutSegmentPath(tree, parallelRouteKey, first = true, segmentPath = []) {
+    let node;
+    if (first) {
+        // Use the provided parallel route key on the first parallel route
+        node = tree[1][parallelRouteKey];
+    } else {
+        // After first parallel route prefer children, if there's no children pick the first parallel route.
+        const parallelRoutes = tree[1];
+        node = parallelRoutes.children ?? Object.values(parallelRoutes)[0];
+    }
+    if (!node) return segmentPath;
+    const segment = node[0];
+    let segmentValue = getSegmentValue(segment);
+    if (!segmentValue || segmentValue.startsWith(PAGE_SEGMENT_KEY)) {
+        return segmentPath;
+    }
+    segmentPath.push(segmentValue);
+    return getSelectedLayoutSegmentPath(node, parallelRouteKey, false, segmentPath);
+}
+const PAGE_SEGMENT_KEY = '__PAGE__';
+const DEFAULT_SEGMENT_KEY = '__DEFAULT__';
+const NOT_FOUND_SEGMENT_KEY = '/_not-found';
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/unrecognized-action-error.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+0 && (module.exports = {
+    UnrecognizedActionError: null,
+    unstable_isUnrecognizedActionError: null
+});
+function _export(target, all) {
+    for(var name in all)Object.defineProperty(target, name, {
+        enumerable: true,
+        get: all[name]
+    });
+}
+_export(exports, {
+    UnrecognizedActionError: function() {
+        return UnrecognizedActionError;
+    },
+    unstable_isUnrecognizedActionError: function() {
+        return unstable_isUnrecognizedActionError;
+    }
+});
+class UnrecognizedActionError extends Error {
+    constructor(...args){
+        super(...args);
+        this.name = 'UnrecognizedActionError';
+    }
+}
+function unstable_isUnrecognizedActionError(error) {
+    return !!(error && typeof error === 'object' && error instanceof UnrecognizedActionError);
+}
+if ((typeof exports.default === 'function' || typeof exports.default === 'object' && exports.default !== null) && typeof exports.default.__esModule === 'undefined') {
+    Object.defineProperty(exports.default, '__esModule', {
+        value: true
+    });
+    Object.assign(exports.default, exports);
+    module.exports = exports.default;
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/readonly-url-search-params.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+/**
+ * ReadonlyURLSearchParams implementation shared between client and server.
+ * This file is intentionally not marked as 'use client' or 'use server'
+ * so it can be imported by both environments.
+ */ /** @internal */ Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+Object.defineProperty(exports, "ReadonlyURLSearchParams", {
+    enumerable: true,
+    get: function() {
+        return ReadonlyURLSearchParams;
+    }
+});
+class ReadonlyURLSearchParamsError extends Error {
+    constructor(){
+        super('Method unavailable on `ReadonlyURLSearchParams`. Read more: https://nextjs.org/docs/app/api-reference/functions/use-search-params#updating-searchparams');
+    }
+}
+class ReadonlyURLSearchParams extends URLSearchParams {
+    /** @deprecated Method unavailable on `ReadonlyURLSearchParams`. Read more: https://nextjs.org/docs/app/api-reference/functions/use-search-params#updating-searchparams */ append() {
+        throw new ReadonlyURLSearchParamsError();
+    }
+    /** @deprecated Method unavailable on `ReadonlyURLSearchParams`. Read more: https://nextjs.org/docs/app/api-reference/functions/use-search-params#updating-searchparams */ delete() {
+        throw new ReadonlyURLSearchParamsError();
+    }
+    /** @deprecated Method unavailable on `ReadonlyURLSearchParams`. Read more: https://nextjs.org/docs/app/api-reference/functions/use-search-params#updating-searchparams */ set() {
+        throw new ReadonlyURLSearchParamsError();
+    }
+    /** @deprecated Method unavailable on `ReadonlyURLSearchParams`. Read more: https://nextjs.org/docs/app/api-reference/functions/use-search-params#updating-searchparams */ sort() {
+        throw new ReadonlyURLSearchParamsError();
+    }
+}
+if ((typeof exports.default === 'function' || typeof exports.default === 'object' && exports.default !== null) && typeof exports.default.__esModule === 'undefined') {
+    Object.defineProperty(exports.default, '__esModule', {
+        value: true
+    });
+    Object.assign(exports.default, exports);
+    module.exports = exports.default;
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/redirect-status-code.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+Object.defineProperty(exports, "RedirectStatusCode", {
+    enumerable: true,
+    get: function() {
+        return RedirectStatusCode;
+    }
+});
+var RedirectStatusCode = /*#__PURE__*/ function(RedirectStatusCode) {
+    RedirectStatusCode[RedirectStatusCode["SeeOther"] = 303] = "SeeOther";
+    RedirectStatusCode[RedirectStatusCode["TemporaryRedirect"] = 307] = "TemporaryRedirect";
+    RedirectStatusCode[RedirectStatusCode["PermanentRedirect"] = 308] = "PermanentRedirect";
+    return RedirectStatusCode;
+}({});
+if ((typeof exports.default === 'function' || typeof exports.default === 'object' && exports.default !== null) && typeof exports.default.__esModule === 'undefined') {
+    Object.defineProperty(exports.default, '__esModule', {
+        value: true
+    });
+    Object.assign(exports.default, exports);
+    module.exports = exports.default;
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/redirect-error.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+0 && (module.exports = {
+    REDIRECT_ERROR_CODE: null,
+    isRedirectError: null
+});
+function _export(target, all) {
+    for(var name in all)Object.defineProperty(target, name, {
+        enumerable: true,
+        get: all[name]
+    });
+}
+_export(exports, {
+    REDIRECT_ERROR_CODE: function() {
+        return REDIRECT_ERROR_CODE;
+    },
+    isRedirectError: function() {
+        return isRedirectError;
+    }
+});
+const _redirectstatuscode = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/redirect-status-code.js [app-ssr] (ecmascript)");
+const REDIRECT_ERROR_CODE = 'NEXT_REDIRECT';
+function isRedirectError(error) {
+    if (typeof error !== 'object' || error === null || !('digest' in error) || typeof error.digest !== 'string') {
+        return false;
+    }
+    const digest = error.digest.split(';');
+    const [errorCode, type] = digest;
+    const destination = digest.slice(2, -2).join(';');
+    const status = digest.at(-2);
+    const statusCode = Number(status);
+    return errorCode === REDIRECT_ERROR_CODE && (type === 'replace' || type === 'push') && typeof destination === 'string' && !isNaN(statusCode) && statusCode in _redirectstatuscode.RedirectStatusCode;
+}
+if ((typeof exports.default === 'function' || typeof exports.default === 'object' && exports.default !== null) && typeof exports.default.__esModule === 'undefined') {
+    Object.defineProperty(exports.default, '__esModule', {
+        value: true
+    });
+    Object.assign(exports.default, exports);
+    module.exports = exports.default;
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/redirect.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+0 && (module.exports = {
+    getRedirectError: null,
+    getRedirectStatusCodeFromError: null,
+    getRedirectTypeFromError: null,
+    getURLFromRedirectError: null,
+    permanentRedirect: null,
+    redirect: null
+});
+function _export(target, all) {
+    for(var name in all)Object.defineProperty(target, name, {
+        enumerable: true,
+        get: all[name]
+    });
+}
+_export(exports, {
+    getRedirectError: function() {
+        return getRedirectError;
+    },
+    getRedirectStatusCodeFromError: function() {
+        return getRedirectStatusCodeFromError;
+    },
+    getRedirectTypeFromError: function() {
+        return getRedirectTypeFromError;
+    },
+    getURLFromRedirectError: function() {
+        return getURLFromRedirectError;
+    },
+    permanentRedirect: function() {
+        return permanentRedirect;
+    },
+    redirect: function() {
+        return redirect;
+    }
+});
+const _redirectstatuscode = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/redirect-status-code.js [app-ssr] (ecmascript)");
+const _redirecterror = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/redirect-error.js [app-ssr] (ecmascript)");
+const actionAsyncStorage = ("TURBOPACK compile-time truthy", 1) ? __turbopack_context__.r("[externals]/next/dist/server/app-render/action-async-storage.external.js [external] (next/dist/server/app-render/action-async-storage.external.js, cjs)").actionAsyncStorage : "TURBOPACK unreachable";
+function getRedirectError(url, type, statusCode = _redirectstatuscode.RedirectStatusCode.TemporaryRedirect) {
+    const error = Object.defineProperty(new Error(_redirecterror.REDIRECT_ERROR_CODE), "__NEXT_ERROR_CODE", {
+        value: "E394",
+        enumerable: false,
+        configurable: true
+    });
+    error.digest = `${_redirecterror.REDIRECT_ERROR_CODE};${type};${url};${statusCode};`;
+    return error;
+}
+function redirect(/** The URL to redirect to */ url, type) {
+    type ??= actionAsyncStorage?.getStore()?.isAction ? 'push' : 'replace';
+    throw getRedirectError(url, type, _redirectstatuscode.RedirectStatusCode.TemporaryRedirect);
+}
+function permanentRedirect(/** The URL to redirect to */ url, type = 'replace') {
+    throw getRedirectError(url, type, _redirectstatuscode.RedirectStatusCode.PermanentRedirect);
+}
+function getURLFromRedirectError(error) {
+    if (!(0, _redirecterror.isRedirectError)(error)) return null;
+    // Slices off the beginning of the digest that contains the code and the
+    // separating ';'.
+    return error.digest.split(';').slice(2, -2).join(';');
+}
+function getRedirectTypeFromError(error) {
+    if (!(0, _redirecterror.isRedirectError)(error)) {
+        throw Object.defineProperty(new Error('Not a redirect error'), "__NEXT_ERROR_CODE", {
+            value: "E260",
+            enumerable: false,
+            configurable: true
+        });
+    }
+    return error.digest.split(';', 2)[1];
+}
+function getRedirectStatusCodeFromError(error) {
+    if (!(0, _redirecterror.isRedirectError)(error)) {
+        throw Object.defineProperty(new Error('Not a redirect error'), "__NEXT_ERROR_CODE", {
+            value: "E260",
+            enumerable: false,
+            configurable: true
+        });
+    }
+    return Number(error.digest.split(';').at(-2));
+}
+if ((typeof exports.default === 'function' || typeof exports.default === 'object' && exports.default !== null) && typeof exports.default.__esModule === 'undefined') {
+    Object.defineProperty(exports.default, '__esModule', {
+        value: true
+    });
+    Object.assign(exports.default, exports);
+    module.exports = exports.default;
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/http-access-fallback/http-access-fallback.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+0 && (module.exports = {
+    HTTPAccessErrorStatus: null,
+    HTTP_ERROR_FALLBACK_ERROR_CODE: null,
+    getAccessFallbackErrorTypeByStatus: null,
+    getAccessFallbackHTTPStatus: null,
+    isHTTPAccessFallbackError: null
+});
+function _export(target, all) {
+    for(var name in all)Object.defineProperty(target, name, {
+        enumerable: true,
+        get: all[name]
+    });
+}
+_export(exports, {
+    HTTPAccessErrorStatus: function() {
+        return HTTPAccessErrorStatus;
+    },
+    HTTP_ERROR_FALLBACK_ERROR_CODE: function() {
+        return HTTP_ERROR_FALLBACK_ERROR_CODE;
+    },
+    getAccessFallbackErrorTypeByStatus: function() {
+        return getAccessFallbackErrorTypeByStatus;
+    },
+    getAccessFallbackHTTPStatus: function() {
+        return getAccessFallbackHTTPStatus;
+    },
+    isHTTPAccessFallbackError: function() {
+        return isHTTPAccessFallbackError;
+    }
+});
+const HTTPAccessErrorStatus = {
+    NOT_FOUND: 404,
+    FORBIDDEN: 403,
+    UNAUTHORIZED: 401
+};
+const ALLOWED_CODES = new Set(Object.values(HTTPAccessErrorStatus));
+const HTTP_ERROR_FALLBACK_ERROR_CODE = 'NEXT_HTTP_ERROR_FALLBACK';
+function isHTTPAccessFallbackError(error) {
+    if (typeof error !== 'object' || error === null || !('digest' in error) || typeof error.digest !== 'string') {
+        return false;
+    }
+    const [prefix, httpStatus] = error.digest.split(';');
+    return prefix === HTTP_ERROR_FALLBACK_ERROR_CODE && ALLOWED_CODES.has(Number(httpStatus));
+}
+function getAccessFallbackHTTPStatus(error) {
+    const httpStatus = error.digest.split(';')[1];
+    return Number(httpStatus);
+}
+function getAccessFallbackErrorTypeByStatus(status) {
+    switch(status){
+        case 401:
+            return 'unauthorized';
+        case 403:
+            return 'forbidden';
+        case 404:
+            return 'not-found';
+        default:
+            return;
+    }
+}
+if ((typeof exports.default === 'function' || typeof exports.default === 'object' && exports.default !== null) && typeof exports.default.__esModule === 'undefined') {
+    Object.defineProperty(exports.default, '__esModule', {
+        value: true
+    });
+    Object.assign(exports.default, exports);
+    module.exports = exports.default;
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/not-found.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+Object.defineProperty(exports, "notFound", {
+    enumerable: true,
+    get: function() {
+        return notFound;
+    }
+});
+const _httpaccessfallback = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/http-access-fallback/http-access-fallback.js [app-ssr] (ecmascript)");
+/**
+ * This function allows you to render the [not-found.js file](https://nextjs.org/docs/app/api-reference/file-conventions/not-found)
+ * within a route segment as well as inject a tag.
+ *
+ * `notFound()` can be used in
+ * [Server Components](https://nextjs.org/docs/app/building-your-application/rendering/server-components),
+ * [Route Handlers](https://nextjs.org/docs/app/building-your-application/routing/route-handlers), and
+ * [Server Actions](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations).
+ *
+ * - In a Server Component, this will insert a `<meta name="robots" content="noindex" />` meta tag and set the status code to 404.
+ * - In a Route Handler or Server Action, it will serve a 404 to the caller.
+ *
+ * Read more: [Next.js Docs: `notFound`](https://nextjs.org/docs/app/api-reference/functions/not-found)
+ */ const DIGEST = `${_httpaccessfallback.HTTP_ERROR_FALLBACK_ERROR_CODE};404`;
+function notFound() {
+    const error = Object.defineProperty(new Error(DIGEST), "__NEXT_ERROR_CODE", {
+        value: "E1041",
+        enumerable: false,
+        configurable: true
+    });
+    error.digest = DIGEST;
+    throw error;
+}
+if ((typeof exports.default === 'function' || typeof exports.default === 'object' && exports.default !== null) && typeof exports.default.__esModule === 'undefined') {
+    Object.defineProperty(exports.default, '__esModule', {
+        value: true
+    });
+    Object.assign(exports.default, exports);
+    module.exports = exports.default;
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/forbidden.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+Object.defineProperty(exports, "forbidden", {
+    enumerable: true,
+    get: function() {
+        return forbidden;
+    }
+});
+const _httpaccessfallback = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/http-access-fallback/http-access-fallback.js [app-ssr] (ecmascript)");
+// TODO: Add `forbidden` docs
+/**
+ * @experimental
+ * This function allows you to render the [forbidden.js file](https://nextjs.org/docs/app/api-reference/file-conventions/forbidden)
+ * within a route segment as well as inject a tag.
+ *
+ * `forbidden()` can be used in
+ * [Server Components](https://nextjs.org/docs/app/building-your-application/rendering/server-components),
+ * [Route Handlers](https://nextjs.org/docs/app/building-your-application/routing/route-handlers), and
+ * [Server Actions](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations).
+ *
+ * Read more: [Next.js Docs: `forbidden`](https://nextjs.org/docs/app/api-reference/functions/forbidden)
+ */ const DIGEST = `${_httpaccessfallback.HTTP_ERROR_FALLBACK_ERROR_CODE};403`;
+function forbidden() {
+    if ("TURBOPACK compile-time truthy", 1) {
+        throw Object.defineProperty(new Error(`\`forbidden()\` is experimental and only allowed to be enabled when \`experimental.authInterrupts\` is enabled.`), "__NEXT_ERROR_CODE", {
+            value: "E488",
+            enumerable: false,
+            configurable: true
+        });
+    }
+    const error = Object.defineProperty(new Error(DIGEST), "__NEXT_ERROR_CODE", {
+        value: "E1019",
+        enumerable: false,
+        configurable: true
+    });
+    error.digest = DIGEST;
+    throw error;
+}
+if ((typeof exports.default === 'function' || typeof exports.default === 'object' && exports.default !== null) && typeof exports.default.__esModule === 'undefined') {
+    Object.defineProperty(exports.default, '__esModule', {
+        value: true
+    });
+    Object.assign(exports.default, exports);
+    module.exports = exports.default;
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/unauthorized.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+Object.defineProperty(exports, "unauthorized", {
+    enumerable: true,
+    get: function() {
+        return unauthorized;
+    }
+});
+const _httpaccessfallback = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/http-access-fallback/http-access-fallback.js [app-ssr] (ecmascript)");
+// TODO: Add `unauthorized` docs
+/**
+ * @experimental
+ * This function allows you to render the [unauthorized.js file](https://nextjs.org/docs/app/api-reference/file-conventions/unauthorized)
+ * within a route segment as well as inject a tag.
+ *
+ * `unauthorized()` can be used in
+ * [Server Components](https://nextjs.org/docs/app/building-your-application/rendering/server-components),
+ * [Route Handlers](https://nextjs.org/docs/app/building-your-application/routing/route-handlers), and
+ * [Server Actions](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations).
+ *
+ *
+ * Read more: [Next.js Docs: `unauthorized`](https://nextjs.org/docs/app/api-reference/functions/unauthorized)
+ */ const DIGEST = `${_httpaccessfallback.HTTP_ERROR_FALLBACK_ERROR_CODE};401`;
+function unauthorized() {
+    if ("TURBOPACK compile-time truthy", 1) {
+        throw Object.defineProperty(new Error(`\`unauthorized()\` is experimental and only allowed to be used when \`experimental.authInterrupts\` is enabled.`), "__NEXT_ERROR_CODE", {
+            value: "E411",
+            enumerable: false,
+            configurable: true
+        });
+    }
+    const error = Object.defineProperty(new Error(DIGEST), "__NEXT_ERROR_CODE", {
+        value: "E1002",
+        enumerable: false,
+        configurable: true
+    });
+    error.digest = DIGEST;
+    throw error;
+}
+if ((typeof exports.default === 'function' || typeof exports.default === 'object' && exports.default !== null) && typeof exports.default.__esModule === 'undefined') {
+    Object.defineProperty(exports.default, '__esModule', {
+        value: true
+    });
+    Object.assign(exports.default, exports);
+    module.exports = exports.default;
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/invariant-error.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+Object.defineProperty(exports, "InvariantError", {
+    enumerable: true,
+    get: function() {
+        return InvariantError;
+    }
+});
+class InvariantError extends Error {
+    constructor(message, options){
+        super(`Invariant: ${message.endsWith('.') ? message : message + '.'} This is a bug in Next.js.`, options);
+        this.name = 'InvariantError';
+    }
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/promise-with-resolvers.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+Object.defineProperty(exports, "createPromiseWithResolvers", {
+    enumerable: true,
+    get: function() {
+        return createPromiseWithResolvers;
+    }
+});
+function createPromiseWithResolvers() {
+    // Shim of Stage 4 Promise.withResolvers proposal
+    let resolve;
+    let reject;
+    const promise = new Promise((res, rej)=>{
+        resolve = res;
+        reject = rej;
+    });
+    return {
+        resolve: resolve,
+        reject: reject,
+        promise
+    };
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/app-render/staged-rendering.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+0 && (module.exports = {
+    RenderStage: null,
+    StagedRenderingController: null
+});
+function _export(target, all) {
+    for(var name in all)Object.defineProperty(target, name, {
+        enumerable: true,
+        get: all[name]
+    });
+}
+_export(exports, {
+    RenderStage: function() {
+        return RenderStage;
+    },
+    StagedRenderingController: function() {
+        return StagedRenderingController;
+    }
+});
+const _invarianterror = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/invariant-error.js [app-ssr] (ecmascript)");
+const _promisewithresolvers = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/promise-with-resolvers.js [app-ssr] (ecmascript)");
+var RenderStage = /*#__PURE__*/ function(RenderStage) {
+    RenderStage[RenderStage["Before"] = 1] = "Before";
+    RenderStage[RenderStage["EarlyStatic"] = 2] = "EarlyStatic";
+    RenderStage[RenderStage["Static"] = 3] = "Static";
+    RenderStage[RenderStage["EarlyRuntime"] = 4] = "EarlyRuntime";
+    RenderStage[RenderStage["Runtime"] = 5] = "Runtime";
+    RenderStage[RenderStage["Dynamic"] = 6] = "Dynamic";
+    RenderStage[RenderStage["Abandoned"] = 7] = "Abandoned";
+    return RenderStage;
+}({});
+class StagedRenderingController {
+    constructor(abortSignal, abandonController, shouldTrackSyncIO){
+        this.abortSignal = abortSignal;
+        this.abandonController = abandonController;
+        this.shouldTrackSyncIO = shouldTrackSyncIO;
+        this.currentStage = 1;
+        this.syncInterruptReason = null;
+        this.staticStageEndTime = Infinity;
+        this.runtimeStageEndTime = Infinity;
+        this.staticStageListeners = [];
+        this.earlyRuntimeStageListeners = [];
+        this.runtimeStageListeners = [];
+        this.dynamicStageListeners = [];
+        this.staticStagePromise = (0, _promisewithresolvers.createPromiseWithResolvers)();
+        this.earlyRuntimeStagePromise = (0, _promisewithresolvers.createPromiseWithResolvers)();
+        this.runtimeStagePromise = (0, _promisewithresolvers.createPromiseWithResolvers)();
+        this.dynamicStagePromise = (0, _promisewithresolvers.createPromiseWithResolvers)();
+        if (abortSignal) {
+            abortSignal.addEventListener('abort', ()=>{
+                // Reject all stage promises that haven't already been resolved.
+                // If a promise was already resolved via advanceStage, the reject
+                // is a no-op. The ignoreReject handler suppresses unhandled
+                // rejection warnings for promises that no one is awaiting.
+                const { reason } = abortSignal;
+                this.staticStagePromise.promise.catch(ignoreReject);
+                this.staticStagePromise.reject(reason);
+                this.earlyRuntimeStagePromise.promise.catch(ignoreReject);
+                this.earlyRuntimeStagePromise.reject(reason);
+                this.runtimeStagePromise.promise.catch(ignoreReject);
+                this.runtimeStagePromise.reject(reason);
+                this.dynamicStagePromise.promise.catch(ignoreReject);
+                this.dynamicStagePromise.reject(reason);
+            }, {
+                once: true
+            });
+        }
+        if (abandonController) {
+            abandonController.signal.addEventListener('abort', ()=>{
+                this.abandonRender();
+            }, {
+                once: true
+            });
+        }
+    }
+    onStage(stage, callback) {
+        if (this.currentStage >= stage) {
+            callback();
+        } else if (stage === 3) {
+            this.staticStageListeners.push(callback);
+        } else if (stage === 4) {
+            this.earlyRuntimeStageListeners.push(callback);
+        } else if (stage === 5) {
+            this.runtimeStageListeners.push(callback);
+        } else if (stage === 6) {
+            this.dynamicStageListeners.push(callback);
+        } else {
+            // This should never happen
+            throw Object.defineProperty(new _invarianterror.InvariantError(`Invalid render stage: ${stage}`), "__NEXT_ERROR_CODE", {
+                value: "E881",
+                enumerable: false,
+                configurable: true
+            });
+        }
+    }
+    shouldTrackSyncInterrupt() {
+        if (!this.shouldTrackSyncIO) {
+            return false;
+        }
+        switch(this.currentStage){
+            case 1:
+                // If we haven't started the render yet, it can't be interrupted.
+                return false;
+            case 2:
+            case 3:
+                return true;
+            case 4:
+                // EarlyRuntime is for runtime-prefetchable segments. Sync IO
+                // should error because it would abort a runtime prefetch.
+                return true;
+            case 5:
+                // Runtime is for non-prefetchable segments. Sync IO is fine there
+                // because in practice this segment will never be runtime prefetched
+                return false;
+            case 6:
+            case 7:
+                return false;
+            default:
+                return false;
+        }
+    }
+    syncInterruptCurrentStageWithReason(reason) {
+        if (this.currentStage === 1) {
+            return;
+        }
+        // If the render has already been abandoned, there's nothing to interrupt.
+        if (this.currentStage === 7) {
+            return;
+        }
+        // If Sync IO occurs during an abandonable render, we trigger the abandon.
+        // The abandon listener will call abandonRender which advances through
+        // stages to let caches fill before marking as Abandoned.
+        if (this.abandonController) {
+            this.abandonController.abort();
+            return;
+        }
+        if (this.abortSignal) {
+            // If this is an abortable render, we capture the interruption reason and stop advancing.
+            // We don't release any more promises.
+            // The caller is expected to abort the signal.
+            this.syncInterruptReason = reason;
+            this.currentStage = 7;
+            return;
+        }
+        // If we're in a non-abandonable & non-abortable render,
+        // we need to advance to the Dynamic stage and capture the interruption reason.
+        // (in dev, this will be the restarted render)
+        switch(this.currentStage){
+            case 2:
+            case 3:
+            case 4:
+                {
+                    // EarlyRuntime is for runtime-prefetchable segments. Sync IO here
+                    // means the prefetch would be aborted too early.
+                    this.syncInterruptReason = reason;
+                    this.advanceStage(6);
+                    return;
+                }
+            case 5:
+                {
+                    // canSyncInterrupt returns false for Runtime, so we should
+                    // never get here. Defensive no-op.
+                    return;
+                }
+            case 6:
+            default:
+        }
+    }
+    getSyncInterruptReason() {
+        return this.syncInterruptReason;
+    }
+    getStaticStageEndTime() {
+        return this.staticStageEndTime;
+    }
+    getRuntimeStageEndTime() {
+        return this.runtimeStageEndTime;
+    }
+    abandonRender() {
+        // In staged rendering, only the initial render is abandonable.
+        // We can abandon the initial render if
+        //   1. We notice a cache miss, and need to wait for caches to fill
+        //   2. A sync IO error occurs, and the render should be interrupted
+        //      (this might be a lazy intitialization of a module,
+        //       so we still want to restart in this case and see if it still occurs)
+        // In either case, we'll be doing another render after this one,
+        // so we only want to unblock the next stage, not Dynamic, because
+        // unblocking the dynamic stage would likely lead to wasted (uncached) IO.
+        const { currentStage } = this;
+        switch(currentStage){
+            case 2:
+                {
+                    this.resolveStaticStage();
+                }
+            // intentional fallthrough
+            case 3:
+                {
+                    this.resolveEarlyRuntimeStage();
+                }
+            // intentional fallthrough
+            case 4:
+                {
+                    this.resolveRuntimeStage();
+                }
+            // intentional fallthrough
+            case 5:
+                {
+                    this.currentStage = 7;
+                    return;
+                }
+            case 6:
+            case 1:
+            case 7:
+                break;
+            default:
+                {
+                    currentStage;
+                }
+        }
+    }
+    advanceStage(stage) {
+        // If we're already at the target stage or beyond, do nothing.
+        // (this can happen e.g. if sync IO advanced us to the dynamic stage)
+        if (stage <= this.currentStage) {
+            return;
+        }
+        let currentStage = this.currentStage;
+        this.currentStage = stage;
+        if (currentStage < 3 && stage >= 3) {
+            this.resolveStaticStage();
+        }
+        if (currentStage < 4 && stage >= 4) {
+            this.resolveEarlyRuntimeStage();
+        }
+        if (currentStage < 5 && stage >= 5) {
+            this.staticStageEndTime = performance.now() + performance.timeOrigin;
+            this.resolveRuntimeStage();
+        }
+        if (currentStage < 6 && stage >= 6) {
+            this.runtimeStageEndTime = performance.now() + performance.timeOrigin;
+            this.resolveDynamicStage();
+            return;
+        }
+    }
+    /** Fire the `onStage` listeners for the static stage and unblock any promises waiting for it. */ resolveStaticStage() {
+        const staticListeners = this.staticStageListeners;
+        for(let i = 0; i < staticListeners.length; i++){
+            staticListeners[i]();
+        }
+        staticListeners.length = 0;
+        this.staticStagePromise.resolve();
+    }
+    /** Fire the `onStage` listeners for the early runtime stage and unblock any promises waiting for it. */ resolveEarlyRuntimeStage() {
+        const earlyRuntimeListeners = this.earlyRuntimeStageListeners;
+        for(let i = 0; i < earlyRuntimeListeners.length; i++){
+            earlyRuntimeListeners[i]();
+        }
+        earlyRuntimeListeners.length = 0;
+        this.earlyRuntimeStagePromise.resolve();
+    }
+    /** Fire the `onStage` listeners for the runtime stage and unblock any promises waiting for it. */ resolveRuntimeStage() {
+        const runtimeListeners = this.runtimeStageListeners;
+        for(let i = 0; i < runtimeListeners.length; i++){
+            runtimeListeners[i]();
+        }
+        runtimeListeners.length = 0;
+        this.runtimeStagePromise.resolve();
+    }
+    /** Fire the `onStage` listeners for the dynamic stage and unblock any promises waiting for it. */ resolveDynamicStage() {
+        const dynamicListeners = this.dynamicStageListeners;
+        for(let i = 0; i < dynamicListeners.length; i++){
+            dynamicListeners[i]();
+        }
+        dynamicListeners.length = 0;
+        this.dynamicStagePromise.resolve();
+    }
+    getStagePromise(stage) {
+        switch(stage){
+            case 3:
+                {
+                    return this.staticStagePromise.promise;
+                }
+            case 4:
+                {
+                    return this.earlyRuntimeStagePromise.promise;
+                }
+            case 5:
+                {
+                    return this.runtimeStagePromise.promise;
+                }
+            case 6:
+                {
+                    return this.dynamicStagePromise.promise;
+                }
+            default:
+                {
+                    stage;
+                    throw Object.defineProperty(new _invarianterror.InvariantError(`Invalid render stage: ${stage}`), "__NEXT_ERROR_CODE", {
+                        value: "E881",
+                        enumerable: false,
+                        configurable: true
+                    });
+                }
+        }
+    }
+    waitForStage(stage) {
+        return this.getStagePromise(stage);
+    }
+    delayUntilStage(stage, displayName, resolvedValue) {
+        const ioTriggerPromise = this.getStagePromise(stage);
+        const promise = makeDevtoolsIOPromiseFromIOTrigger(ioTriggerPromise, displayName, resolvedValue);
+        // Analogously to `makeHangingPromise`, we might reject this promise if the signal is invoked.
+        // (e.g. in the case where we don't want want the render to proceed to the dynamic stage and abort it).
+        // We shouldn't consider this an unhandled rejection, so we attach a noop catch handler here to suppress this warning.
+        if (this.abortSignal) {
+            promise.catch(ignoreReject);
+        }
+        return promise;
+    }
+}
+function ignoreReject() {}
+// TODO(restart-on-cache-miss): the layering of `delayUntilStage`,
+// `makeDevtoolsIOPromiseFromIOTrigger` and and `makeDevtoolsIOAwarePromise`
+// is confusing, we should clean it up.
+function makeDevtoolsIOPromiseFromIOTrigger(ioTrigger, displayName, resolvedValue) {
+    // If we create a `new Promise` and give it a displayName
+    // (with no userspace code above us in the stack)
+    // React Devtools will use it as the IO cause when determining "suspended by".
+    // In particular, it should shadow any inner IO that resolved/rejected the promise
+    // (in case of staged rendering, this will be the `setTimeout` that triggers the relevant stage)
+    const promise = new Promise((resolve, reject)=>{
+        ioTrigger.then(resolve.bind(null, resolvedValue), reject);
+    });
+    if (displayName !== undefined) {
+        // @ts-expect-error
+        promise.displayName = displayName;
+    }
+    return promise;
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/dynamic-rendering-utils.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+0 && (module.exports = {
+    delayUntilRuntimeStage: null,
+    getRuntimeStage: null,
+    isHangingPromiseRejectionError: null,
+    makeDevtoolsIOAwarePromise: null,
+    makeHangingPromise: null
+});
+function _export(target, all) {
+    for(var name in all)Object.defineProperty(target, name, {
+        enumerable: true,
+        get: all[name]
+    });
+}
+_export(exports, {
+    delayUntilRuntimeStage: function() {
+        return delayUntilRuntimeStage;
+    },
+    getRuntimeStage: function() {
+        return getRuntimeStage;
+    },
+    isHangingPromiseRejectionError: function() {
+        return isHangingPromiseRejectionError;
+    },
+    makeDevtoolsIOAwarePromise: function() {
+        return makeDevtoolsIOAwarePromise;
+    },
+    makeHangingPromise: function() {
+        return makeHangingPromise;
+    }
+});
+const _stagedrendering = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/app-render/staged-rendering.js [app-ssr] (ecmascript)");
+function isHangingPromiseRejectionError(err) {
+    if (typeof err !== 'object' || err === null || !('digest' in err)) {
+        return false;
+    }
+    return err.digest === HANGING_PROMISE_REJECTION;
+}
+const HANGING_PROMISE_REJECTION = 'HANGING_PROMISE_REJECTION';
+class HangingPromiseRejectionError extends Error {
+    constructor(route, expression){
+        super(`During prerendering, ${expression} rejects when the prerender is complete. Typically these errors are handled by React but if you move ${expression} to a different context by using \`setTimeout\`, \`after\`, or similar functions you may observe this error and you should handle it in that context. This occurred at route "${route}".`), this.route = route, this.expression = expression, this.digest = HANGING_PROMISE_REJECTION;
+    }
+}
+const abortListenersBySignal = new WeakMap();
+function makeHangingPromise(signal, route, expression) {
+    if (signal.aborted) {
+        return Promise.reject(new HangingPromiseRejectionError(route, expression));
+    } else {
+        const hangingPromise = new Promise((_, reject)=>{
+            const boundRejection = reject.bind(null, new HangingPromiseRejectionError(route, expression));
+            let currentListeners = abortListenersBySignal.get(signal);
+            if (currentListeners) {
+                currentListeners.push(boundRejection);
+            } else {
+                const listeners = [
+                    boundRejection
+                ];
+                abortListenersBySignal.set(signal, listeners);
+                signal.addEventListener('abort', ()=>{
+                    for(let i = 0; i < listeners.length; i++){
+                        listeners[i]();
+                    }
+                }, {
+                    once: true
+                });
+            }
+        });
+        // We are fine if no one actually awaits this promise. We shouldn't consider this an unhandled rejection so
+        // we attach a noop catch handler here to suppress this warning. If you actually await somewhere or construct
+        // your own promise out of it you'll need to ensure you handle the error when it rejects.
+        hangingPromise.catch(ignoreReject);
+        return hangingPromise;
+    }
+}
+function ignoreReject() {}
+function makeDevtoolsIOAwarePromise(underlying, requestStore, stage) {
+    if (requestStore.stagedRendering) {
+        // We resolve each stage in a timeout, so React DevTools will pick this up as IO.
+        return requestStore.stagedRendering.delayUntilStage(stage, undefined, underlying);
+    }
+    // in React DevTools if we resolve in a setTimeout we will observe
+    // the promise resolution as something that can suspend a boundary or root.
+    return new Promise((resolve)=>{
+        // Must use setTimeout to be considered IO React DevTools. setImmediate will not work.
+        setTimeout(()=>{
+            resolve(underlying);
+        }, 0);
+    });
+}
+function getRuntimeStage(stagedRendering) {
+    if (stagedRendering.currentStage === _stagedrendering.RenderStage.EarlyStatic || stagedRendering.currentStage === _stagedrendering.RenderStage.EarlyRuntime) {
+        return _stagedrendering.RenderStage.EarlyRuntime;
+    }
+    return _stagedrendering.RenderStage.Runtime;
+}
+function delayUntilRuntimeStage(prerenderStore, result) {
+    const { stagedRendering } = prerenderStore;
+    if (!stagedRendering) {
+        return result;
+    }
+    return stagedRendering.waitForStage(getRuntimeStage(stagedRendering)).then(()=>result);
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/lib/router-utils/is-postpone.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+Object.defineProperty(exports, "isPostpone", {
+    enumerable: true,
+    get: function() {
+        return isPostpone;
+    }
+});
+const REACT_POSTPONE_TYPE = Symbol.for('react.postpone');
+function isPostpone(error) {
+    return typeof error === 'object' && error !== null && error.$$typeof === REACT_POSTPONE_TYPE;
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/lazy-dynamic/bailout-to-csr.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+// This has to be a shared module which is shared between client component error boundary and dynamic component
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+0 && (module.exports = {
+    BailoutToCSRError: null,
+    isBailoutToCSRError: null
+});
+function _export(target, all) {
+    for(var name in all)Object.defineProperty(target, name, {
+        enumerable: true,
+        get: all[name]
+    });
+}
+_export(exports, {
+    BailoutToCSRError: function() {
+        return BailoutToCSRError;
+    },
+    isBailoutToCSRError: function() {
+        return isBailoutToCSRError;
+    }
+});
+const BAILOUT_TO_CSR = 'BAILOUT_TO_CLIENT_SIDE_RENDERING';
+class BailoutToCSRError extends Error {
+    constructor(reason){
+        super(`Bail out to client-side rendering: ${reason}`), this.reason = reason, this.digest = BAILOUT_TO_CSR;
+    }
+}
+function isBailoutToCSRError(err) {
+    if (typeof err !== 'object' || err === null || !('digest' in err)) {
+        return false;
+    }
+    return err.digest === BAILOUT_TO_CSR;
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/is-next-router-error.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+Object.defineProperty(exports, "isNextRouterError", {
+    enumerable: true,
+    get: function() {
+        return isNextRouterError;
+    }
+});
+const _httpaccessfallback = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/http-access-fallback/http-access-fallback.js [app-ssr] (ecmascript)");
+const _redirecterror = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/redirect-error.js [app-ssr] (ecmascript)");
+function isNextRouterError(error) {
+    return (0, _redirecterror.isRedirectError)(error) || (0, _httpaccessfallback.isHTTPAccessFallbackError)(error);
+}
+if ((typeof exports.default === 'function' || typeof exports.default === 'object' && exports.default !== null) && typeof exports.default.__esModule === 'undefined') {
+    Object.defineProperty(exports.default, '__esModule', {
+        value: true
+    });
+    Object.assign(exports.default, exports);
+    module.exports = exports.default;
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/hooks-server-context.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+0 && (module.exports = {
+    DynamicServerError: null,
+    isDynamicServerError: null
+});
+function _export(target, all) {
+    for(var name in all)Object.defineProperty(target, name, {
+        enumerable: true,
+        get: all[name]
+    });
+}
+_export(exports, {
+    DynamicServerError: function() {
+        return DynamicServerError;
+    },
+    isDynamicServerError: function() {
+        return isDynamicServerError;
+    }
+});
+const DYNAMIC_ERROR_CODE = 'DYNAMIC_SERVER_USAGE';
+class DynamicServerError extends Error {
+    constructor(description){
+        super(`Dynamic server usage: ${description}`), this.description = description, this.digest = DYNAMIC_ERROR_CODE;
+    }
+}
+function isDynamicServerError(err) {
+    if (typeof err !== 'object' || err === null || !('digest' in err) || typeof err.digest !== 'string') {
+        return false;
+    }
+    return err.digest === DYNAMIC_ERROR_CODE;
+}
+if ((typeof exports.default === 'function' || typeof exports.default === 'object' && exports.default !== null) && typeof exports.default.__esModule === 'undefined') {
+    Object.defineProperty(exports.default, '__esModule', {
+        value: true
+    });
+    Object.assign(exports.default, exports);
+    module.exports = exports.default;
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/static-generation-bailout.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+0 && (module.exports = {
+    StaticGenBailoutError: null,
+    isStaticGenBailoutError: null
+});
+function _export(target, all) {
+    for(var name in all)Object.defineProperty(target, name, {
+        enumerable: true,
+        get: all[name]
+    });
+}
+_export(exports, {
+    StaticGenBailoutError: function() {
+        return StaticGenBailoutError;
+    },
+    isStaticGenBailoutError: function() {
+        return isStaticGenBailoutError;
+    }
+});
+const NEXT_STATIC_GEN_BAILOUT = 'NEXT_STATIC_GEN_BAILOUT';
+class StaticGenBailoutError extends Error {
+    constructor(...args){
+        super(...args), this.code = NEXT_STATIC_GEN_BAILOUT;
+    }
+}
+function isStaticGenBailoutError(error) {
+    if (typeof error !== 'object' || error === null || !('code' in error)) {
+        return false;
+    }
+    return error.code === NEXT_STATIC_GEN_BAILOUT;
+}
+if ((typeof exports.default === 'function' || typeof exports.default === 'object' && exports.default !== null) && typeof exports.default.__esModule === 'undefined') {
+    Object.defineProperty(exports.default, '__esModule', {
+        value: true
+    });
+    Object.assign(exports.default, exports);
+    module.exports = exports.default;
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/lib/framework/boundary-constants.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+0 && (module.exports = {
+    METADATA_BOUNDARY_NAME: null,
+    OUTLET_BOUNDARY_NAME: null,
+    ROOT_LAYOUT_BOUNDARY_NAME: null,
+    VIEWPORT_BOUNDARY_NAME: null
+});
+function _export(target, all) {
+    for(var name in all)Object.defineProperty(target, name, {
+        enumerable: true,
+        get: all[name]
+    });
+}
+_export(exports, {
+    METADATA_BOUNDARY_NAME: function() {
+        return METADATA_BOUNDARY_NAME;
+    },
+    OUTLET_BOUNDARY_NAME: function() {
+        return OUTLET_BOUNDARY_NAME;
+    },
+    ROOT_LAYOUT_BOUNDARY_NAME: function() {
+        return ROOT_LAYOUT_BOUNDARY_NAME;
+    },
+    VIEWPORT_BOUNDARY_NAME: function() {
+        return VIEWPORT_BOUNDARY_NAME;
+    }
+});
+const METADATA_BOUNDARY_NAME = '__next_metadata_boundary__';
+const VIEWPORT_BOUNDARY_NAME = '__next_viewport_boundary__';
+const OUTLET_BOUNDARY_NAME = '__next_outlet_boundary__';
+const ROOT_LAYOUT_BOUNDARY_NAME = '__next_root_layout_boundary__';
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/lib/scheduler.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+0 && (module.exports = {
+    atLeastOneTask: null,
+    scheduleImmediate: null,
+    scheduleOnNextTick: null,
+    waitAtLeastOneReactRenderTask: null
+});
+function _export(target, all) {
+    for(var name in all)Object.defineProperty(target, name, {
+        enumerable: true,
+        get: all[name]
+    });
+}
+_export(exports, {
+    atLeastOneTask: function() {
+        return atLeastOneTask;
+    },
+    scheduleImmediate: function() {
+        return scheduleImmediate;
+    },
+    scheduleOnNextTick: function() {
+        return scheduleOnNextTick;
+    },
+    waitAtLeastOneReactRenderTask: function() {
+        return waitAtLeastOneReactRenderTask;
+    }
+});
+const scheduleOnNextTick = (cb)=>{
+    // We use Promise.resolve().then() here so that the operation is scheduled at
+    // the end of the promise job queue, we then add it to the next process tick
+    // to ensure it's evaluated afterwards.
+    //
+    // This was inspired by the implementation of the DataLoader interface: https://github.com/graphql/dataloader/blob/d336bd15282664e0be4b4a657cb796f09bafbc6b/src/index.js#L213-L255
+    //
+    Promise.resolve().then(()=>{
+        if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+        ;
+        else {
+            process.nextTick(cb);
+        }
+    });
+};
+const scheduleImmediate = (cb)=>{
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    else {
+        setImmediate(cb);
+    }
+};
+function atLeastOneTask() {
+    return new Promise((resolve)=>scheduleImmediate(resolve));
+}
+function waitAtLeastOneReactRenderTask() {
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    else {
+        return new Promise((r)=>setImmediate(r));
+    }
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/app-render/instant-validation/boundary-constants.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+Object.defineProperty(exports, "INSTANT_VALIDATION_BOUNDARY_NAME", {
+    enumerable: true,
+    get: function() {
+        return INSTANT_VALIDATION_BOUNDARY_NAME;
+    }
+});
+const INSTANT_VALIDATION_BOUNDARY_NAME = '__next_instant_validation_boundary__';
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/app-render/dynamic-rendering.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+/**
+ * The functions provided by this module are used to communicate certain properties
+ * about the currently running code so that Next.js can make decisions on how to handle
+ * the current execution in different rendering modes such as pre-rendering, resuming, and SSR.
+ *
+ * Today Next.js treats all code as potentially static. Certain APIs may only make sense when dynamically rendering.
+ * Traditionally this meant deopting the entire render to dynamic however with PPR we can now deopt parts
+ * of a React tree as dynamic while still keeping other parts static. There are really two different kinds of
+ * Dynamic indications.
+ *
+ * The first is simply an intention to be dynamic. unstable_noStore is an example of this where
+ * the currently executing code simply declares that the current scope is dynamic but if you use it
+ * inside unstable_cache it can still be cached. This type of indication can be removed if we ever
+ * make the default dynamic to begin with because the only way you would ever be static is inside
+ * a cache scope which this indication does not affect.
+ *
+ * The second is an indication that a dynamic data source was read. This is a stronger form of dynamic
+ * because it means that it is inappropriate to cache this at all. using a dynamic data source inside
+ * unstable_cache should error. If you want to use some dynamic data inside unstable_cache you should
+ * read that data outside the cache and pass it in as an argument to the cached function.
+ */ Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+0 && (module.exports = {
+    DynamicHoleKind: null,
+    Postpone: null,
+    PreludeState: null,
+    abortAndThrowOnSynchronousRequestDataAccess: null,
+    abortOnSynchronousPlatformIOAccess: null,
+    accessedDynamicData: null,
+    annotateDynamicAccess: null,
+    consumeDynamicAccess: null,
+    createDynamicTrackingState: null,
+    createDynamicValidationState: null,
+    createHangingInputAbortSignal: null,
+    createInstantValidationState: null,
+    createRenderInBrowserAbortSignal: null,
+    formatDynamicAPIAccesses: null,
+    getFirstDynamicReason: null,
+    getNavigationDisallowedDynamicReasons: null,
+    getStaticShellDisallowedDynamicReasons: null,
+    isDynamicPostpone: null,
+    isPrerenderInterruptedError: null,
+    logDisallowedDynamicError: null,
+    markCurrentScopeAsDynamic: null,
+    postponeWithTracking: null,
+    throwIfDisallowedDynamic: null,
+    throwToInterruptStaticGeneration: null,
+    trackAllowedDynamicAccess: null,
+    trackDynamicDataInDynamicRender: null,
+    trackDynamicHoleInNavigation: null,
+    trackDynamicHoleInRuntimeShell: null,
+    trackDynamicHoleInStaticShell: null,
+    trackThrownErrorInNavigation: null,
+    useDynamicRouteParams: null,
+    useDynamicSearchParams: null
+});
+function _export(target, all) {
+    for(var name in all)Object.defineProperty(target, name, {
+        enumerable: true,
+        get: all[name]
+    });
+}
+_export(exports, {
+    DynamicHoleKind: function() {
+        return DynamicHoleKind;
+    },
+    Postpone: function() {
+        return Postpone;
+    },
+    PreludeState: function() {
+        return PreludeState;
+    },
+    abortAndThrowOnSynchronousRequestDataAccess: function() {
+        return abortAndThrowOnSynchronousRequestDataAccess;
+    },
+    abortOnSynchronousPlatformIOAccess: function() {
+        return abortOnSynchronousPlatformIOAccess;
+    },
+    accessedDynamicData: function() {
+        return accessedDynamicData;
+    },
+    annotateDynamicAccess: function() {
+        return annotateDynamicAccess;
+    },
+    consumeDynamicAccess: function() {
+        return consumeDynamicAccess;
+    },
+    createDynamicTrackingState: function() {
+        return createDynamicTrackingState;
+    },
+    createDynamicValidationState: function() {
+        return createDynamicValidationState;
+    },
+    createHangingInputAbortSignal: function() {
+        return createHangingInputAbortSignal;
+    },
+    createInstantValidationState: function() {
+        return createInstantValidationState;
+    },
+    createRenderInBrowserAbortSignal: function() {
+        return createRenderInBrowserAbortSignal;
+    },
+    formatDynamicAPIAccesses: function() {
+        return formatDynamicAPIAccesses;
+    },
+    getFirstDynamicReason: function() {
+        return getFirstDynamicReason;
+    },
+    getNavigationDisallowedDynamicReasons: function() {
+        return getNavigationDisallowedDynamicReasons;
+    },
+    getStaticShellDisallowedDynamicReasons: function() {
+        return getStaticShellDisallowedDynamicReasons;
+    },
+    isDynamicPostpone: function() {
+        return isDynamicPostpone;
+    },
+    isPrerenderInterruptedError: function() {
+        return isPrerenderInterruptedError;
+    },
+    logDisallowedDynamicError: function() {
+        return logDisallowedDynamicError;
+    },
+    markCurrentScopeAsDynamic: function() {
+        return markCurrentScopeAsDynamic;
+    },
+    postponeWithTracking: function() {
+        return postponeWithTracking;
+    },
+    throwIfDisallowedDynamic: function() {
+        return throwIfDisallowedDynamic;
+    },
+    throwToInterruptStaticGeneration: function() {
+        return throwToInterruptStaticGeneration;
+    },
+    trackAllowedDynamicAccess: function() {
+        return trackAllowedDynamicAccess;
+    },
+    trackDynamicDataInDynamicRender: function() {
+        return trackDynamicDataInDynamicRender;
+    },
+    trackDynamicHoleInNavigation: function() {
+        return trackDynamicHoleInNavigation;
+    },
+    trackDynamicHoleInRuntimeShell: function() {
+        return trackDynamicHoleInRuntimeShell;
+    },
+    trackDynamicHoleInStaticShell: function() {
+        return trackDynamicHoleInStaticShell;
+    },
+    trackThrownErrorInNavigation: function() {
+        return trackThrownErrorInNavigation;
+    },
+    useDynamicRouteParams: function() {
+        return useDynamicRouteParams;
+    },
+    useDynamicSearchParams: function() {
+        return useDynamicSearchParams;
+    }
+});
+const _react = /*#__PURE__*/ _interop_require_default(__turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)"));
+const _hooksservercontext = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/hooks-server-context.js [app-ssr] (ecmascript)");
+const _staticgenerationbailout = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/static-generation-bailout.js [app-ssr] (ecmascript)");
+const _workunitasyncstorageexternal = __turbopack_context__.r("[externals]/next/dist/server/app-render/work-unit-async-storage.external.js [external] (next/dist/server/app-render/work-unit-async-storage.external.js, cjs)");
+const _workasyncstorageexternal = __turbopack_context__.r("[externals]/next/dist/server/app-render/work-async-storage.external.js [external] (next/dist/server/app-render/work-async-storage.external.js, cjs)");
+const _dynamicrenderingutils = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/dynamic-rendering-utils.js [app-ssr] (ecmascript)");
+const _boundaryconstants = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/lib/framework/boundary-constants.js [app-ssr] (ecmascript)");
+const _scheduler = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/lib/scheduler.js [app-ssr] (ecmascript)");
+const _bailouttocsr = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/lazy-dynamic/bailout-to-csr.js [app-ssr] (ecmascript)");
+const _invarianterror = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/invariant-error.js [app-ssr] (ecmascript)");
+const _boundaryconstants1 = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/app-render/instant-validation/boundary-constants.js [app-ssr] (ecmascript)");
+function _interop_require_default(obj) {
+    return obj && obj.__esModule ? obj : {
+        default: obj
+    };
+}
+const hasPostpone = typeof _react.default.unstable_postpone === 'function';
+function createDynamicTrackingState(isDebugDynamicAccesses) {
+    return {
+        isDebugDynamicAccesses,
+        dynamicAccesses: [],
+        syncDynamicErrorWithStack: null
+    };
+}
+function createDynamicValidationState() {
+    return {
+        hasSuspenseAboveBody: false,
+        hasDynamicMetadata: false,
+        dynamicMetadata: null,
+        hasDynamicViewport: false,
+        hasAllowedDynamic: false,
+        dynamicErrors: []
+    };
+}
+function getFirstDynamicReason(trackingState) {
+    var _trackingState_dynamicAccesses_;
+    return (_trackingState_dynamicAccesses_ = trackingState.dynamicAccesses[0]) == null ? void 0 : _trackingState_dynamicAccesses_.expression;
+}
+function markCurrentScopeAsDynamic(store, workUnitStore, expression) {
+    if (workUnitStore) {
+        switch(workUnitStore.type){
+            case 'cache':
+            case 'unstable-cache':
+                // Inside cache scopes, marking a scope as dynamic has no effect,
+                // because the outer cache scope creates a cache boundary. This is
+                // subtly different from reading a dynamic data source, which is
+                // forbidden inside a cache scope.
+                return;
+            case 'private-cache':
+                // A private cache scope is already dynamic by definition.
+                return;
+            case 'prerender-legacy':
+            case 'prerender-ppr':
+            case 'request':
+            case 'generate-static-params':
+                break;
+            default:
+                workUnitStore;
+        }
+    }
+    // If we're forcing dynamic rendering or we're forcing static rendering, we
+    // don't need to do anything here because the entire page is already dynamic
+    // or it's static and it should not throw or postpone here.
+    if (store.forceDynamic || store.forceStatic) return;
+    if (store.dynamicShouldError) {
+        throw Object.defineProperty(new _staticgenerationbailout.StaticGenBailoutError(`Route ${store.route} with \`dynamic = "error"\` couldn't be rendered statically because it used \`${expression}\`. See more info here: https://nextjs.org/docs/app/building-your-application/rendering/static-and-dynamic#dynamic-rendering`), "__NEXT_ERROR_CODE", {
+            value: "E553",
+            enumerable: false,
+            configurable: true
+        });
+    }
+    if (workUnitStore) {
+        switch(workUnitStore.type){
+            case 'prerender-ppr':
+                return postponeWithTracking(store.route, expression, workUnitStore.dynamicTracking);
+            case 'prerender-legacy':
+                workUnitStore.revalidate = 0;
+                // We aren't prerendering, but we are generating a static page. We need
+                // to bail out of static generation.
+                const err = Object.defineProperty(new _hooksservercontext.DynamicServerError(`Route ${store.route} couldn't be rendered statically because it used ${expression}. See more info here: https://nextjs.org/docs/messages/dynamic-server-error`), "__NEXT_ERROR_CODE", {
+                    value: "E550",
+                    enumerable: false,
+                    configurable: true
+                });
+                store.dynamicUsageDescription = expression;
+                store.dynamicUsageStack = err.stack;
+                throw err;
+            case 'request':
+                if ("TURBOPACK compile-time truthy", 1) {
+                    workUnitStore.usedDynamic = true;
+                }
+                break;
+            case 'generate-static-params':
+                break;
+            default:
+                workUnitStore;
+        }
+    }
+}
+function throwToInterruptStaticGeneration(expression, store, prerenderStore) {
+    // We aren't prerendering but we are generating a static page. We need to bail out of static generation
+    const err = Object.defineProperty(new _hooksservercontext.DynamicServerError(`Route ${store.route} couldn't be rendered statically because it used \`${expression}\`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error`), "__NEXT_ERROR_CODE", {
+        value: "E558",
+        enumerable: false,
+        configurable: true
+    });
+    prerenderStore.revalidate = 0;
+    store.dynamicUsageDescription = expression;
+    store.dynamicUsageStack = err.stack;
+    throw err;
+}
+function trackDynamicDataInDynamicRender(workUnitStore) {
+    switch(workUnitStore.type){
+        case 'cache':
+        case 'unstable-cache':
+            // Inside cache scopes, marking a scope as dynamic has no effect,
+            // because the outer cache scope creates a cache boundary. This is
+            // subtly different from reading a dynamic data source, which is
+            // forbidden inside a cache scope.
+            return;
+        case 'private-cache':
+            // A private cache scope is already dynamic by definition.
+            return;
+        case 'prerender':
+        case 'prerender-runtime':
+        case 'prerender-legacy':
+        case 'prerender-ppr':
+        case 'prerender-client':
+        case 'validation-client':
+        case 'generate-static-params':
+            break;
+        case 'request':
+            if ("TURBOPACK compile-time truthy", 1) {
+                workUnitStore.usedDynamic = true;
+            }
+            break;
+        default:
+            workUnitStore;
+    }
+}
+function abortOnSynchronousDynamicDataAccess(route, expression, prerenderStore) {
+    const reason = `Route ${route} needs to bail out of prerendering at this point because it used ${expression}.`;
+    const error = createPrerenderInterruptedError(reason);
+    prerenderStore.controller.abort(error);
+    const dynamicTracking = prerenderStore.dynamicTracking;
+    if (dynamicTracking) {
+        dynamicTracking.dynamicAccesses.push({
+            // When we aren't debugging, we don't need to create another error for the
+            // stack trace.
+            stack: dynamicTracking.isDebugDynamicAccesses ? new Error().stack : undefined,
+            expression
+        });
+    }
+}
+function abortOnSynchronousPlatformIOAccess(route, expression, errorWithStack, prerenderStore) {
+    const dynamicTracking = prerenderStore.dynamicTracking;
+    abortOnSynchronousDynamicDataAccess(route, expression, prerenderStore);
+    // It is important that we set this tracking value after aborting. Aborts are executed
+    // synchronously except for the case where you abort during render itself. By setting this
+    // value late we can use it to determine if any of the aborted tasks are the task that
+    // called the sync IO expression in the first place.
+    if (dynamicTracking) {
+        if (dynamicTracking.syncDynamicErrorWithStack === null) {
+            dynamicTracking.syncDynamicErrorWithStack = errorWithStack;
+        }
+    }
+}
+function abortAndThrowOnSynchronousRequestDataAccess(route, expression, errorWithStack, prerenderStore) {
+    const prerenderSignal = prerenderStore.controller.signal;
+    if (prerenderSignal.aborted === false) {
+        // TODO it would be better to move this aborted check into the callsite so we can avoid making
+        // the error object when it isn't relevant to the aborting of the prerender however
+        // since we need the throw semantics regardless of whether we abort it is easier to land
+        // this way. See how this was handled with `abortOnSynchronousPlatformIOAccess` for a closer
+        // to ideal implementation
+        abortOnSynchronousDynamicDataAccess(route, expression, prerenderStore);
+        // It is important that we set this tracking value after aborting. Aborts are executed
+        // synchronously except for the case where you abort during render itself. By setting this
+        // value late we can use it to determine if any of the aborted tasks are the task that
+        // called the sync IO expression in the first place.
+        const dynamicTracking = prerenderStore.dynamicTracking;
+        if (dynamicTracking) {
+            if (dynamicTracking.syncDynamicErrorWithStack === null) {
+                dynamicTracking.syncDynamicErrorWithStack = errorWithStack;
+            }
+        }
+    }
+    throw createPrerenderInterruptedError(`Route ${route} needs to bail out of prerendering at this point because it used ${expression}.`);
+}
+function Postpone({ reason, route }) {
+    const prerenderStore = _workunitasyncstorageexternal.workUnitAsyncStorage.getStore();
+    const dynamicTracking = prerenderStore && prerenderStore.type === 'prerender-ppr' ? prerenderStore.dynamicTracking : null;
+    postponeWithTracking(route, reason, dynamicTracking);
+}
+function postponeWithTracking(route, expression, dynamicTracking) {
+    assertPostpone();
+    if (dynamicTracking) {
+        dynamicTracking.dynamicAccesses.push({
+            // When we aren't debugging, we don't need to create another error for the
+            // stack trace.
+            stack: dynamicTracking.isDebugDynamicAccesses ? new Error().stack : undefined,
+            expression
+        });
+    }
+    _react.default.unstable_postpone(createPostponeReason(route, expression));
+}
+function createPostponeReason(route, expression) {
+    return `Route ${route} needs to bail out of prerendering at this point because it used ${expression}. ` + `React throws this special object to indicate where. It should not be caught by ` + `your own try/catch. Learn more: https://nextjs.org/docs/messages/ppr-caught-error`;
+}
+function isDynamicPostpone(err) {
+    if (typeof err === 'object' && err !== null && typeof err.message === 'string') {
+        return isDynamicPostponeReason(err.message);
+    }
+    return false;
+}
+function isDynamicPostponeReason(reason) {
+    return reason.includes('needs to bail out of prerendering at this point because it used') && reason.includes('Learn more: https://nextjs.org/docs/messages/ppr-caught-error');
+}
+if (isDynamicPostponeReason(createPostponeReason('%%%', '^^^')) === false) {
+    throw Object.defineProperty(new Error('Invariant: isDynamicPostpone misidentified a postpone reason. This is a bug in Next.js'), "__NEXT_ERROR_CODE", {
+        value: "E296",
+        enumerable: false,
+        configurable: true
+    });
+}
+const NEXT_PRERENDER_INTERRUPTED = 'NEXT_PRERENDER_INTERRUPTED';
+function createPrerenderInterruptedError(message) {
+    const error = Object.defineProperty(new Error(message), "__NEXT_ERROR_CODE", {
+        value: "E394",
+        enumerable: false,
+        configurable: true
+    });
+    error.digest = NEXT_PRERENDER_INTERRUPTED;
+    return error;
+}
+function isPrerenderInterruptedError(error) {
+    return typeof error === 'object' && error !== null && error.digest === NEXT_PRERENDER_INTERRUPTED && 'name' in error && 'message' in error && error instanceof Error;
+}
+function accessedDynamicData(dynamicAccesses) {
+    return dynamicAccesses.length > 0;
+}
+function consumeDynamicAccess(serverDynamic, clientDynamic) {
+    // We mutate because we only call this once we are no longer writing
+    // to the dynamicTrackingState and it's more efficient than creating a new
+    // array.
+    serverDynamic.dynamicAccesses.push(...clientDynamic.dynamicAccesses);
+    return serverDynamic.dynamicAccesses;
+}
+function formatDynamicAPIAccesses(dynamicAccesses) {
+    return dynamicAccesses.filter((access)=>typeof access.stack === 'string' && access.stack.length > 0).map(({ expression, stack })=>{
+        stack = stack.split('\n') // Remove the "Error: " prefix from the first line of the stack trace as
+        // well as the first 4 lines of the stack trace which is the distance
+        // from the user code and the `new Error().stack` call.
+        .slice(4).filter((line)=>{
+            // Exclude Next.js internals from the stack trace.
+            if (line.includes('node_modules/next/')) {
+                return false;
+            }
+            // Exclude anonymous functions from the stack trace.
+            if (line.includes(' (<anonymous>)')) {
+                return false;
+            }
+            // Exclude Node.js internals from the stack trace.
+            if (line.includes(' (node:')) {
+                return false;
+            }
+            return true;
+        }).join('\n');
+        return `Dynamic API Usage Debug - ${expression}:\n${stack}`;
+    });
+}
+function assertPostpone() {
+    if (!hasPostpone) {
+        throw Object.defineProperty(new Error(`Invariant: React.unstable_postpone is not defined. This suggests the wrong version of React was loaded. This is a bug in Next.js`), "__NEXT_ERROR_CODE", {
+            value: "E224",
+            enumerable: false,
+            configurable: true
+        });
+    }
+}
+function createRenderInBrowserAbortSignal() {
+    const controller = new AbortController();
+    controller.abort(Object.defineProperty(new _bailouttocsr.BailoutToCSRError('Render in Browser'), "__NEXT_ERROR_CODE", {
+        value: "E721",
+        enumerable: false,
+        configurable: true
+    }));
+    return controller.signal;
+}
+function createHangingInputAbortSignal(workUnitStore) {
+    switch(workUnitStore.type){
+        case 'prerender':
+        case 'prerender-runtime':
+            const controller = new AbortController();
+            if (workUnitStore.cacheSignal) {
+                // If we have a cacheSignal it means we're in a prospective render. If
+                // the input we're waiting on is coming from another cache, we do want
+                // to wait for it so that we can resolve this cache entry too.
+                workUnitStore.cacheSignal.inputReady().then(()=>{
+                    controller.abort();
+                });
+            } else {
+                // Otherwise we're in the final render and we should already have all
+                // our caches filled.
+                // If the prerender uses stages, we have wait until the runtime stage,
+                // at which point all runtime inputs will be resolved.
+                // (otherwise, a runtime prerender might consider `cookies()` hanging
+                //  even though they'd resolve in the next task.)
+                //
+                // We might still be waiting on some microtasks so we
+                // wait one tick before giving up. When we give up, we still want to
+                // render the content of this cache as deeply as we can so that we can
+                // suspend as deeply as possible in the tree or not at all if we don't
+                // end up waiting for the input.
+                if (workUnitStore.type === 'prerender-runtime' && workUnitStore.stagedRendering) {
+                    const { stagedRendering } = workUnitStore;
+                    stagedRendering.waitForStage((0, _dynamicrenderingutils.getRuntimeStage)(stagedRendering)).then(()=>(0, _scheduler.scheduleOnNextTick)(()=>controller.abort()));
+                } else {
+                    (0, _scheduler.scheduleOnNextTick)(()=>controller.abort());
+                }
+            }
+            return controller.signal;
+        case 'prerender-client':
+        case 'validation-client':
+        case 'prerender-ppr':
+        case 'prerender-legacy':
+        case 'request':
+        case 'cache':
+        case 'private-cache':
+        case 'unstable-cache':
+        case 'generate-static-params':
+            return undefined;
+        default:
+            workUnitStore;
+    }
+}
+function annotateDynamicAccess(expression, prerenderStore) {
+    const dynamicTracking = prerenderStore.dynamicTracking;
+    if (dynamicTracking) {
+        dynamicTracking.dynamicAccesses.push({
+            stack: dynamicTracking.isDebugDynamicAccesses ? new Error().stack : undefined,
+            expression
+        });
+    }
+}
+function useDynamicRouteParams(expression) {
+    const workStore = _workasyncstorageexternal.workAsyncStorage.getStore();
+    const workUnitStore = _workunitasyncstorageexternal.workUnitAsyncStorage.getStore();
+    if (workStore && workUnitStore) {
+        switch(workUnitStore.type){
+            case 'prerender-client':
+            case 'prerender':
+                {
+                    const fallbackParams = workUnitStore.fallbackRouteParams;
+                    if (fallbackParams && fallbackParams.size > 0) {
+                        // We are in a prerender with cacheComponents semantics. We are going to
+                        // hang here and never resolve. This will cause the currently
+                        // rendering component to effectively be a dynamic hole.
+                        _react.default.use((0, _dynamicrenderingutils.makeHangingPromise)(workUnitStore.renderSignal, workStore.route, expression));
+                    }
+                    break;
+                }
+            case 'prerender-ppr':
+                {
+                    const fallbackParams = workUnitStore.fallbackRouteParams;
+                    if (fallbackParams && fallbackParams.size > 0) {
+                        return postponeWithTracking(workStore.route, expression, workUnitStore.dynamicTracking);
+                    }
+                    break;
+                }
+            case 'validation-client':
+                {
+                    break;
+                }
+            case 'prerender-runtime':
+                throw Object.defineProperty(new _invarianterror.InvariantError(`\`${expression}\` was called during a runtime prerender. Next.js should be preventing ${expression} from being included in server components statically, but did not in this case.`), "__NEXT_ERROR_CODE", {
+                    value: "E771",
+                    enumerable: false,
+                    configurable: true
+                });
+            case 'cache':
+            case 'private-cache':
+                throw Object.defineProperty(new _invarianterror.InvariantError(`\`${expression}\` was called inside a cache scope. Next.js should be preventing ${expression} from being included in server components statically, but did not in this case.`), "__NEXT_ERROR_CODE", {
+                    value: "E745",
+                    enumerable: false,
+                    configurable: true
+                });
+            case 'generate-static-params':
+                throw Object.defineProperty(new _invarianterror.InvariantError(`\`${expression}\` was called in \`generateStaticParams\`. Next.js should be preventing ${expression} from being included in server component files statically, but did not in this case.`), "__NEXT_ERROR_CODE", {
+                    value: "E1130",
+                    enumerable: false,
+                    configurable: true
+                });
+            case 'prerender-legacy':
+            case 'request':
+            case 'unstable-cache':
+                break;
+            default:
+                workUnitStore;
+        }
+    }
+}
+function useDynamicSearchParams(expression) {
+    const workStore = _workasyncstorageexternal.workAsyncStorage.getStore();
+    const workUnitStore = _workunitasyncstorageexternal.workUnitAsyncStorage.getStore();
+    if (!workStore) {
+        // We assume pages router context and just return
+        return;
+    }
+    if (!workUnitStore) {
+        (0, _workunitasyncstorageexternal.throwForMissingRequestStore)(expression);
+    }
+    switch(workUnitStore.type){
+        case 'validation-client':
+            // During instant validation we try to behave as close to client as possible,
+            // so this shouldn't hang during SSR.
+            return;
+        case 'prerender-client':
+            {
+                _react.default.use((0, _dynamicrenderingutils.makeHangingPromise)(workUnitStore.renderSignal, workStore.route, expression));
+                break;
+            }
+        case 'prerender-legacy':
+        case 'prerender-ppr':
+            {
+                if (workStore.forceStatic) {
+                    return;
+                }
+                throw Object.defineProperty(new _bailouttocsr.BailoutToCSRError(expression), "__NEXT_ERROR_CODE", {
+                    value: "E394",
+                    enumerable: false,
+                    configurable: true
+                });
+            }
+        case 'prerender':
+        case 'prerender-runtime':
+            throw Object.defineProperty(new _invarianterror.InvariantError(`\`${expression}\` was called from a Server Component. Next.js should be preventing ${expression} from being included in server components statically, but did not in this case.`), "__NEXT_ERROR_CODE", {
+                value: "E795",
+                enumerable: false,
+                configurable: true
+            });
+        case 'cache':
+        case 'unstable-cache':
+        case 'private-cache':
+            throw Object.defineProperty(new _invarianterror.InvariantError(`\`${expression}\` was called inside a cache scope. Next.js should be preventing ${expression} from being included in server components statically, but did not in this case.`), "__NEXT_ERROR_CODE", {
+                value: "E745",
+                enumerable: false,
+                configurable: true
+            });
+        case 'generate-static-params':
+            throw Object.defineProperty(new _invarianterror.InvariantError(`\`${expression}\` was called in \`generateStaticParams\`. Next.js should be preventing ${expression} from being included in server component files statically, but did not in this case.`), "__NEXT_ERROR_CODE", {
+                value: "E1130",
+                enumerable: false,
+                configurable: true
+            });
+        case 'request':
+            return;
+        default:
+            workUnitStore;
+    }
+}
+const hasSuspenseRegex = /\n\s+at Suspense \(<anonymous>\)/;
+// Common implicit body tags that React will treat as body when placed directly in html
+const bodyAndImplicitTags = 'body|div|main|section|article|aside|header|footer|nav|form|p|span|h1|h2|h3|h4|h5|h6';
+// Detects when RootLayoutBoundary (our framework marker component) appears
+// after Suspense in the component stack, indicating the root layout is wrapped
+// within a Suspense boundary. Ensures no body/html/implicit-body components are in between.
+//
+// Example matches:
+//   at Suspense (<anonymous>)
+//   at __next_root_layout_boundary__ (<anonymous>)
+//
+// Or with other components in between (but not body/html/implicit-body):
+//   at Suspense (<anonymous>)
+//   at SomeComponent (<anonymous>)
+//   at __next_root_layout_boundary__ (<anonymous>)
+const hasSuspenseBeforeRootLayoutWithoutBodyOrImplicitBodyRegex = new RegExp(`\\n\\s+at Suspense \\(<anonymous>\\)(?:(?!\\n\\s+at (?:${bodyAndImplicitTags}) \\(<anonymous>\\))[\\s\\S])*?\\n\\s+at ${_boundaryconstants.ROOT_LAYOUT_BOUNDARY_NAME} \\([^\\n]*\\)`);
+const hasMetadataRegex = new RegExp(`\\n\\s+at ${_boundaryconstants.METADATA_BOUNDARY_NAME}[\\n\\s]`);
+const hasViewportRegex = new RegExp(`\\n\\s+at ${_boundaryconstants.VIEWPORT_BOUNDARY_NAME}[\\n\\s]`);
+const hasOutletRegex = new RegExp(`\\n\\s+at ${_boundaryconstants.OUTLET_BOUNDARY_NAME}[\\n\\s]`);
+const hasInstantValidationBoundaryRegex = new RegExp(`\\n\\s+at ${_boundaryconstants1.INSTANT_VALIDATION_BOUNDARY_NAME}[\\n\\s]`);
+function trackAllowedDynamicAccess(workStore, componentStack, dynamicValidation, clientDynamic) {
+    if (hasOutletRegex.test(componentStack)) {
+        // We don't need to track that this is dynamic. It is only so when something else is also dynamic.
+        return;
+    } else if (hasMetadataRegex.test(componentStack)) {
+        dynamicValidation.hasDynamicMetadata = true;
+        return;
+    } else if (hasViewportRegex.test(componentStack)) {
+        dynamicValidation.hasDynamicViewport = true;
+        return;
+    } else if (hasSuspenseBeforeRootLayoutWithoutBodyOrImplicitBodyRegex.test(componentStack)) {
+        // For Suspense within body, the prelude wouldn't be empty so it wouldn't violate the empty static shells rule.
+        // But if you have Suspense above body, the prelude is empty but we allow that because having Suspense
+        // is an explicit signal from the user that they acknowledge the empty shell and want dynamic rendering.
+        dynamicValidation.hasAllowedDynamic = true;
+        dynamicValidation.hasSuspenseAboveBody = true;
+        return;
+    } else if (hasSuspenseRegex.test(componentStack)) {
+        // this error had a Suspense boundary above it so we don't need to report it as a source
+        // of disallowed
+        dynamicValidation.hasAllowedDynamic = true;
+        return;
+    } else if (clientDynamic.syncDynamicErrorWithStack) {
+        // This task was the task that called the sync error.
+        dynamicValidation.dynamicErrors.push(clientDynamic.syncDynamicErrorWithStack);
+        return;
+    } else {
+        const message = `Route "${workStore.route}": Uncached data was accessed outside of ` + '<Suspense>. This delays the entire page from rendering, resulting in a ' + 'slow user experience. Learn more: ' + 'https://nextjs.org/docs/messages/blocking-route';
+        const error = addErrorContext(Object.defineProperty(new Error(message), "__NEXT_ERROR_CODE", {
+            value: "E1079",
+            enumerable: false,
+            configurable: true
+        }), componentStack, null);
+        dynamicValidation.dynamicErrors.push(error);
+        return;
+    }
+}
+var DynamicHoleKind = /*#__PURE__*/ function(DynamicHoleKind) {
+    /** We know that this hole is caused by runtime data. */ DynamicHoleKind[DynamicHoleKind["Runtime"] = 1] = "Runtime";
+    /** We know that this hole is caused by dynamic data. */ DynamicHoleKind[DynamicHoleKind["Dynamic"] = 2] = "Dynamic";
+    return DynamicHoleKind;
+}({});
+function createInstantValidationState(createInstantStack) {
+    return {
+        hasDynamicMetadata: false,
+        hasAllowedClientDynamicAboveBoundary: false,
+        dynamicMetadata: null,
+        hasDynamicViewport: false,
+        hasAllowedDynamic: false,
+        dynamicErrors: [],
+        validationPreventingErrors: [],
+        thrownErrorsOutsideBoundary: [],
+        createInstantStack
+    };
+}
+function trackDynamicHoleInNavigation(workStore, componentStack, dynamicValidation, clientDynamic, kind, boundaryState) {
+    if (hasOutletRegex.test(componentStack)) {
+        // We don't need to track that this is dynamic. It is only so when something else is also dynamic.
+        return;
+    }
+    if (hasMetadataRegex.test(componentStack)) {
+        const usageDescription = kind === 1 ? `Runtime data such as \`cookies()\`, \`headers()\`, \`params\`, or \`searchParams\` was accessed inside \`generateMetadata\` or you have file-based metadata such as icons that depend on dynamic params segments.` : `Uncached data or \`connection()\` was accessed inside \`generateMetadata\`.`;
+        const message = `Route "${workStore.route}": ${usageDescription} Except for this instance, the page would have been entirely prerenderable which may have been the intended behavior. See more info here: https://nextjs.org/docs/messages/next-prerender-dynamic-metadata`;
+        const error = addErrorContext(Object.defineProperty(new Error(message), "__NEXT_ERROR_CODE", {
+            value: "E1076",
+            enumerable: false,
+            configurable: true
+        }), componentStack, dynamicValidation.createInstantStack);
+        dynamicValidation.dynamicMetadata = error;
+        return;
+    }
+    if (hasViewportRegex.test(componentStack)) {
+        const usageDescription = kind === 1 ? `Runtime data such as \`cookies()\`, \`headers()\`, \`params\`, or \`searchParams\` was accessed inside \`generateViewport\`.` : `Uncached data or \`connection()\` was accessed inside \`generateViewport\`.`;
+        const message = `Route "${workStore.route}": ${usageDescription} This delays the entire page from rendering, resulting in a slow user experience. Learn more: https://nextjs.org/docs/messages/next-prerender-dynamic-viewport`;
+        const error = addErrorContext(Object.defineProperty(new Error(message), "__NEXT_ERROR_CODE", {
+            value: "E1086",
+            enumerable: false,
+            configurable: true
+        }), componentStack, dynamicValidation.createInstantStack);
+        dynamicValidation.dynamicErrors.push(error);
+        return;
+    }
+    const boundaryLocation = hasInstantValidationBoundaryRegex.exec(componentStack);
+    if (!boundaryLocation) {
+        // We don't see the validation boundary in the component stack,
+        // so this hole must be coming from a shared parent.
+        // Shared parents are fully resolved and don't have RSC holes,
+        // but they can still suspend in a client component during SSR.
+        // If we managed to render all the validation boundaries, that means
+        // that the client holes aren't blocking validation and we can disregard them.
+        // Note that we don't even care whether they have suspense or not.
+        if (boundaryState.expectedIds.size === boundaryState.renderedIds.size) {
+            dynamicValidation.hasAllowedClientDynamicAboveBoundary = true;
+            dynamicValidation.hasAllowedDynamic = true // Holes outside the boundary contribute to allowing dynamic metadata
+            ;
+            return;
+        } else {
+            // TODO(instant-validation) TODO(NAR-787)
+            // If shared parents blocked us from validating, we should only log
+            // the errors from the innermost (segments), i.e. omit layouts whose
+            // slots managed to render (because clearly they didn't block validation)
+            const message = `Route "${workStore.route}": Could not validate \`unstable_instant\` because a Client Component in a parent segment prevented the page from rendering.`;
+            const error = addErrorContext(Object.defineProperty(new Error(message), "__NEXT_ERROR_CODE", {
+                value: "E1082",
+                enumerable: false,
+                configurable: true
+            }), componentStack, dynamicValidation.createInstantStack);
+            dynamicValidation.validationPreventingErrors.push(error);
+            return;
+        }
+    } else {
+        // The hole originates inside the validation boundary.
+        //
+        // Check if we have a Suspense above the hole, but below the validation boundary.
+        // If we do, then this dynamic usage wouldn't block a navigation to this subtree.
+        // Conversely, if the nearest suspense is above the validation boundary, then this subtree would block.
+        //
+        // Note that in the component stack, children come before parents.
+        //
+        // Valid:
+        //   ...
+        //   at Suspense
+        //   ...
+        //   at __next_prefetch_validation_boundary__
+        //
+        // Invalid:
+        //   ...
+        //   at __next_prefetch_validation_boundary__
+        //   ...
+        //   at Suspense
+        //
+        const suspenseLocation = hasSuspenseRegex.exec(componentStack);
+        if (suspenseLocation) {
+            if (suspenseLocation.index < boundaryLocation.index) {
+                dynamicValidation.hasAllowedDynamic = true;
+                return;
+            } else {
+            // invalid - fallthrough
+            }
+        }
+    }
+    if (clientDynamic.syncDynamicErrorWithStack) {
+        // This task was the task that called the sync error.
+        const syncError = clientDynamic.syncDynamicErrorWithStack;
+        if (dynamicValidation.createInstantStack !== null && syncError.cause === undefined) {
+            syncError.cause = dynamicValidation.createInstantStack();
+        }
+        dynamicValidation.dynamicErrors.push(syncError);
+        return;
+    }
+    const usageDescription = kind === 1 ? `Runtime data such as \`cookies()\`, \`headers()\`, \`params\`, or \`searchParams\` was accessed outside of \`<Suspense>\`.` : `Uncached data or \`connection()\` was accessed outside of \`<Suspense>\`.`;
+    const message = `Route "${workStore.route}": ${usageDescription} This delays the entire page from rendering, resulting in a slow user experience. Learn more: https://nextjs.org/docs/messages/blocking-route`;
+    const error = addErrorContext(Object.defineProperty(new Error(message), "__NEXT_ERROR_CODE", {
+        value: "E1078",
+        enumerable: false,
+        configurable: true
+    }), componentStack, dynamicValidation.createInstantStack);
+    dynamicValidation.dynamicErrors.push(error);
+    return;
+}
+function trackThrownErrorInNavigation(workStore, dynamicValidation, thrownValue, componentStack) {
+    const boundaryLocation = hasInstantValidationBoundaryRegex.exec(componentStack);
+    if (!boundaryLocation) {
+        // There's no validation boundary on the component stack.
+        // This error may have blocked a boundary from rendering.
+        // Wrap the error to provide component context.
+        // This helps for errors from node_modules which would otherwise
+        // have no useful stack information due to ignore-listing,
+        // e.g. next/dynamic with `ssr: false`.
+        const error = addErrorContext(Object.defineProperty(new Error('An error occurred while attempting to validate instant UI. This error may be preventing the validation from completing.', {
+            cause: thrownValue
+        }), "__NEXT_ERROR_CODE", {
+            value: "E1118",
+            enumerable: false,
+            configurable: true
+        }), componentStack, null);
+        dynamicValidation.thrownErrorsOutsideBoundary.push(error);
+    } else {
+        // There's validation boundary on the component stack,
+        // so we know this error didn't block a validation boundary from rendering.
+        // However, this error might be hiding be hiding dynamic content that would
+        // cause validation to fail.
+        const suspenseLocation = hasSuspenseRegex.exec(componentStack);
+        if (suspenseLocation) {
+            if (suspenseLocation.index < boundaryLocation.index) {
+                // There's a Suspense below the validation boundary but above this error's location.
+                // This subtree can't fail instant validation because any potential
+                // dynamic holes would be guarded by the Suspense anyway,
+                // so we can allow this.
+                return;
+            } else {
+            // invalid - fallthrough
+            }
+        }
+        const message = `Route "${workStore.route}": Could not validate \`unstable_instant\` because an error prevented the target segment from rendering.`;
+        const error = addErrorContext(Object.defineProperty(new Error(message, {
+            cause: thrownValue
+        }), "__NEXT_ERROR_CODE", {
+            value: "E1112",
+            enumerable: false,
+            configurable: true
+        }), componentStack, null // TODO(instant-validation-build): conflicting use of cause
+        );
+        dynamicValidation.validationPreventingErrors.push(error);
+    }
+}
+function trackDynamicHoleInRuntimeShell(workStore, componentStack, dynamicValidation, clientDynamic) {
+    if (hasOutletRegex.test(componentStack)) {
+        // We don't need to track that this is dynamic. It is only so when something else is also dynamic.
+        return;
+    } else if (hasMetadataRegex.test(componentStack)) {
+        const message = `Route "${workStore.route}": Uncached data or \`connection()\` was accessed inside \`generateMetadata\`. Except for this instance, the page would have been entirely prerenderable which may have been the intended behavior. See more info here: https://nextjs.org/docs/messages/next-prerender-dynamic-metadata`;
+        const error = addErrorContext(Object.defineProperty(new Error(message), "__NEXT_ERROR_CODE", {
+            value: "E1080",
+            enumerable: false,
+            configurable: true
+        }), componentStack, null);
+        dynamicValidation.dynamicMetadata = error;
+        return;
+    } else if (hasViewportRegex.test(componentStack)) {
+        // TODO(instant-validation): If the page only has holes caused by runtime data,
+        // we won't find out if there's a suspense-above-body and error for dynamic viewport
+        // even if there is in fact a suspense-above-body
+        const message = `Route "${workStore.route}": Uncached data or \`connection()\` was accessed inside \`generateViewport\`. This delays the entire page from rendering, resulting in a slow user experience. Learn more: https://nextjs.org/docs/messages/next-prerender-dynamic-viewport`;
+        const error = addErrorContext(Object.defineProperty(new Error(message), "__NEXT_ERROR_CODE", {
+            value: "E1077",
+            enumerable: false,
+            configurable: true
+        }), componentStack, null);
+        dynamicValidation.dynamicErrors.push(error);
+        return;
+    } else if (hasSuspenseBeforeRootLayoutWithoutBodyOrImplicitBodyRegex.test(componentStack)) {
+        // For Suspense within body, the prelude wouldn't be empty so it wouldn't violate the empty static shells rule.
+        // But if you have Suspense above body, the prelude is empty but we allow that because having Suspense
+        // is an explicit signal from the user that they acknowledge the empty shell and want dynamic rendering.
+        dynamicValidation.hasAllowedDynamic = true;
+        dynamicValidation.hasSuspenseAboveBody = true;
+        return;
+    } else if (hasSuspenseRegex.test(componentStack)) {
+        // this error had a Suspense boundary above it so we don't need to report it as a source
+        // of disallowed
+        dynamicValidation.hasAllowedDynamic = true;
+        return;
+    } else if (clientDynamic.syncDynamicErrorWithStack) {
+        // This task was the task that called the sync error.
+        dynamicValidation.dynamicErrors.push(clientDynamic.syncDynamicErrorWithStack);
+        return;
+    }
+    const message = `Route "${workStore.route}": Uncached data or \`connection()\` was accessed outside of \`<Suspense>\`. This delays the entire page from rendering, resulting in a slow user experience. Learn more: https://nextjs.org/docs/messages/blocking-route`;
+    const error = addErrorContext(Object.defineProperty(new Error(message), "__NEXT_ERROR_CODE", {
+        value: "E1084",
+        enumerable: false,
+        configurable: true
+    }), componentStack, null);
+    dynamicValidation.dynamicErrors.push(error);
+    return;
+}
+function trackDynamicHoleInStaticShell(workStore, componentStack, dynamicValidation, clientDynamic) {
+    if (hasOutletRegex.test(componentStack)) {
+        // We don't need to track that this is dynamic. It is only so when something else is also dynamic.
+        return;
+    } else if (hasMetadataRegex.test(componentStack)) {
+        const message = `Route "${workStore.route}": Runtime data such as \`cookies()\`, \`headers()\`, \`params\`, or \`searchParams\` was accessed inside \`generateMetadata\` or you have file-based metadata such as icons that depend on dynamic params segments. Except for this instance, the page would have been entirely prerenderable which may have been the intended behavior. See more info here: https://nextjs.org/docs/messages/next-prerender-dynamic-metadata`;
+        const error = addErrorContext(Object.defineProperty(new Error(message), "__NEXT_ERROR_CODE", {
+            value: "E1085",
+            enumerable: false,
+            configurable: true
+        }), componentStack, null);
+        dynamicValidation.dynamicMetadata = error;
+        return;
+    } else if (hasViewportRegex.test(componentStack)) {
+        const message = `Route "${workStore.route}": Runtime data such as \`cookies()\`, \`headers()\`, \`params\`, or \`searchParams\` was accessed inside \`generateViewport\`. This delays the entire page from rendering, resulting in a slow user experience. Learn more: https://nextjs.org/docs/messages/next-prerender-dynamic-viewport`;
+        const error = addErrorContext(Object.defineProperty(new Error(message), "__NEXT_ERROR_CODE", {
+            value: "E1081",
+            enumerable: false,
+            configurable: true
+        }), componentStack, null);
+        dynamicValidation.dynamicErrors.push(error);
+        return;
+    } else if (hasSuspenseBeforeRootLayoutWithoutBodyOrImplicitBodyRegex.test(componentStack)) {
+        // For Suspense within body, the prelude wouldn't be empty so it wouldn't violate the empty static shells rule.
+        // But if you have Suspense above body, the prelude is empty but we allow that because having Suspense
+        // is an explicit signal from the user that they acknowledge the empty shell and want dynamic rendering.
+        dynamicValidation.hasAllowedDynamic = true;
+        dynamicValidation.hasSuspenseAboveBody = true;
+        return;
+    } else if (hasSuspenseRegex.test(componentStack)) {
+        // this error had a Suspense boundary above it so we don't need to report it as a source
+        // of disallowed
+        dynamicValidation.hasAllowedDynamic = true;
+        return;
+    } else if (clientDynamic.syncDynamicErrorWithStack) {
+        // This task was the task that called the sync error.
+        dynamicValidation.dynamicErrors.push(clientDynamic.syncDynamicErrorWithStack);
+        return;
+    } else {
+        const message = `Route "${workStore.route}": Runtime data such as \`cookies()\`, \`headers()\`, \`params\`, or \`searchParams\` was accessed outside of \`<Suspense>\`. This delays the entire page from rendering, resulting in a slow user experience. Learn more: https://nextjs.org/docs/messages/blocking-route`;
+        const error = addErrorContext(Object.defineProperty(new Error(message), "__NEXT_ERROR_CODE", {
+            value: "E1083",
+            enumerable: false,
+            configurable: true
+        }), componentStack, null);
+        dynamicValidation.dynamicErrors.push(error);
+        return;
+    }
+}
+/**
+ * In dev mode, we prefer using the owner stack, otherwise the provided
+ * component stack is used.
+ *
+ * Accepts an already-created Error so the SWC error-code plugin can see the
+ * `new Error(...)` call at each call site and auto-assign error codes.
+ */ function addErrorContext(error, componentStack, createInstantStack) {
+    const ownerStack = ("TURBOPACK compile-time value", "development") !== 'production' && _react.default.captureOwnerStack ? _react.default.captureOwnerStack() : null;
+    if (createInstantStack !== null) {
+        error.cause = createInstantStack();
+    }
+    // TODO go back to owner stack here if available. This is temporarily using componentStack to get the right
+    //
+    error.stack = error.name + ': ' + error.message + (ownerStack || componentStack);
+    return error;
+}
+var PreludeState = /*#__PURE__*/ function(PreludeState) {
+    PreludeState[PreludeState["Full"] = 0] = "Full";
+    PreludeState[PreludeState["Empty"] = 1] = "Empty";
+    PreludeState[PreludeState["Errored"] = 2] = "Errored";
+    return PreludeState;
+}({});
+function logDisallowedDynamicError(workStore, error) {
+    console.error(error);
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    else if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+}
+function throwIfDisallowedDynamic(workStore, prelude, dynamicValidation, serverDynamic) {
+    if (serverDynamic.syncDynamicErrorWithStack) {
+        logDisallowedDynamicError(workStore, serverDynamic.syncDynamicErrorWithStack);
+        throw new _staticgenerationbailout.StaticGenBailoutError();
+    }
+    if (prelude !== 0) {
+        if (dynamicValidation.hasSuspenseAboveBody) {
+            // This route has opted into allowing fully dynamic rendering
+            // by including a Suspense boundary above the body. In this case
+            // a lack of a shell is not considered disallowed so we simply return
+            return;
+        }
+        // We didn't have any sync bailouts but there may be user code which
+        // blocked the root. We would have captured these during the prerender
+        // and can log them here and then terminate the build/validating render
+        const dynamicErrors = dynamicValidation.dynamicErrors;
+        if (dynamicErrors.length > 0) {
+            for(let i = 0; i < dynamicErrors.length; i++){
+                logDisallowedDynamicError(workStore, dynamicErrors[i]);
+            }
+            throw new _staticgenerationbailout.StaticGenBailoutError();
+        }
+        // If we got this far then the only other thing that could be blocking
+        // the root is dynamic Viewport. If this is dynamic then
+        // you need to opt into that by adding a Suspense boundary above the body
+        // to indicate your are ok with fully dynamic rendering.
+        if (dynamicValidation.hasDynamicViewport) {
+            console.error(`Route "${workStore.route}" has a \`generateViewport\` that depends on Request data (\`cookies()\`, etc...) or uncached external data (\`fetch(...)\`, etc...) without explicitly allowing fully dynamic rendering. See more info here: https://nextjs.org/docs/messages/next-prerender-dynamic-viewport`);
+            throw new _staticgenerationbailout.StaticGenBailoutError();
+        }
+        if (prelude === 1) {
+            // If we ever get this far then we messed up the tracking of invalid dynamic.
+            // We still adhere to the constraint that you must produce a shell but invite the
+            // user to report this as a bug in Next.js.
+            console.error(`Route "${workStore.route}" did not produce a static shell and Next.js was unable to determine a reason. This is a bug in Next.js.`);
+            throw new _staticgenerationbailout.StaticGenBailoutError();
+        }
+    } else {
+        if (dynamicValidation.hasAllowedDynamic === false && dynamicValidation.hasDynamicMetadata) {
+            console.error(`Route "${workStore.route}" has a \`generateMetadata\` that depends on Request data (\`cookies()\`, etc...) or uncached external data (\`fetch(...)\`, etc...) when the rest of the route does not. See more info here: https://nextjs.org/docs/messages/next-prerender-dynamic-metadata`);
+            throw new _staticgenerationbailout.StaticGenBailoutError();
+        }
+    }
+}
+function getStaticShellDisallowedDynamicReasons(workStore, prelude, dynamicValidation, configAllowsBlocking) {
+    if (configAllowsBlocking || dynamicValidation.hasSuspenseAboveBody) {
+        // This route has opted into allowing fully dynamic rendering
+        // by including a Suspense boundary above the body. In this case
+        // a lack of a shell is not considered disallowed so we simply return
+        return [];
+    }
+    if (prelude !== 0) {
+        // We didn't have any sync bailouts but there may be user code which
+        // blocked the root. We would have captured these during the prerender
+        // and can log them here and then terminate the build/validating render
+        const dynamicErrors = dynamicValidation.dynamicErrors;
+        if (dynamicErrors.length > 0) {
+            return dynamicErrors;
+        }
+        if (prelude === 1) {
+            // If we ever get this far then we messed up the tracking of invalid dynamic.
+            // We still adhere to the constraint that you must produce a shell but invite the
+            // user to report this as a bug in Next.js.
+            return [
+                Object.defineProperty(new _invarianterror.InvariantError(`Route "${workStore.route}" did not produce a static shell and Next.js was unable to determine a reason.`), "__NEXT_ERROR_CODE", {
+                    value: "E936",
+                    enumerable: false,
+                    configurable: true
+                })
+            ];
+        }
+    } else {
+        // We have a prelude but we might still have dynamic metadata without any other dynamic access
+        if (dynamicValidation.hasAllowedDynamic === false && dynamicValidation.dynamicErrors.length === 0 && dynamicValidation.dynamicMetadata) {
+            return [
+                dynamicValidation.dynamicMetadata
+            ];
+        }
+    }
+    // We had a non-empty prelude and there are no dynamic holes
+    return [];
+}
+function getNavigationDisallowedDynamicReasons(workStore, prelude, dynamicValidation, validationSampleTracking, boundaryState) {
+    // If we have errors related to missing samples, those should take precedence over everything else.
+    if (validationSampleTracking) {
+        const { missingSampleErrors } = validationSampleTracking;
+        if (missingSampleErrors.length > 0) {
+            return missingSampleErrors;
+        }
+    }
+    const { validationPreventingErrors } = dynamicValidation;
+    if (validationPreventingErrors.length > 0) {
+        return validationPreventingErrors;
+    }
+    if (boundaryState.renderedIds.size < boundaryState.expectedIds.size) {
+        const { thrownErrorsOutsideBoundary, createInstantStack } = dynamicValidation;
+        if (thrownErrorsOutsideBoundary.length === 0) {
+            const message = `Route "${workStore.route}": Could not validate \`unstable_instant\` because the target segment was prevented from rendering for an unknown reason.`;
+            const error = createInstantStack !== null ? createInstantStack() : new Error();
+            error.name = 'Error';
+            error.message = message;
+            return [
+                error
+            ];
+        } else if (thrownErrorsOutsideBoundary.length === 1) {
+            const message = `Route "${workStore.route}": Could not validate \`unstable_instant\` because the target segment was prevented from rendering, likely due to the following error.`;
+            const error = createInstantStack !== null ? createInstantStack() : new Error();
+            error.name = 'Error';
+            error.message = message;
+            return [
+                error,
+                thrownErrorsOutsideBoundary[0]
+            ];
+        } else {
+            const message = `Route "${workStore.route}": Could not validate \`unstable_instant\` because the target segment was prevented from rendering, likely due to one of the following errors.`;
+            const error = createInstantStack !== null ? createInstantStack() : new Error();
+            error.name = 'Error';
+            error.message = message;
+            return [
+                error,
+                ...thrownErrorsOutsideBoundary
+            ];
+        }
+    }
+    // NOTE: We don't care about Suspense above body here,
+    // we're only concerned with the validation boundary
+    if (prelude !== 0) {
+        const dynamicErrors = dynamicValidation.dynamicErrors;
+        if (dynamicErrors.length > 0) {
+            return dynamicErrors;
+        }
+        if (prelude === 1) {
+            // If a client component suspended prevented us from rendering a shell
+            // but didn't block validation, we don't require a prelude.
+            if (dynamicValidation.hasAllowedClientDynamicAboveBoundary) {
+                return [];
+            }
+            // If we ever get this far then we messed up the tracking of invalid dynamic.
+            return [
+                Object.defineProperty(new _invarianterror.InvariantError(`Route "${workStore.route}" failed to render during instant validation and Next.js was unable to determine a reason.`), "__NEXT_ERROR_CODE", {
+                    value: "E1055",
+                    enumerable: false,
+                    configurable: true
+                })
+            ];
+        }
+    } else {
+        const dynamicErrors = dynamicValidation.dynamicErrors;
+        if (dynamicErrors.length > 0) {
+            return dynamicErrors;
+        }
+        if (dynamicValidation.hasAllowedDynamic === false && dynamicValidation.dynamicMetadata) {
+            return [
+                dynamicValidation.dynamicMetadata
+            ];
+        }
+    }
+    // We had a non-empty prelude and there are no dynamic holes
+    return [];
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/unstable-rethrow.server.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+Object.defineProperty(exports, "unstable_rethrow", {
+    enumerable: true,
+    get: function() {
+        return unstable_rethrow;
+    }
+});
+const _dynamicrenderingutils = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/dynamic-rendering-utils.js [app-ssr] (ecmascript)");
+const _ispostpone = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/lib/router-utils/is-postpone.js [app-ssr] (ecmascript)");
+const _bailouttocsr = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/lazy-dynamic/bailout-to-csr.js [app-ssr] (ecmascript)");
+const _isnextroutererror = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/is-next-router-error.js [app-ssr] (ecmascript)");
+const _dynamicrendering = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/app-render/dynamic-rendering.js [app-ssr] (ecmascript)");
+const _hooksservercontext = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/hooks-server-context.js [app-ssr] (ecmascript)");
+function unstable_rethrow(error) {
+    if ((0, _isnextroutererror.isNextRouterError)(error) || (0, _bailouttocsr.isBailoutToCSRError)(error) || (0, _hooksservercontext.isDynamicServerError)(error) || (0, _dynamicrendering.isDynamicPostpone)(error) || (0, _ispostpone.isPostpone)(error) || (0, _dynamicrenderingutils.isHangingPromiseRejectionError)(error) || (0, _dynamicrendering.isPrerenderInterruptedError)(error)) {
+        throw error;
+    }
+    if (error instanceof Error && 'cause' in error) {
+        unstable_rethrow(error.cause);
+    }
+}
+if ((typeof exports.default === 'function' || typeof exports.default === 'object' && exports.default !== null) && typeof exports.default.__esModule === 'undefined') {
+    Object.defineProperty(exports.default, '__esModule', {
+        value: true
+    });
+    Object.assign(exports.default, exports);
+    module.exports = exports.default;
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/unstable-rethrow.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+/**
+ * This function should be used to rethrow internal Next.js errors so that they can be handled by the framework.
+ * When wrapping an API that uses errors to interrupt control flow, you should use this function before you do any error handling.
+ * This function will rethrow the error if it is a Next.js error so it can be handled, otherwise it will do nothing.
+ *
+ * Read more: [Next.js Docs: `unstable_rethrow`](https://nextjs.org/docs/app/api-reference/functions/unstable_rethrow)
+ */ Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+Object.defineProperty(exports, "unstable_rethrow", {
+    enumerable: true,
+    get: function() {
+        return unstable_rethrow;
+    }
+});
+const unstable_rethrow = ("TURBOPACK compile-time truthy", 1) ? __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/unstable-rethrow.server.js [app-ssr] (ecmascript)").unstable_rethrow : "TURBOPACK unreachable";
+if ((typeof exports.default === 'function' || typeof exports.default === 'object' && exports.default !== null) && typeof exports.default.__esModule === 'undefined') {
+    Object.defineProperty(exports.default, '__esModule', {
+        value: true
+    });
+    Object.assign(exports.default, exports);
+    module.exports = exports.default;
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/navigation.react-server.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+0 && (module.exports = {
+    ReadonlyURLSearchParams: null,
+    RedirectType: null,
+    forbidden: null,
+    notFound: null,
+    permanentRedirect: null,
+    redirect: null,
+    unauthorized: null,
+    unstable_isUnrecognizedActionError: null,
+    unstable_rethrow: null
+});
+function _export(target, all) {
+    for(var name in all)Object.defineProperty(target, name, {
+        enumerable: true,
+        get: all[name]
+    });
+}
+_export(exports, {
+    ReadonlyURLSearchParams: function() {
+        return _readonlyurlsearchparams.ReadonlyURLSearchParams;
+    },
+    RedirectType: function() {
+        return RedirectType;
+    },
+    forbidden: function() {
+        return _forbidden.forbidden;
+    },
+    notFound: function() {
+        return _notfound.notFound;
+    },
+    permanentRedirect: function() {
+        return _redirect.permanentRedirect;
+    },
+    redirect: function() {
+        return _redirect.redirect;
+    },
+    unauthorized: function() {
+        return _unauthorized.unauthorized;
+    },
+    unstable_isUnrecognizedActionError: function() {
+        return unstable_isUnrecognizedActionError;
+    },
+    unstable_rethrow: function() {
+        return _unstablerethrow.unstable_rethrow;
+    }
+});
+const _readonlyurlsearchparams = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/readonly-url-search-params.js [app-ssr] (ecmascript)");
+const _redirect = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/redirect.js [app-ssr] (ecmascript)");
+const _notfound = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/not-found.js [app-ssr] (ecmascript)");
+const _forbidden = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/forbidden.js [app-ssr] (ecmascript)");
+const _unauthorized = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/unauthorized.js [app-ssr] (ecmascript)");
+const _unstablerethrow = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/unstable-rethrow.js [app-ssr] (ecmascript)");
+function unstable_isUnrecognizedActionError() {
+    throw Object.defineProperty(new Error('`unstable_isUnrecognizedActionError` can only be used on the client.'), "__NEXT_ERROR_CODE", {
+        value: "E776",
+        enumerable: false,
+        configurable: true
+    });
+}
+const RedirectType = {
+    push: 'push',
+    replace: 'replace'
+};
+if ((typeof exports.default === 'function' || typeof exports.default === 'object' && exports.default !== null) && typeof exports.default.__esModule === 'undefined') {
+    Object.defineProperty(exports.default, '__esModule', {
+        value: true
+    });
+    Object.assign(exports.default, exports);
+    module.exports = exports.default;
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/navigation.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+0 && (module.exports = {
+    ReadonlyURLSearchParams: null,
+    RedirectType: null,
+    ServerInsertedHTMLContext: null,
+    forbidden: null,
+    notFound: null,
+    permanentRedirect: null,
+    redirect: null,
+    unauthorized: null,
+    unstable_isUnrecognizedActionError: null,
+    unstable_rethrow: null,
+    useParams: null,
+    usePathname: null,
+    useRouter: null,
+    useSearchParams: null,
+    useSelectedLayoutSegment: null,
+    useSelectedLayoutSegments: null,
+    useServerInsertedHTML: null
+});
+function _export(target, all) {
+    for(var name in all)Object.defineProperty(target, name, {
+        enumerable: true,
+        get: all[name]
+    });
+}
+_export(exports, {
+    // We need the same class that was used to instantiate the context value
+    // Otherwise instanceof checks will fail in usercode
+    ReadonlyURLSearchParams: function() {
+        return _hooksclientcontextsharedruntime.ReadonlyURLSearchParams;
+    },
+    RedirectType: function() {
+        return _navigationreactserver.RedirectType;
+    },
+    ServerInsertedHTMLContext: function() {
+        return _serverinsertedhtmlsharedruntime.ServerInsertedHTMLContext;
+    },
+    forbidden: function() {
+        return _navigationreactserver.forbidden;
+    },
+    notFound: function() {
+        return _navigationreactserver.notFound;
+    },
+    permanentRedirect: function() {
+        return _navigationreactserver.permanentRedirect;
+    },
+    redirect: function() {
+        return _navigationreactserver.redirect;
+    },
+    unauthorized: function() {
+        return _navigationreactserver.unauthorized;
+    },
+    unstable_isUnrecognizedActionError: function() {
+        return _unrecognizedactionerror.unstable_isUnrecognizedActionError;
+    },
+    unstable_rethrow: function() {
+        return _navigationreactserver.unstable_rethrow;
+    },
+    useParams: function() {
+        return useParams;
+    },
+    usePathname: function() {
+        return usePathname;
+    },
+    useRouter: function() {
+        return useRouter;
+    },
+    useSearchParams: function() {
+        return useSearchParams;
+    },
+    useSelectedLayoutSegment: function() {
+        return useSelectedLayoutSegment;
+    },
+    useSelectedLayoutSegments: function() {
+        return useSelectedLayoutSegments;
+    },
+    useServerInsertedHTML: function() {
+        return _serverinsertedhtmlsharedruntime.useServerInsertedHTML;
+    }
+});
+const _interop_require_wildcard = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/node_modules/@swc/helpers/cjs/_interop_require_wildcard.cjs [app-ssr] (ecmascript)");
+const _react = /*#__PURE__*/ _interop_require_wildcard._(__turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)"));
+const _approutercontextsharedruntime = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/contexts/app-router-context.js [app-ssr] (ecmascript)");
+const _hooksclientcontextsharedruntime = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/contexts/hooks-client-context.js [app-ssr] (ecmascript)");
+const _segment = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/segment.js [app-ssr] (ecmascript)");
+const _serverinsertedhtmlsharedruntime = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/contexts/server-inserted-html.js [app-ssr] (ecmascript)");
+const _unrecognizedactionerror = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/unrecognized-action-error.js [app-ssr] (ecmascript)");
+const _navigationreactserver = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/navigation.react-server.js [app-ssr] (ecmascript)");
+const useDynamicRouteParams = ("TURBOPACK compile-time truthy", 1) ? __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/app-render/dynamic-rendering.js [app-ssr] (ecmascript)").useDynamicRouteParams : "TURBOPACK unreachable";
+const useDynamicSearchParams = ("TURBOPACK compile-time truthy", 1) ? __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/app-render/dynamic-rendering.js [app-ssr] (ecmascript)").useDynamicSearchParams : "TURBOPACK unreachable";
+const { instrumentParamsForClientValidation, instrumentSearchParamsForClientValidation, expectCompleteParamsInClientValidation } = ("TURBOPACK compile-time falsy", 0) ? "TURBOPACK unreachable" : {};
+function useSearchParams() {
+    useDynamicSearchParams?.('useSearchParams()');
+    const searchParams = (0, _react.useContext)(_hooksclientcontextsharedruntime.SearchParamsContext);
+    // In the case where this is `null`, the compat types added in
+    // `next-env.d.ts` will add a new overload that changes the return type to
+    // include `null`.
+    const readonlySearchParams = (0, _react.useMemo)(()=>{
+        if (!searchParams) {
+            // When the router is not ready in pages, we won't have the search params
+            // available.
+            return null;
+        }
+        return new _hooksclientcontextsharedruntime.ReadonlyURLSearchParams(searchParams);
+    }, [
+        searchParams
+    ]);
+    // During build-time instant validation, wrap with an proxy
+    // so that accessing undeclared search params throws an error.
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    // Instrument with Suspense DevTools (dev-only)
+    if (("TURBOPACK compile-time value", "development") !== 'production' && 'use' in _react.default) {
+        const navigationPromises = (0, _react.use)(_hooksclientcontextsharedruntime.NavigationPromisesContext);
+        if (navigationPromises) {
+            return (0, _react.use)(navigationPromises.searchParams);
+        }
+    }
+    return readonlySearchParams;
+}
+function usePathname() {
+    useDynamicRouteParams?.('usePathname()');
+    // In the case where this is `null`, the compat types added in `next-env.d.ts`
+    // will add a new overload that changes the return type to include `null`.
+    const pathname = (0, _react.useContext)(_hooksclientcontextsharedruntime.PathnameContext);
+    // During build-time instant validation, error if fallback params exist
+    // because usePathname() can't return a sensible value without all params.
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    // Instrument with Suspense DevTools (dev-only)
+    if (("TURBOPACK compile-time value", "development") !== 'production' && 'use' in _react.default) {
+        const navigationPromises = (0, _react.use)(_hooksclientcontextsharedruntime.NavigationPromisesContext);
+        if (navigationPromises) {
+            return (0, _react.use)(navigationPromises.pathname);
+        }
+    }
+    return pathname;
+}
+function useRouter() {
+    const router = (0, _react.useContext)(_approutercontextsharedruntime.AppRouterContext);
+    if (router === null) {
+        throw Object.defineProperty(new Error('invariant expected app router to be mounted'), "__NEXT_ERROR_CODE", {
+            value: "E238",
+            enumerable: false,
+            configurable: true
+        });
+    }
+    return router;
+}
+function useParams() {
+    useDynamicRouteParams?.('useParams()');
+    const params = (0, _react.useContext)(_hooksclientcontextsharedruntime.PathParamsContext);
+    // During build-time instant validation, wrap with a proxy
+    // so that accessing undeclared params throws an error.
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    // Instrument with Suspense DevTools (dev-only)
+    if (("TURBOPACK compile-time value", "development") !== 'production' && 'use' in _react.default) {
+        const navigationPromises = (0, _react.use)(_hooksclientcontextsharedruntime.NavigationPromisesContext);
+        if (navigationPromises) {
+            return (0, _react.use)(navigationPromises.params);
+        }
+    }
+    return params;
+}
+function useSelectedLayoutSegments(parallelRouteKey = 'children') {
+    useDynamicRouteParams?.('useSelectedLayoutSegments()');
+    const context = (0, _react.useContext)(_approutercontextsharedruntime.LayoutRouterContext);
+    // @ts-expect-error This only happens in `pages`. Type is overwritten in navigation.d.ts
+    if (!context) return null;
+    // During build-time instant validation, error if fallback params exist
+    // because useSelectedLayoutSegments() can't return a sensible value without all params.
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    // Instrument with Suspense DevTools (dev-only)
+    if (("TURBOPACK compile-time value", "development") !== 'production' && 'use' in _react.default) {
+        const navigationPromises = (0, _react.use)(_hooksclientcontextsharedruntime.NavigationPromisesContext);
+        if (navigationPromises) {
+            const promise = navigationPromises.selectedLayoutSegmentsPromises?.get(parallelRouteKey);
+            if (promise) {
+                // We should always have a promise here, but if we don't, it's not worth erroring over.
+                // We just won't be able to instrument it, but can still provide the value.
+                return (0, _react.use)(promise);
+            }
+        }
+    }
+    return (0, _segment.getSelectedLayoutSegmentPath)(context.parentTree, parallelRouteKey);
+}
+function useSelectedLayoutSegment(parallelRouteKey = 'children') {
+    useDynamicRouteParams?.('useSelectedLayoutSegment()');
+    const navigationPromises = (0, _react.useContext)(_hooksclientcontextsharedruntime.NavigationPromisesContext);
+    const selectedLayoutSegments = useSelectedLayoutSegments(parallelRouteKey);
+    // During build-time instant validation, error if fallback params exist
+    // because useSelectedLayoutSegment() can't return a sensible value without all params.
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    // Instrument with Suspense DevTools (dev-only)
+    if (("TURBOPACK compile-time value", "development") !== 'production' && navigationPromises && 'use' in _react.default) {
+        const promise = navigationPromises.selectedLayoutSegmentPromises?.get(parallelRouteKey);
+        if (promise) {
+            // We should always have a promise here, but if we don't, it's not worth erroring over.
+            // We just won't be able to instrument it, but can still provide the value.
+            return (0, _react.use)(promise);
+        }
+    }
+    return (0, _segment.computeSelectedLayoutSegment)(selectedLayoutSegments, parallelRouteKey);
+}
+if ((typeof exports.default === 'function' || typeof exports.default === 'object' && exports.default !== null) && typeof exports.default.__esModule === 'undefined') {
+    Object.defineProperty(exports.default, '__esModule', {
+        value: true
+    });
+    Object.assign(exports.default, exports);
+    module.exports = exports.default;
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/navigation.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+
+module.exports = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/components/navigation.js [app-ssr] (ecmascript)");
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/node_modules/@swc/helpers/cjs/_interop_require_default.cjs [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+function _interop_require_default(obj) {
+    return obj && obj.__esModule ? obj : {
+        default: obj
+    };
+}
+exports._ = _interop_require_default;
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/utils/warn-once.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+Object.defineProperty(exports, "warnOnce", {
+    enumerable: true,
+    get: function() {
+        return warnOnce;
+    }
+});
+let warnOnce = (_)=>{};
+if ("TURBOPACK compile-time truthy", 1) {
+    const warnings = new Set();
+    warnOnce = (msg)=>{
+        if (!warnings.has(msg)) {
+            console.warn(msg);
+        }
+        warnings.add(msg);
+    };
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/deployment-id.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+0 && (module.exports = {
+    getAssetToken: null,
+    getAssetTokenQuery: null,
+    getDeploymentId: null,
+    getDeploymentIdQuery: null
+});
+function _export(target, all) {
+    for(var name in all)Object.defineProperty(target, name, {
+        enumerable: true,
+        get: all[name]
+    });
+}
+_export(exports, {
+    getAssetToken: function() {
+        return getAssetToken;
+    },
+    getAssetTokenQuery: function() {
+        return getAssetTokenQuery;
+    },
+    getDeploymentId: function() {
+        return getDeploymentId;
+    },
+    getDeploymentIdQuery: function() {
+        return getDeploymentIdQuery;
+    }
+});
+let deploymentId;
+if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+;
+else {
+    // Client side: replaced with globalThis.NEXT_DEPLOYMENT_ID
+    // Server side: left as is or replaced with a string or replaced with false
+    deploymentId = ("TURBOPACK compile-time value", false) || undefined;
+}
+function getDeploymentId() {
+    return deploymentId;
+}
+function getDeploymentIdQuery(ampersand = false) {
+    let id = getDeploymentId();
+    if (id) {
+        return `${ampersand ? '&' : '?'}dpl=${id}`;
+    }
+    return '';
+}
+function getAssetToken() {
+    return ("TURBOPACK compile-time value", "") || ("TURBOPACK compile-time value", false);
+}
+function getAssetTokenQuery(ampersand = false) {
+    let id = getAssetToken();
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    return '';
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/image-blur-svg.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+/**
+ * A shared function, used on both client and server, to generate a SVG blur placeholder.
+ */ Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+Object.defineProperty(exports, "getImageBlurSvg", {
+    enumerable: true,
+    get: function() {
+        return getImageBlurSvg;
+    }
+});
+function getImageBlurSvg({ widthInt, heightInt, blurWidth, blurHeight, blurDataURL, objectFit }) {
+    const std = 20;
+    const svgWidth = blurWidth ? blurWidth * 40 : widthInt;
+    const svgHeight = blurHeight ? blurHeight * 40 : heightInt;
+    const viewBox = svgWidth && svgHeight ? `viewBox='0 0 ${svgWidth} ${svgHeight}'` : '';
+    const preserveAspectRatio = viewBox ? 'none' : objectFit === 'contain' ? 'xMidYMid' : objectFit === 'cover' ? 'xMidYMid slice' : 'none';
+    return `%3Csvg xmlns='http://www.w3.org/2000/svg' ${viewBox}%3E%3Cfilter id='b' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='${std}'/%3E%3CfeColorMatrix values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 100 -1' result='s'/%3E%3CfeFlood x='0' y='0' width='100%25' height='100%25'/%3E%3CfeComposite operator='out' in='s'/%3E%3CfeComposite in2='SourceGraphic'/%3E%3CfeGaussianBlur stdDeviation='${std}'/%3E%3C/filter%3E%3Cimage width='100%25' height='100%25' x='0' y='0' preserveAspectRatio='${preserveAspectRatio}' style='filter: url(%23b);' href='${blurDataURL}'/%3E%3C/svg%3E`;
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/image-config.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+0 && (module.exports = {
+    VALID_LOADERS: null,
+    imageConfigDefault: null
+});
+function _export(target, all) {
+    for(var name in all)Object.defineProperty(target, name, {
+        enumerable: true,
+        get: all[name]
+    });
+}
+_export(exports, {
+    VALID_LOADERS: function() {
+        return VALID_LOADERS;
+    },
+    imageConfigDefault: function() {
+        return imageConfigDefault;
+    }
+});
+const VALID_LOADERS = [
+    'default',
+    'imgix',
+    'cloudinary',
+    'akamai',
+    'custom'
+];
+const imageConfigDefault = {
+    deviceSizes: [
+        640,
+        750,
+        828,
+        1080,
+        1200,
+        1920,
+        2048,
+        3840
+    ],
+    imageSizes: [
+        32,
+        48,
+        64,
+        96,
+        128,
+        256,
+        384
+    ],
+    path: '/_next/image',
+    loader: 'default',
+    loaderFile: '',
+    /**
+   * @deprecated Use `remotePatterns` instead to protect your application from malicious users.
+   */ domains: [],
+    disableStaticImages: false,
+    minimumCacheTTL: 14400,
+    formats: [
+        'image/webp'
+    ],
+    maximumDiskCacheSize: undefined,
+    maximumRedirects: 3,
+    maximumResponseBody: 50000000,
+    dangerouslyAllowLocalIP: false,
+    dangerouslyAllowSVG: false,
+    contentSecurityPolicy: `script-src 'none'; frame-src 'none'; sandbox;`,
+    contentDispositionType: 'attachment',
+    localPatterns: undefined,
+    remotePatterns: [],
+    qualities: [
+        75
+    ],
+    unoptimized: false,
+    customCacheHandler: false
+};
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/get-img-props.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+Object.defineProperty(exports, "getImgProps", {
+    enumerable: true,
+    get: function() {
+        return getImgProps;
+    }
+});
+const _warnonce = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/utils/warn-once.js [app-ssr] (ecmascript)");
+const _deploymentid = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/deployment-id.js [app-ssr] (ecmascript)");
+const _imageblursvg = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/image-blur-svg.js [app-ssr] (ecmascript)");
+const _imageconfig = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/image-config.js [app-ssr] (ecmascript)");
+const VALID_LOADING_VALUES = [
+    'lazy',
+    'eager',
+    undefined
+];
+// Object-fit values that are not valid background-size values
+const INVALID_BACKGROUND_SIZE_VALUES = [
+    '-moz-initial',
+    'fill',
+    'none',
+    'scale-down',
+    undefined
+];
+function isStaticRequire(src) {
+    return src.default !== undefined;
+}
+function isStaticImageData(src) {
+    return src.src !== undefined;
+}
+function isStaticImport(src) {
+    return !!src && typeof src === 'object' && (isStaticRequire(src) || isStaticImageData(src));
+}
+const allImgs = new Map();
+let perfObserver;
+function getInt(x) {
+    if (typeof x === 'undefined') {
+        return x;
+    }
+    if (typeof x === 'number') {
+        return Number.isFinite(x) ? x : NaN;
+    }
+    if (typeof x === 'string' && /^[0-9]+$/.test(x)) {
+        return parseInt(x, 10);
+    }
+    return NaN;
+}
+function getWidths({ deviceSizes, allSizes }, width, sizes) {
+    if (sizes) {
+        // Find all the "vw" percent sizes used in the sizes prop
+        const viewportWidthRe = /(^|\s)(1?\d?\d)vw/g;
+        const percentSizes = [];
+        for(let match; match = viewportWidthRe.exec(sizes); match){
+            percentSizes.push(parseInt(match[2]));
+        }
+        if (percentSizes.length) {
+            const smallestRatio = Math.min(...percentSizes) * 0.01;
+            return {
+                widths: allSizes.filter((s)=>s >= deviceSizes[0] * smallestRatio),
+                kind: 'w'
+            };
+        }
+        return {
+            widths: allSizes,
+            kind: 'w'
+        };
+    }
+    if (typeof width !== 'number') {
+        return {
+            widths: deviceSizes,
+            kind: 'w'
+        };
+    }
+    const widths = [
+        ...new Set(// > are actually 3x in the green color, but only 1.5x in the red and
+        // > blue colors. Showing a 3x resolution image in the app vs a 2x
+        // > resolution image will be visually the same, though the 3x image
+        // > takes significantly more data. Even true 3x resolution screens are
+        // > wasteful as the human eye cannot see that level of detail without
+        // > something like a magnifying glass.
+        // https://blog.twitter.com/engineering/en_us/topics/infrastructure/2019/capping-image-fidelity-on-ultra-high-resolution-devices.html
+        [
+            width,
+            width * 2 /*, width * 3*/ 
+        ].map((w)=>allSizes.find((p)=>p >= w) || allSizes[allSizes.length - 1]))
+    ];
+    return {
+        widths,
+        kind: 'x'
+    };
+}
+function generateImgAttrs({ config, src, unoptimized, width, quality, sizes, loader }) {
+    if (unoptimized) {
+        if (src.startsWith('/') && !src.startsWith('//')) {
+            let deploymentId = (0, _deploymentid.getDeploymentId)();
+            if (deploymentId) {
+                // We unfortunately can't easily use `new URL()` here, because it normalizes the URL which causes
+                // double-encoding with the `encodeURIComponent(src)` below
+                const qIndex = src.indexOf('?');
+                if (qIndex !== -1) {
+                    const params = new URLSearchParams(src.slice(qIndex + 1));
+                    const srcDpl = params.get('dpl');
+                    if (!srcDpl) {
+                        // src is missing the dpl parameter, but we have a deploymentId, so add it to the src URL
+                        params.append('dpl', deploymentId);
+                        src = src.slice(0, qIndex) + '?' + params.toString();
+                    }
+                } else {
+                    // src is missing the dpl parameter, but we have a deploymentId, so add it to the src URL
+                    src = src + `?dpl=${deploymentId}`;
+                }
+            }
+        }
+        return {
+            src,
+            srcSet: undefined,
+            sizes: undefined
+        };
+    }
+    const { widths, kind } = getWidths(config, width, sizes);
+    const last = widths.length - 1;
+    return {
+        sizes: !sizes && kind === 'w' ? '100vw' : sizes,
+        srcSet: widths.map((w, i)=>`${loader({
+                config,
+                src,
+                quality,
+                width: w
+            })} ${kind === 'w' ? w : i + 1}${kind}`).join(', '),
+        // It's intended to keep `src` the last attribute because React updates
+        // attributes in order. If we keep `src` the first one, Safari will
+        // immediately start to fetch `src`, before `sizes` and `srcSet` are even
+        // updated by React. That causes multiple unnecessary requests if `srcSet`
+        // and `sizes` are defined.
+        // This bug cannot be reproduced in Chrome or Firefox.
+        src: loader({
+            config,
+            src,
+            quality,
+            width: widths[last]
+        })
+    };
+}
+function getImgProps({ src, sizes, unoptimized = false, priority = false, preload = false, loading, className, quality, width, height, fill = false, style, overrideSrc, onLoad, onLoadingComplete, placeholder = 'empty', blurDataURL, fetchPriority, decoding = 'async', layout, objectFit, objectPosition, lazyBoundary, lazyRoot, ...rest }, _state) {
+    const { imgConf, showAltText, blurComplete, defaultLoader } = _state;
+    let config;
+    let c = imgConf || _imageconfig.imageConfigDefault;
+    if ('allSizes' in c) {
+        config = c;
+    } else {
+        const allSizes = [
+            ...c.deviceSizes,
+            ...c.imageSizes
+        ].sort((a, b)=>a - b);
+        const deviceSizes = c.deviceSizes.sort((a, b)=>a - b);
+        const qualities = c.qualities?.sort((a, b)=>a - b);
+        config = {
+            ...c,
+            allSizes,
+            deviceSizes,
+            qualities
+        };
+    }
+    if (typeof defaultLoader === 'undefined') {
+        throw Object.defineProperty(new Error('images.loaderFile detected but the file is missing default export.\nRead more: https://nextjs.org/docs/messages/invalid-images-config'), "__NEXT_ERROR_CODE", {
+            value: "E163",
+            enumerable: false,
+            configurable: true
+        });
+    }
+    let loader = rest.loader || defaultLoader;
+    // Remove property so it's not spread on <img> element
+    delete rest.loader;
+    delete rest.srcSet;
+    // This special value indicates that the user
+    // didn't define a "loader" prop or "loader" config.
+    const isDefaultLoader = '__next_img_default' in loader;
+    if (isDefaultLoader) {
+        if (config.loader === 'custom') {
+            throw Object.defineProperty(new Error(`Image with src "${src}" is missing "loader" prop.` + `\nRead more: https://nextjs.org/docs/messages/next-image-missing-loader`), "__NEXT_ERROR_CODE", {
+                value: "E252",
+                enumerable: false,
+                configurable: true
+            });
+        }
+    } else {
+        // The user defined a "loader" prop or config.
+        // Since the config object is internal only, we
+        // must not pass it to the user-defined "loader".
+        const customImageLoader = loader;
+        loader = (obj)=>{
+            const { config: _, ...opts } = obj;
+            return customImageLoader(opts);
+        };
+    }
+    if (layout) {
+        if (layout === 'fill') {
+            fill = true;
+        }
+        const layoutToStyle = {
+            intrinsic: {
+                maxWidth: '100%',
+                height: 'auto'
+            },
+            responsive: {
+                width: '100%',
+                height: 'auto'
+            }
+        };
+        const layoutToSizes = {
+            responsive: '100vw',
+            fill: '100vw'
+        };
+        const layoutStyle = layoutToStyle[layout];
+        if (layoutStyle) {
+            style = {
+                ...style,
+                ...layoutStyle
+            };
+        }
+        const layoutSizes = layoutToSizes[layout];
+        if (layoutSizes && !sizes) {
+            sizes = layoutSizes;
+        }
+    }
+    let staticSrc = '';
+    let widthInt = getInt(width);
+    let heightInt = getInt(height);
+    let blurWidth;
+    let blurHeight;
+    if (isStaticImport(src)) {
+        const staticImageData = isStaticRequire(src) ? src.default : src;
+        if (!staticImageData.src) {
+            throw Object.defineProperty(new Error(`An object should only be passed to the image component src parameter if it comes from a static image import. It must include src. Received ${JSON.stringify(staticImageData)}`), "__NEXT_ERROR_CODE", {
+                value: "E460",
+                enumerable: false,
+                configurable: true
+            });
+        }
+        if (!staticImageData.height || !staticImageData.width) {
+            throw Object.defineProperty(new Error(`An object should only be passed to the image component src parameter if it comes from a static image import. It must include height and width. Received ${JSON.stringify(staticImageData)}`), "__NEXT_ERROR_CODE", {
+                value: "E48",
+                enumerable: false,
+                configurable: true
+            });
+        }
+        blurWidth = staticImageData.blurWidth;
+        blurHeight = staticImageData.blurHeight;
+        blurDataURL = blurDataURL || staticImageData.blurDataURL;
+        staticSrc = staticImageData.src;
+        if (!fill) {
+            if (!widthInt && !heightInt) {
+                widthInt = staticImageData.width;
+                heightInt = staticImageData.height;
+            } else if (widthInt && !heightInt) {
+                const ratio = widthInt / staticImageData.width;
+                heightInt = Math.round(staticImageData.height * ratio);
+            } else if (!widthInt && heightInt) {
+                const ratio = heightInt / staticImageData.height;
+                widthInt = Math.round(staticImageData.width * ratio);
+            }
+        }
+    }
+    src = typeof src === 'string' ? src : staticSrc;
+    let isLazy = !priority && !preload && (loading === 'lazy' || typeof loading === 'undefined');
+    if (!src || src.startsWith('data:') || src.startsWith('blob:')) {
+        // https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/Data_URIs
+        unoptimized = true;
+        isLazy = false;
+    }
+    if (config.unoptimized) {
+        unoptimized = true;
+    }
+    if (isDefaultLoader && !config.dangerouslyAllowSVG && src.split('?', 1)[0].endsWith('.svg')) {
+        // Special case to make svg serve as-is to avoid proxying
+        // through the built-in Image Optimization API.
+        unoptimized = true;
+    }
+    const qualityInt = getInt(quality);
+    if ("TURBOPACK compile-time truthy", 1) {
+        if (config.output === 'export' && isDefaultLoader && !unoptimized) {
+            throw Object.defineProperty(new Error(`Image Optimization using the default loader is not compatible with \`{ output: 'export' }\`.
+  Possible solutions:
+    - Remove \`{ output: 'export' }\` and run "next start" to run server mode including the Image Optimization API.
+    - Configure \`{ images: { unoptimized: true } }\` in \`next.config.js\` to disable the Image Optimization API.
+  Read more: https://nextjs.org/docs/messages/export-image-api`), "__NEXT_ERROR_CODE", {
+                value: "E500",
+                enumerable: false,
+                configurable: true
+            });
+        }
+        if (!src) {
+            // React doesn't show the stack trace and there's
+            // no `src` to help identify which image, so we
+            // instead console.error(ref) during mount.
+            unoptimized = true;
+        } else {
+            if (fill) {
+                if (width) {
+                    throw Object.defineProperty(new Error(`Image with src "${src}" has both "width" and "fill" properties. Only one should be used.`), "__NEXT_ERROR_CODE", {
+                        value: "E96",
+                        enumerable: false,
+                        configurable: true
+                    });
+                }
+                if (height) {
+                    throw Object.defineProperty(new Error(`Image with src "${src}" has both "height" and "fill" properties. Only one should be used.`), "__NEXT_ERROR_CODE", {
+                        value: "E115",
+                        enumerable: false,
+                        configurable: true
+                    });
+                }
+                if (style?.position && style.position !== 'absolute') {
+                    throw Object.defineProperty(new Error(`Image with src "${src}" has both "fill" and "style.position" properties. Images with "fill" always use position absolute - it cannot be modified.`), "__NEXT_ERROR_CODE", {
+                        value: "E216",
+                        enumerable: false,
+                        configurable: true
+                    });
+                }
+                if (style?.width && style.width !== '100%') {
+                    throw Object.defineProperty(new Error(`Image with src "${src}" has both "fill" and "style.width" properties. Images with "fill" always use width 100% - it cannot be modified.`), "__NEXT_ERROR_CODE", {
+                        value: "E73",
+                        enumerable: false,
+                        configurable: true
+                    });
+                }
+                if (style?.height && style.height !== '100%') {
+                    throw Object.defineProperty(new Error(`Image with src "${src}" has both "fill" and "style.height" properties. Images with "fill" always use height 100% - it cannot be modified.`), "__NEXT_ERROR_CODE", {
+                        value: "E404",
+                        enumerable: false,
+                        configurable: true
+                    });
+                }
+            } else {
+                if (typeof widthInt === 'undefined') {
+                    throw Object.defineProperty(new Error(`Image with src "${src}" is missing required "width" property.`), "__NEXT_ERROR_CODE", {
+                        value: "E451",
+                        enumerable: false,
+                        configurable: true
+                    });
+                } else if (isNaN(widthInt)) {
+                    throw Object.defineProperty(new Error(`Image with src "${src}" has invalid "width" property. Expected a numeric value in pixels but received "${width}".`), "__NEXT_ERROR_CODE", {
+                        value: "E66",
+                        enumerable: false,
+                        configurable: true
+                    });
+                }
+                if (typeof heightInt === 'undefined') {
+                    throw Object.defineProperty(new Error(`Image with src "${src}" is missing required "height" property.`), "__NEXT_ERROR_CODE", {
+                        value: "E397",
+                        enumerable: false,
+                        configurable: true
+                    });
+                } else if (isNaN(heightInt)) {
+                    throw Object.defineProperty(new Error(`Image with src "${src}" has invalid "height" property. Expected a numeric value in pixels but received "${height}".`), "__NEXT_ERROR_CODE", {
+                        value: "E444",
+                        enumerable: false,
+                        configurable: true
+                    });
+                }
+                // eslint-disable-next-line no-control-regex
+                if (/^[\x00-\x20]/.test(src)) {
+                    throw Object.defineProperty(new Error(`Image with src "${src}" cannot start with a space or control character. Use src.trimStart() to remove it or encodeURIComponent(src) to keep it.`), "__NEXT_ERROR_CODE", {
+                        value: "E176",
+                        enumerable: false,
+                        configurable: true
+                    });
+                }
+                // eslint-disable-next-line no-control-regex
+                if (/[\x00-\x20]$/.test(src)) {
+                    throw Object.defineProperty(new Error(`Image with src "${src}" cannot end with a space or control character. Use src.trimEnd() to remove it or encodeURIComponent(src) to keep it.`), "__NEXT_ERROR_CODE", {
+                        value: "E21",
+                        enumerable: false,
+                        configurable: true
+                    });
+                }
+            }
+        }
+        if (!VALID_LOADING_VALUES.includes(loading)) {
+            throw Object.defineProperty(new Error(`Image with src "${src}" has invalid "loading" property. Provided "${loading}" should be one of ${VALID_LOADING_VALUES.map(String).join(',')}.`), "__NEXT_ERROR_CODE", {
+                value: "E357",
+                enumerable: false,
+                configurable: true
+            });
+        }
+        if (priority && loading === 'lazy') {
+            throw Object.defineProperty(new Error(`Image with src "${src}" has both "priority" and "loading='lazy'" properties. Only one should be used.`), "__NEXT_ERROR_CODE", {
+                value: "E218",
+                enumerable: false,
+                configurable: true
+            });
+        }
+        if (preload && loading === 'lazy') {
+            throw Object.defineProperty(new Error(`Image with src "${src}" has both "preload" and "loading='lazy'" properties. Only one should be used.`), "__NEXT_ERROR_CODE", {
+                value: "E803",
+                enumerable: false,
+                configurable: true
+            });
+        }
+        if (preload && priority) {
+            throw Object.defineProperty(new Error(`Image with src "${src}" has both "preload" and "priority" properties. Only "preload" should be used.`), "__NEXT_ERROR_CODE", {
+                value: "E802",
+                enumerable: false,
+                configurable: true
+            });
+        }
+        if (placeholder !== 'empty' && placeholder !== 'blur' && !placeholder.startsWith('data:image/')) {
+            throw Object.defineProperty(new Error(`Image with src "${src}" has invalid "placeholder" property "${placeholder}".`), "__NEXT_ERROR_CODE", {
+                value: "E431",
+                enumerable: false,
+                configurable: true
+            });
+        }
+        if (placeholder !== 'empty') {
+            if (widthInt && heightInt && widthInt * heightInt < 1600) {
+                (0, _warnonce.warnOnce)(`Image with src "${src}" is smaller than 40x40. Consider removing the "placeholder" property to improve performance.`);
+            }
+        }
+        if (qualityInt && config.qualities && !config.qualities.includes(qualityInt)) {
+            (0, _warnonce.warnOnce)(`Image with src "${src}" is using quality "${qualityInt}" which is not configured in images.qualities [${config.qualities.join(', ')}]. Please update your config to [${[
+                ...config.qualities,
+                qualityInt
+            ].sort().join(', ')}].` + `\nRead more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities`);
+        }
+        if (placeholder === 'blur' && !blurDataURL) {
+            const VALID_BLUR_EXT = [
+                'jpeg',
+                'png',
+                'webp',
+                'avif'
+            ] // should match next-image-loader
+            ;
+            throw Object.defineProperty(new Error(`Image with src "${src}" has "placeholder='blur'" property but is missing the "blurDataURL" property.
+        Possible solutions:
+          - Add a "blurDataURL" property, the contents should be a small Data URL to represent the image
+          - Change the "src" property to a static import with one of the supported file types: ${VALID_BLUR_EXT.join(',')} (animated images not supported)
+          - Remove the "placeholder" property, effectively no blur effect
+        Read more: https://nextjs.org/docs/messages/placeholder-blur-data-url`), "__NEXT_ERROR_CODE", {
+                value: "E371",
+                enumerable: false,
+                configurable: true
+            });
+        }
+        if ('ref' in rest) {
+            (0, _warnonce.warnOnce)(`Image with src "${src}" is using unsupported "ref" property. Consider using the "onLoad" property instead.`);
+        }
+        if (!unoptimized && !isDefaultLoader) {
+            const urlStr = loader({
+                config,
+                src,
+                width: widthInt || 400,
+                quality: qualityInt || 75
+            });
+            let url;
+            try {
+                url = new URL(urlStr);
+            } catch (err) {}
+            if (urlStr === src || url && url.pathname === src && !url.search) {
+                (0, _warnonce.warnOnce)(`Image with src "${src}" has a "loader" property that does not implement width. Please implement it or use the "unoptimized" property instead.` + `\nRead more: https://nextjs.org/docs/messages/next-image-missing-loader-width`);
+            }
+        }
+        if (onLoadingComplete) {
+            (0, _warnonce.warnOnce)(`Image with src "${src}" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.`);
+        }
+        for (const [legacyKey, legacyValue] of Object.entries({
+            layout,
+            objectFit,
+            objectPosition,
+            lazyBoundary,
+            lazyRoot
+        })){
+            if (legacyValue) {
+                (0, _warnonce.warnOnce)(`Image with src "${src}" has legacy prop "${legacyKey}". Did you forget to run the codemod?` + `\nRead more: https://nextjs.org/docs/messages/next-image-upgrade-to-13`);
+            }
+        }
+        if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+        ;
+    }
+    const imgStyle = Object.assign(fill ? {
+        position: 'absolute',
+        height: '100%',
+        width: '100%',
+        left: 0,
+        top: 0,
+        right: 0,
+        bottom: 0,
+        objectFit,
+        objectPosition
+    } : {}, showAltText ? {} : {
+        color: 'transparent'
+    }, style);
+    const backgroundImage = !blurComplete && placeholder !== 'empty' ? placeholder === 'blur' ? `url("data:image/svg+xml;charset=utf-8,${(0, _imageblursvg.getImageBlurSvg)({
+        widthInt,
+        heightInt,
+        blurWidth,
+        blurHeight,
+        blurDataURL: blurDataURL || '',
+        objectFit: imgStyle.objectFit
+    })}")` : `url("${placeholder}")` // assume `data:image/`
+     : null;
+    const backgroundSize = !INVALID_BACKGROUND_SIZE_VALUES.includes(imgStyle.objectFit) ? imgStyle.objectFit : imgStyle.objectFit === 'fill' ? '100% 100%' // the background-size equivalent of `fill`
+     : 'cover';
+    let placeholderStyle = backgroundImage ? {
+        backgroundSize,
+        backgroundPosition: imgStyle.objectPosition || '50% 50%',
+        backgroundRepeat: 'no-repeat',
+        backgroundImage
+    } : {};
+    if ("TURBOPACK compile-time truthy", 1) {
+        if (placeholderStyle.backgroundImage && placeholder === 'blur' && blurDataURL?.startsWith('/')) {
+            // During `next dev`, we don't want to generate blur placeholders with webpack
+            // because it can delay starting the dev server. Instead, `next-image-loader.js`
+            // will inline a special url to lazily generate the blur placeholder at request time.
+            placeholderStyle.backgroundImage = `url("${blurDataURL}")`;
+        }
+    }
+    const imgAttributes = generateImgAttrs({
+        config,
+        src,
+        unoptimized,
+        width: widthInt,
+        quality: qualityInt,
+        sizes,
+        loader
+    });
+    const loadingFinal = isLazy ? 'lazy' : loading;
+    if ("TURBOPACK compile-time truthy", 1) {
+        if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+        ;
+    }
+    const props = {
+        ...rest,
+        loading: loadingFinal,
+        fetchPriority,
+        width: widthInt,
+        height: heightInt,
+        decoding,
+        className,
+        style: {
+            ...imgStyle,
+            ...placeholderStyle
+        },
+        sizes: imgAttributes.sizes,
+        srcSet: imgAttributes.srcSet,
+        src: overrideSrc || imgAttributes.src
+    };
+    const meta = {
+        unoptimized,
+        preload: preload || priority,
+        placeholder,
+        fill
+    };
+    return {
+        props,
+        meta
+    };
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/side-effect.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+Object.defineProperty(exports, "default", {
+    enumerable: true,
+    get: function() {
+        return SideEffect;
+    }
+});
+const _react = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+const isServer = ("TURBOPACK compile-time value", "undefined") === 'undefined';
+const useClientOnlyLayoutEffect = ("TURBOPACK compile-time truthy", 1) ? ()=>{} : "TURBOPACK unreachable";
+const useClientOnlyEffect = ("TURBOPACK compile-time truthy", 1) ? ()=>{} : "TURBOPACK unreachable";
+function SideEffect(props) {
+    const { headManager, reduceComponentsToState } = props;
+    function emitChange() {
+        if (headManager && headManager.mountedInstances) {
+            const headElements = _react.Children.toArray(Array.from(headManager.mountedInstances).filter(Boolean));
+            headManager.updateHead(reduceComponentsToState(headElements));
+        }
+    }
+    if ("TURBOPACK compile-time truthy", 1) {
+        headManager?.mountedInstances?.add(props.children);
+        emitChange();
+    }
+    useClientOnlyLayoutEffect(()=>{
+        headManager?.mountedInstances?.add(props.children);
+        return ()=>{
+            headManager?.mountedInstances?.delete(props.children);
+        };
+    });
+    // We need to call `updateHead` method whenever the `SideEffect` is trigger in all
+    // life-cycles: mount, update, unmount. However, if there are multiple `SideEffect`s
+    // being rendered, we only trigger the method from the last one.
+    // This is ensured by keeping the last unflushed `updateHead` in the `_pendingUpdate`
+    // singleton in the layout effect pass, and actually trigger it in the effect pass.
+    useClientOnlyLayoutEffect(()=>{
+        if (headManager) {
+            headManager._pendingUpdate = emitChange;
+        }
+        return ()=>{
+            if (headManager) {
+                headManager._pendingUpdate = emitChange;
+            }
+        };
+    });
+    useClientOnlyEffect(()=>{
+        if (headManager && headManager._pendingUpdate) {
+            headManager._pendingUpdate();
+            headManager._pendingUpdate = null;
+        }
+        return ()=>{
+            if (headManager && headManager._pendingUpdate) {
+                headManager._pendingUpdate();
+                headManager._pendingUpdate = null;
+            }
+        };
+    });
+    return null;
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/contexts/head-manager-context.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+module.exports = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/module.compiled.js [app-ssr] (ecmascript)").vendored['contexts'].HeadManagerContext;
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/head.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+0 && (module.exports = {
+    default: null,
+    defaultHead: null
+});
+function _export(target, all) {
+    for(var name in all)Object.defineProperty(target, name, {
+        enumerable: true,
+        get: all[name]
+    });
+}
+_export(exports, {
+    default: function() {
+        return _default;
+    },
+    defaultHead: function() {
+        return defaultHead;
+    }
+});
+const _interop_require_default = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/node_modules/@swc/helpers/cjs/_interop_require_default.cjs [app-ssr] (ecmascript)");
+const _interop_require_wildcard = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/node_modules/@swc/helpers/cjs/_interop_require_wildcard.cjs [app-ssr] (ecmascript)");
+const _jsxruntime = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-runtime.js [app-ssr] (ecmascript)");
+const _react = /*#__PURE__*/ _interop_require_wildcard._(__turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)"));
+const _sideeffect = /*#__PURE__*/ _interop_require_default._(__turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/side-effect.js [app-ssr] (ecmascript)"));
+const _headmanagercontextsharedruntime = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/contexts/head-manager-context.js [app-ssr] (ecmascript)");
+const _warnonce = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/utils/warn-once.js [app-ssr] (ecmascript)");
+function defaultHead() {
+    const head = [
+        /*#__PURE__*/ (0, _jsxruntime.jsx)("meta", {
+            charSet: "utf-8"
+        }, "charset"),
+        /*#__PURE__*/ (0, _jsxruntime.jsx)("meta", {
+            name: "viewport",
+            content: "width=device-width"
+        }, "viewport")
+    ];
+    return head;
+}
+function onlyReactElement(list, child) {
+    // React children can be "string" or "number" in this case we ignore them for backwards compat
+    if (typeof child === 'string' || typeof child === 'number') {
+        return list;
+    }
+    // Adds support for React.Fragment
+    if (child.type === _react.default.Fragment) {
+        return list.concat(_react.default.Children.toArray(child.props.children).reduce((fragmentList, fragmentChild)=>{
+            if (typeof fragmentChild === 'string' || typeof fragmentChild === 'number') {
+                return fragmentList;
+            }
+            return fragmentList.concat(fragmentChild);
+        }, []));
+    }
+    return list.concat(child);
+}
+const METATYPES = [
+    'name',
+    'httpEquiv',
+    'charSet',
+    'itemProp'
+];
+/*
+ returns a function for filtering head child elements
+ which shouldn't be duplicated, like <title/>
+ Also adds support for deduplicated `key` properties
+*/ function unique() {
+    const keys = new Set();
+    const tags = new Set();
+    const metaTypes = new Set();
+    const metaCategories = {};
+    return (h)=>{
+        let isUnique = true;
+        let hasKey = false;
+        if (h.key && typeof h.key !== 'number' && h.key.indexOf('$') > 0) {
+            hasKey = true;
+            const key = h.key.slice(h.key.indexOf('$') + 1);
+            if (keys.has(key)) {
+                isUnique = false;
+            } else {
+                keys.add(key);
+            }
+        }
+        // eslint-disable-next-line default-case
+        switch(h.type){
+            case 'title':
+            case 'base':
+                if (tags.has(h.type)) {
+                    isUnique = false;
+                } else {
+                    tags.add(h.type);
+                }
+                break;
+            case 'meta':
+                for(let i = 0, len = METATYPES.length; i < len; i++){
+                    const metatype = METATYPES[i];
+                    if (!h.props.hasOwnProperty(metatype)) continue;
+                    if (metatype === 'charSet') {
+                        if (metaTypes.has(metatype)) {
+                            isUnique = false;
+                        } else {
+                            metaTypes.add(metatype);
+                        }
+                    } else {
+                        const category = h.props[metatype];
+                        const categories = metaCategories[metatype] || new Set();
+                        if ((metatype !== 'name' || !hasKey) && categories.has(category)) {
+                            isUnique = false;
+                        } else {
+                            categories.add(category);
+                            metaCategories[metatype] = categories;
+                        }
+                    }
+                }
+                break;
+        }
+        return isUnique;
+    };
+}
+/**
+ *
+ * @param headChildrenElements List of children of <Head>
+ */ function reduceComponents(headChildrenElements) {
+    return headChildrenElements.reduce(onlyReactElement, []).reverse().concat(defaultHead().reverse()).filter(unique()).reverse().map((c, i)=>{
+        const key = c.key || i;
+        if ("TURBOPACK compile-time truthy", 1) {
+            // omit JSON-LD structured data snippets from the warning
+            if (c.type === 'script' && c.props['type'] !== 'application/ld+json') {
+                const srcMessage = c.props['src'] ? `<script> tag with src="${c.props['src']}"` : `inline <script>`;
+                (0, _warnonce.warnOnce)(`Do not add <script> tags using next/head (see ${srcMessage}). Use next/script instead. \nSee more info here: https://nextjs.org/docs/messages/no-script-tags-in-head-component`);
+            } else if (c.type === 'link' && c.props['rel'] === 'stylesheet') {
+                (0, _warnonce.warnOnce)(`Do not add stylesheets using next/head (see <link rel="stylesheet"> tag with href="${c.props['href']}"). Use Document instead. \nSee more info here: https://nextjs.org/docs/messages/no-stylesheets-in-head-component`);
+            }
+        }
+        return /*#__PURE__*/ _react.default.cloneElement(c, {
+            key
+        });
+    });
+}
+/**
+ * This component injects elements to `<head>` of your page.
+ * To avoid duplicated `tags` in `<head>` you can use the `key` property, which will make sure every tag is only rendered once.
+ */ function Head({ children }) {
+    const headManager = (0, _react.useContext)(_headmanagercontextsharedruntime.HeadManagerContext);
+    return /*#__PURE__*/ (0, _jsxruntime.jsx)(_sideeffect.default, {
+        reduceComponentsToState: reduceComponents,
+        headManager: headManager,
+        children: children
+    });
+}
+const _default = Head;
+if ((typeof exports.default === 'function' || typeof exports.default === 'object' && exports.default !== null) && typeof exports.default.__esModule === 'undefined') {
+    Object.defineProperty(exports.default, '__esModule', {
+        value: true
+    });
+    Object.assign(exports.default, exports);
+    module.exports = exports.default;
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/contexts/image-config-context.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+module.exports = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/module.compiled.js [app-ssr] (ecmascript)").vendored['contexts'].ImageConfigContext;
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/contexts/router-context.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+module.exports = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/module.compiled.js [app-ssr] (ecmascript)").vendored['contexts'].RouterContext;
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/find-closest-quality.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+Object.defineProperty(exports, "findClosestQuality", {
+    enumerable: true,
+    get: function() {
+        return findClosestQuality;
+    }
+});
+function findClosestQuality(quality, config) {
+    const q = quality || 75;
+    if (!config?.qualities?.length) {
+        return q;
+    }
+    return config.qualities.reduce((prev, cur)=>Math.abs(cur - q) < Math.abs(prev - q) ? cur : prev, config.qualities[0]);
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/compiled/picomatch/index.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+
+(()=>{
+    "use strict";
+    var t = {
+        170: (t, e, u)=>{
+            const n = u(510);
+            const isWindows = ()=>{
+                if (typeof navigator !== "undefined" && navigator.platform) {
+                    const t = navigator.platform.toLowerCase();
+                    return t === "win32" || t === "windows";
+                }
+                if (typeof process !== "undefined" && process.platform) {
+                    return process.platform === "win32";
+                }
+                return false;
+            };
+            function picomatch(t, e, u = false) {
+                if (e && (e.windows === null || e.windows === undefined)) {
+                    e = {
+                        ...e,
+                        windows: isWindows()
+                    };
+                }
+                return n(t, e, u);
+            }
+            Object.assign(picomatch, n);
+            t.exports = picomatch;
+        },
+        154: (t)=>{
+            const e = "\\\\/";
+            const u = `[^${e}]`;
+            const n = "\\.";
+            const o = "\\+";
+            const s = "\\?";
+            const r = "\\/";
+            const a = "(?=.)";
+            const i = "[^/]";
+            const c = `(?:${r}|$)`;
+            const p = `(?:^|${r})`;
+            const l = `${n}{1,2}${c}`;
+            const f = `(?!${n})`;
+            const A = `(?!${p}${l})`;
+            const _ = `(?!${n}{0,1}${c})`;
+            const R = `(?!${l})`;
+            const E = `[^.${r}]`;
+            const h = `${i}*?`;
+            const g = "/";
+            const b = {
+                DOT_LITERAL: n,
+                PLUS_LITERAL: o,
+                QMARK_LITERAL: s,
+                SLASH_LITERAL: r,
+                ONE_CHAR: a,
+                QMARK: i,
+                END_ANCHOR: c,
+                DOTS_SLASH: l,
+                NO_DOT: f,
+                NO_DOTS: A,
+                NO_DOT_SLASH: _,
+                NO_DOTS_SLASH: R,
+                QMARK_NO_DOT: E,
+                STAR: h,
+                START_ANCHOR: p,
+                SEP: g
+            };
+            const C = {
+                ...b,
+                SLASH_LITERAL: `[${e}]`,
+                QMARK: u,
+                STAR: `${u}*?`,
+                DOTS_SLASH: `${n}{1,2}(?:[${e}]|$)`,
+                NO_DOT: `(?!${n})`,
+                NO_DOTS: `(?!(?:^|[${e}])${n}{1,2}(?:[${e}]|$))`,
+                NO_DOT_SLASH: `(?!${n}{0,1}(?:[${e}]|$))`,
+                NO_DOTS_SLASH: `(?!${n}{1,2}(?:[${e}]|$))`,
+                QMARK_NO_DOT: `[^.${e}]`,
+                START_ANCHOR: `(?:^|[${e}])`,
+                END_ANCHOR: `(?:[${e}]|$)`,
+                SEP: "\\"
+            };
+            const y = {
+                alnum: "a-zA-Z0-9",
+                alpha: "a-zA-Z",
+                ascii: "\\x00-\\x7F",
+                blank: " \\t",
+                cntrl: "\\x00-\\x1F\\x7F",
+                digit: "0-9",
+                graph: "\\x21-\\x7E",
+                lower: "a-z",
+                print: "\\x20-\\x7E ",
+                punct: "\\-!\"#$%&'()\\*+,./:;<=>?@[\\]^_`{|}~",
+                space: " \\t\\r\\n\\v\\f",
+                upper: "A-Z",
+                word: "A-Za-z0-9_",
+                xdigit: "A-Fa-f0-9"
+            };
+            t.exports = {
+                MAX_LENGTH: 1024 * 64,
+                POSIX_REGEX_SOURCE: y,
+                REGEX_BACKSLASH: /\\(?![*+?^${}(|)[\]])/g,
+                REGEX_NON_SPECIAL_CHARS: /^[^@![\].,$*+?^{}()|\\/]+/,
+                REGEX_SPECIAL_CHARS: /[-*+?.^${}(|)[\]]/,
+                REGEX_SPECIAL_CHARS_BACKREF: /(\\?)((\W)(\3*))/g,
+                REGEX_SPECIAL_CHARS_GLOBAL: /([-*+?.^${}(|)[\]])/g,
+                REGEX_REMOVE_BACKSLASH: /(?:\[.*?[^\\]\]|\\(?=.))/g,
+                REPLACEMENTS: {
+                    "***": "*",
+                    "**/**": "**",
+                    "**/**/**": "**"
+                },
+                CHAR_0: 48,
+                CHAR_9: 57,
+                CHAR_UPPERCASE_A: 65,
+                CHAR_LOWERCASE_A: 97,
+                CHAR_UPPERCASE_Z: 90,
+                CHAR_LOWERCASE_Z: 122,
+                CHAR_LEFT_PARENTHESES: 40,
+                CHAR_RIGHT_PARENTHESES: 41,
+                CHAR_ASTERISK: 42,
+                CHAR_AMPERSAND: 38,
+                CHAR_AT: 64,
+                CHAR_BACKWARD_SLASH: 92,
+                CHAR_CARRIAGE_RETURN: 13,
+                CHAR_CIRCUMFLEX_ACCENT: 94,
+                CHAR_COLON: 58,
+                CHAR_COMMA: 44,
+                CHAR_DOT: 46,
+                CHAR_DOUBLE_QUOTE: 34,
+                CHAR_EQUAL: 61,
+                CHAR_EXCLAMATION_MARK: 33,
+                CHAR_FORM_FEED: 12,
+                CHAR_FORWARD_SLASH: 47,
+                CHAR_GRAVE_ACCENT: 96,
+                CHAR_HASH: 35,
+                CHAR_HYPHEN_MINUS: 45,
+                CHAR_LEFT_ANGLE_BRACKET: 60,
+                CHAR_LEFT_CURLY_BRACE: 123,
+                CHAR_LEFT_SQUARE_BRACKET: 91,
+                CHAR_LINE_FEED: 10,
+                CHAR_NO_BREAK_SPACE: 160,
+                CHAR_PERCENT: 37,
+                CHAR_PLUS: 43,
+                CHAR_QUESTION_MARK: 63,
+                CHAR_RIGHT_ANGLE_BRACKET: 62,
+                CHAR_RIGHT_CURLY_BRACE: 125,
+                CHAR_RIGHT_SQUARE_BRACKET: 93,
+                CHAR_SEMICOLON: 59,
+                CHAR_SINGLE_QUOTE: 39,
+                CHAR_SPACE: 32,
+                CHAR_TAB: 9,
+                CHAR_UNDERSCORE: 95,
+                CHAR_VERTICAL_LINE: 124,
+                CHAR_ZERO_WIDTH_NOBREAK_SPACE: 65279,
+                extglobChars (t) {
+                    return {
+                        "!": {
+                            type: "negate",
+                            open: "(?:(?!(?:",
+                            close: `))${t.STAR})`
+                        },
+                        "?": {
+                            type: "qmark",
+                            open: "(?:",
+                            close: ")?"
+                        },
+                        "+": {
+                            type: "plus",
+                            open: "(?:",
+                            close: ")+"
+                        },
+                        "*": {
+                            type: "star",
+                            open: "(?:",
+                            close: ")*"
+                        },
+                        "@": {
+                            type: "at",
+                            open: "(?:",
+                            close: ")"
+                        }
+                    };
+                },
+                globChars (t) {
+                    return t === true ? C : b;
+                }
+            };
+        },
+        697: (t, e, u)=>{
+            const n = u(154);
+            const o = u(96);
+            const { MAX_LENGTH: s, POSIX_REGEX_SOURCE: r, REGEX_NON_SPECIAL_CHARS: a, REGEX_SPECIAL_CHARS_BACKREF: i, REPLACEMENTS: c } = n;
+            const expandRange = (t, e)=>{
+                if (typeof e.expandRange === "function") {
+                    return e.expandRange(...t, e);
+                }
+                t.sort();
+                const u = `[${t.join("-")}]`;
+                try {
+                    new RegExp(u);
+                } catch (e) {
+                    return t.map((t)=>o.escapeRegex(t)).join("..");
+                }
+                return u;
+            };
+            const syntaxError = (t, e)=>`Missing ${t}: "${e}" - use "\\\\${e}" to match literal characters`;
+            const parse = (t, e)=>{
+                if (typeof t !== "string") {
+                    throw new TypeError("Expected a string");
+                }
+                t = c[t] || t;
+                const u = {
+                    ...e
+                };
+                const p = typeof u.maxLength === "number" ? Math.min(s, u.maxLength) : s;
+                let l = t.length;
+                if (l > p) {
+                    throw new SyntaxError(`Input length: ${l}, exceeds maximum allowed length: ${p}`);
+                }
+                const f = {
+                    type: "bos",
+                    value: "",
+                    output: u.prepend || ""
+                };
+                const A = [
+                    f
+                ];
+                const _ = u.capture ? "" : "?:";
+                const R = n.globChars(u.windows);
+                const E = n.extglobChars(R);
+                const { DOT_LITERAL: h, PLUS_LITERAL: g, SLASH_LITERAL: b, ONE_CHAR: C, DOTS_SLASH: y, NO_DOT: $, NO_DOT_SLASH: x, NO_DOTS_SLASH: S, QMARK: H, QMARK_NO_DOT: v, STAR: d, START_ANCHOR: L } = R;
+                const globstar = (t)=>`(${_}(?:(?!${L}${t.dot ? y : h}).)*?)`;
+                const T = u.dot ? "" : $;
+                const O = u.dot ? H : v;
+                let k = u.bash === true ? globstar(u) : d;
+                if (u.capture) {
+                    k = `(${k})`;
+                }
+                if (typeof u.noext === "boolean") {
+                    u.noextglob = u.noext;
+                }
+                const m = {
+                    input: t,
+                    index: -1,
+                    start: 0,
+                    dot: u.dot === true,
+                    consumed: "",
+                    output: "",
+                    prefix: "",
+                    backtrack: false,
+                    negated: false,
+                    brackets: 0,
+                    braces: 0,
+                    parens: 0,
+                    quotes: 0,
+                    globstar: false,
+                    tokens: A
+                };
+                t = o.removePrefix(t, m);
+                l = t.length;
+                const w = [];
+                const N = [];
+                const I = [];
+                let B = f;
+                let G;
+                const eos = ()=>m.index === l - 1;
+                const D = m.peek = (e = 1)=>t[m.index + e];
+                const M = m.advance = ()=>t[++m.index] || "";
+                const remaining = ()=>t.slice(m.index + 1);
+                const consume = (t = "", e = 0)=>{
+                    m.consumed += t;
+                    m.index += e;
+                };
+                const append = (t)=>{
+                    m.output += t.output != null ? t.output : t.value;
+                    consume(t.value);
+                };
+                const negate = ()=>{
+                    let t = 1;
+                    while(D() === "!" && (D(2) !== "(" || D(3) === "?")){
+                        M();
+                        m.start++;
+                        t++;
+                    }
+                    if (t % 2 === 0) {
+                        return false;
+                    }
+                    m.negated = true;
+                    m.start++;
+                    return true;
+                };
+                const increment = (t)=>{
+                    m[t]++;
+                    I.push(t);
+                };
+                const decrement = (t)=>{
+                    m[t]--;
+                    I.pop();
+                };
+                const push = (t)=>{
+                    if (B.type === "globstar") {
+                        const e = m.braces > 0 && (t.type === "comma" || t.type === "brace");
+                        const u = t.extglob === true || w.length && (t.type === "pipe" || t.type === "paren");
+                        if (t.type !== "slash" && t.type !== "paren" && !e && !u) {
+                            m.output = m.output.slice(0, -B.output.length);
+                            B.type = "star";
+                            B.value = "*";
+                            B.output = k;
+                            m.output += B.output;
+                        }
+                    }
+                    if (w.length && t.type !== "paren") {
+                        w[w.length - 1].inner += t.value;
+                    }
+                    if (t.value || t.output) append(t);
+                    if (B && B.type === "text" && t.type === "text") {
+                        B.output = (B.output || B.value) + t.value;
+                        B.value += t.value;
+                        return;
+                    }
+                    t.prev = B;
+                    A.push(t);
+                    B = t;
+                };
+                const extglobOpen = (t, e)=>{
+                    const n = {
+                        ...E[e],
+                        conditions: 1,
+                        inner: ""
+                    };
+                    n.prev = B;
+                    n.parens = m.parens;
+                    n.output = m.output;
+                    const o = (u.capture ? "(" : "") + n.open;
+                    increment("parens");
+                    push({
+                        type: t,
+                        value: e,
+                        output: m.output ? "" : C
+                    });
+                    push({
+                        type: "paren",
+                        extglob: true,
+                        value: M(),
+                        output: o
+                    });
+                    w.push(n);
+                };
+                const extglobClose = (t)=>{
+                    let n = t.close + (u.capture ? ")" : "");
+                    let o;
+                    if (t.type === "negate") {
+                        let s = k;
+                        if (t.inner && t.inner.length > 1 && t.inner.includes("/")) {
+                            s = globstar(u);
+                        }
+                        if (s !== k || eos() || /^\)+$/.test(remaining())) {
+                            n = t.close = `)$))${s}`;
+                        }
+                        if (t.inner.includes("*") && (o = remaining()) && /^\.[^\\/.]+$/.test(o)) {
+                            const u = parse(o, {
+                                ...e,
+                                fastpaths: false
+                            }).output;
+                            n = t.close = `)${u})${s})`;
+                        }
+                        if (t.prev.type === "bos") {
+                            m.negatedExtglob = true;
+                        }
+                    }
+                    push({
+                        type: "paren",
+                        extglob: true,
+                        value: G,
+                        output: n
+                    });
+                    decrement("parens");
+                };
+                if (u.fastpaths !== false && !/(^[*!]|[/()[\]{}"])/.test(t)) {
+                    let n = false;
+                    let s = t.replace(i, (t, e, u, o, s, r)=>{
+                        if (o === "\\") {
+                            n = true;
+                            return t;
+                        }
+                        if (o === "?") {
+                            if (e) {
+                                return e + o + (s ? H.repeat(s.length) : "");
+                            }
+                            if (r === 0) {
+                                return O + (s ? H.repeat(s.length) : "");
+                            }
+                            return H.repeat(u.length);
+                        }
+                        if (o === ".") {
+                            return h.repeat(u.length);
+                        }
+                        if (o === "*") {
+                            if (e) {
+                                return e + o + (s ? k : "");
+                            }
+                            return k;
+                        }
+                        return e ? t : `\\${t}`;
+                    });
+                    if (n === true) {
+                        if (u.unescape === true) {
+                            s = s.replace(/\\/g, "");
+                        } else {
+                            s = s.replace(/\\+/g, (t)=>t.length % 2 === 0 ? "\\\\" : t ? "\\" : "");
+                        }
+                    }
+                    if (s === t && u.contains === true) {
+                        m.output = t;
+                        return m;
+                    }
+                    m.output = o.wrapOutput(s, m, e);
+                    return m;
+                }
+                while(!eos()){
+                    G = M();
+                    if (G === "\0") {
+                        continue;
+                    }
+                    if (G === "\\") {
+                        const t = D();
+                        if (t === "/" && u.bash !== true) {
+                            continue;
+                        }
+                        if (t === "." || t === ";") {
+                            continue;
+                        }
+                        if (!t) {
+                            G += "\\";
+                            push({
+                                type: "text",
+                                value: G
+                            });
+                            continue;
+                        }
+                        const e = /^\\+/.exec(remaining());
+                        let n = 0;
+                        if (e && e[0].length > 2) {
+                            n = e[0].length;
+                            m.index += n;
+                            if (n % 2 !== 0) {
+                                G += "\\";
+                            }
+                        }
+                        if (u.unescape === true) {
+                            G = M();
+                        } else {
+                            G += M();
+                        }
+                        if (m.brackets === 0) {
+                            push({
+                                type: "text",
+                                value: G
+                            });
+                            continue;
+                        }
+                    }
+                    if (m.brackets > 0 && (G !== "]" || B.value === "[" || B.value === "[^")) {
+                        if (u.posix !== false && G === ":") {
+                            const t = B.value.slice(1);
+                            if (t.includes("[")) {
+                                B.posix = true;
+                                if (t.includes(":")) {
+                                    const t = B.value.lastIndexOf("[");
+                                    const e = B.value.slice(0, t);
+                                    const u = B.value.slice(t + 2);
+                                    const n = r[u];
+                                    if (n) {
+                                        B.value = e + n;
+                                        m.backtrack = true;
+                                        M();
+                                        if (!f.output && A.indexOf(B) === 1) {
+                                            f.output = C;
+                                        }
+                                        continue;
+                                    }
+                                }
+                            }
+                        }
+                        if (G === "[" && D() !== ":" || G === "-" && D() === "]") {
+                            G = `\\${G}`;
+                        }
+                        if (G === "]" && (B.value === "[" || B.value === "[^")) {
+                            G = `\\${G}`;
+                        }
+                        if (u.posix === true && G === "!" && B.value === "[") {
+                            G = "^";
+                        }
+                        B.value += G;
+                        append({
+                            value: G
+                        });
+                        continue;
+                    }
+                    if (m.quotes === 1 && G !== '"') {
+                        G = o.escapeRegex(G);
+                        B.value += G;
+                        append({
+                            value: G
+                        });
+                        continue;
+                    }
+                    if (G === '"') {
+                        m.quotes = m.quotes === 1 ? 0 : 1;
+                        if (u.keepQuotes === true) {
+                            push({
+                                type: "text",
+                                value: G
+                            });
+                        }
+                        continue;
+                    }
+                    if (G === "(") {
+                        increment("parens");
+                        push({
+                            type: "paren",
+                            value: G
+                        });
+                        continue;
+                    }
+                    if (G === ")") {
+                        if (m.parens === 0 && u.strictBrackets === true) {
+                            throw new SyntaxError(syntaxError("opening", "("));
+                        }
+                        const t = w[w.length - 1];
+                        if (t && m.parens === t.parens + 1) {
+                            extglobClose(w.pop());
+                            continue;
+                        }
+                        push({
+                            type: "paren",
+                            value: G,
+                            output: m.parens ? ")" : "\\)"
+                        });
+                        decrement("parens");
+                        continue;
+                    }
+                    if (G === "[") {
+                        if (u.nobracket === true || !remaining().includes("]")) {
+                            if (u.nobracket !== true && u.strictBrackets === true) {
+                                throw new SyntaxError(syntaxError("closing", "]"));
+                            }
+                            G = `\\${G}`;
+                        } else {
+                            increment("brackets");
+                        }
+                        push({
+                            type: "bracket",
+                            value: G
+                        });
+                        continue;
+                    }
+                    if (G === "]") {
+                        if (u.nobracket === true || B && B.type === "bracket" && B.value.length === 1) {
+                            push({
+                                type: "text",
+                                value: G,
+                                output: `\\${G}`
+                            });
+                            continue;
+                        }
+                        if (m.brackets === 0) {
+                            if (u.strictBrackets === true) {
+                                throw new SyntaxError(syntaxError("opening", "["));
+                            }
+                            push({
+                                type: "text",
+                                value: G,
+                                output: `\\${G}`
+                            });
+                            continue;
+                        }
+                        decrement("brackets");
+                        const t = B.value.slice(1);
+                        if (B.posix !== true && t[0] === "^" && !t.includes("/")) {
+                            G = `/${G}`;
+                        }
+                        B.value += G;
+                        append({
+                            value: G
+                        });
+                        if (u.literalBrackets === false || o.hasRegexChars(t)) {
+                            continue;
+                        }
+                        const e = o.escapeRegex(B.value);
+                        m.output = m.output.slice(0, -B.value.length);
+                        if (u.literalBrackets === true) {
+                            m.output += e;
+                            B.value = e;
+                            continue;
+                        }
+                        B.value = `(${_}${e}|${B.value})`;
+                        m.output += B.value;
+                        continue;
+                    }
+                    if (G === "{" && u.nobrace !== true) {
+                        increment("braces");
+                        const t = {
+                            type: "brace",
+                            value: G,
+                            output: "(",
+                            outputIndex: m.output.length,
+                            tokensIndex: m.tokens.length
+                        };
+                        N.push(t);
+                        push(t);
+                        continue;
+                    }
+                    if (G === "}") {
+                        const t = N[N.length - 1];
+                        if (u.nobrace === true || !t) {
+                            push({
+                                type: "text",
+                                value: G,
+                                output: G
+                            });
+                            continue;
+                        }
+                        let e = ")";
+                        if (t.dots === true) {
+                            const t = A.slice();
+                            const n = [];
+                            for(let e = t.length - 1; e >= 0; e--){
+                                A.pop();
+                                if (t[e].type === "brace") {
+                                    break;
+                                }
+                                if (t[e].type !== "dots") {
+                                    n.unshift(t[e].value);
+                                }
+                            }
+                            e = expandRange(n, u);
+                            m.backtrack = true;
+                        }
+                        if (t.comma !== true && t.dots !== true) {
+                            const u = m.output.slice(0, t.outputIndex);
+                            const n = m.tokens.slice(t.tokensIndex);
+                            t.value = t.output = "\\{";
+                            G = e = "\\}";
+                            m.output = u;
+                            for (const t of n){
+                                m.output += t.output || t.value;
+                            }
+                        }
+                        push({
+                            type: "brace",
+                            value: G,
+                            output: e
+                        });
+                        decrement("braces");
+                        N.pop();
+                        continue;
+                    }
+                    if (G === "|") {
+                        if (w.length > 0) {
+                            w[w.length - 1].conditions++;
+                        }
+                        push({
+                            type: "text",
+                            value: G
+                        });
+                        continue;
+                    }
+                    if (G === ",") {
+                        let t = G;
+                        const e = N[N.length - 1];
+                        if (e && I[I.length - 1] === "braces") {
+                            e.comma = true;
+                            t = "|";
+                        }
+                        push({
+                            type: "comma",
+                            value: G,
+                            output: t
+                        });
+                        continue;
+                    }
+                    if (G === "/") {
+                        if (B.type === "dot" && m.index === m.start + 1) {
+                            m.start = m.index + 1;
+                            m.consumed = "";
+                            m.output = "";
+                            A.pop();
+                            B = f;
+                            continue;
+                        }
+                        push({
+                            type: "slash",
+                            value: G,
+                            output: b
+                        });
+                        continue;
+                    }
+                    if (G === ".") {
+                        if (m.braces > 0 && B.type === "dot") {
+                            if (B.value === ".") B.output = h;
+                            const t = N[N.length - 1];
+                            B.type = "dots";
+                            B.output += G;
+                            B.value += G;
+                            t.dots = true;
+                            continue;
+                        }
+                        if (m.braces + m.parens === 0 && B.type !== "bos" && B.type !== "slash") {
+                            push({
+                                type: "text",
+                                value: G,
+                                output: h
+                            });
+                            continue;
+                        }
+                        push({
+                            type: "dot",
+                            value: G,
+                            output: h
+                        });
+                        continue;
+                    }
+                    if (G === "?") {
+                        const t = B && B.value === "(";
+                        if (!t && u.noextglob !== true && D() === "(" && D(2) !== "?") {
+                            extglobOpen("qmark", G);
+                            continue;
+                        }
+                        if (B && B.type === "paren") {
+                            const t = D();
+                            let e = G;
+                            if (B.value === "(" && !/[!=<:]/.test(t) || t === "<" && !/<([!=]|\w+>)/.test(remaining())) {
+                                e = `\\${G}`;
+                            }
+                            push({
+                                type: "text",
+                                value: G,
+                                output: e
+                            });
+                            continue;
+                        }
+                        if (u.dot !== true && (B.type === "slash" || B.type === "bos")) {
+                            push({
+                                type: "qmark",
+                                value: G,
+                                output: v
+                            });
+                            continue;
+                        }
+                        push({
+                            type: "qmark",
+                            value: G,
+                            output: H
+                        });
+                        continue;
+                    }
+                    if (G === "!") {
+                        if (u.noextglob !== true && D() === "(") {
+                            if (D(2) !== "?" || !/[!=<:]/.test(D(3))) {
+                                extglobOpen("negate", G);
+                                continue;
+                            }
+                        }
+                        if (u.nonegate !== true && m.index === 0) {
+                            negate();
+                            continue;
+                        }
+                    }
+                    if (G === "+") {
+                        if (u.noextglob !== true && D() === "(" && D(2) !== "?") {
+                            extglobOpen("plus", G);
+                            continue;
+                        }
+                        if (B && B.value === "(" || u.regex === false) {
+                            push({
+                                type: "plus",
+                                value: G,
+                                output: g
+                            });
+                            continue;
+                        }
+                        if (B && (B.type === "bracket" || B.type === "paren" || B.type === "brace") || m.parens > 0) {
+                            push({
+                                type: "plus",
+                                value: G
+                            });
+                            continue;
+                        }
+                        push({
+                            type: "plus",
+                            value: g
+                        });
+                        continue;
+                    }
+                    if (G === "@") {
+                        if (u.noextglob !== true && D() === "(" && D(2) !== "?") {
+                            push({
+                                type: "at",
+                                extglob: true,
+                                value: G,
+                                output: ""
+                            });
+                            continue;
+                        }
+                        push({
+                            type: "text",
+                            value: G
+                        });
+                        continue;
+                    }
+                    if (G !== "*") {
+                        if (G === "$" || G === "^") {
+                            G = `\\${G}`;
+                        }
+                        const t = a.exec(remaining());
+                        if (t) {
+                            G += t[0];
+                            m.index += t[0].length;
+                        }
+                        push({
+                            type: "text",
+                            value: G
+                        });
+                        continue;
+                    }
+                    if (B && (B.type === "globstar" || B.star === true)) {
+                        B.type = "star";
+                        B.star = true;
+                        B.value += G;
+                        B.output = k;
+                        m.backtrack = true;
+                        m.globstar = true;
+                        consume(G);
+                        continue;
+                    }
+                    let e = remaining();
+                    if (u.noextglob !== true && /^\([^?]/.test(e)) {
+                        extglobOpen("star", G);
+                        continue;
+                    }
+                    if (B.type === "star") {
+                        if (u.noglobstar === true) {
+                            consume(G);
+                            continue;
+                        }
+                        const n = B.prev;
+                        const o = n.prev;
+                        const s = n.type === "slash" || n.type === "bos";
+                        const r = o && (o.type === "star" || o.type === "globstar");
+                        if (u.bash === true && (!s || e[0] && e[0] !== "/")) {
+                            push({
+                                type: "star",
+                                value: G,
+                                output: ""
+                            });
+                            continue;
+                        }
+                        const a = m.braces > 0 && (n.type === "comma" || n.type === "brace");
+                        const i = w.length && (n.type === "pipe" || n.type === "paren");
+                        if (!s && n.type !== "paren" && !a && !i) {
+                            push({
+                                type: "star",
+                                value: G,
+                                output: ""
+                            });
+                            continue;
+                        }
+                        while(e.slice(0, 3) === "/**"){
+                            const u = t[m.index + 4];
+                            if (u && u !== "/") {
+                                break;
+                            }
+                            e = e.slice(3);
+                            consume("/**", 3);
+                        }
+                        if (n.type === "bos" && eos()) {
+                            B.type = "globstar";
+                            B.value += G;
+                            B.output = globstar(u);
+                            m.output = B.output;
+                            m.globstar = true;
+                            consume(G);
+                            continue;
+                        }
+                        if (n.type === "slash" && n.prev.type !== "bos" && !r && eos()) {
+                            m.output = m.output.slice(0, -(n.output + B.output).length);
+                            n.output = `(?:${n.output}`;
+                            B.type = "globstar";
+                            B.output = globstar(u) + (u.strictSlashes ? ")" : "|$)");
+                            B.value += G;
+                            m.globstar = true;
+                            m.output += n.output + B.output;
+                            consume(G);
+                            continue;
+                        }
+                        if (n.type === "slash" && n.prev.type !== "bos" && e[0] === "/") {
+                            const t = e[1] !== void 0 ? "|$" : "";
+                            m.output = m.output.slice(0, -(n.output + B.output).length);
+                            n.output = `(?:${n.output}`;
+                            B.type = "globstar";
+                            B.output = `${globstar(u)}${b}|${b}${t})`;
+                            B.value += G;
+                            m.output += n.output + B.output;
+                            m.globstar = true;
+                            consume(G + M());
+                            push({
+                                type: "slash",
+                                value: "/",
+                                output: ""
+                            });
+                            continue;
+                        }
+                        if (n.type === "bos" && e[0] === "/") {
+                            B.type = "globstar";
+                            B.value += G;
+                            B.output = `(?:^|${b}|${globstar(u)}${b})`;
+                            m.output = B.output;
+                            m.globstar = true;
+                            consume(G + M());
+                            push({
+                                type: "slash",
+                                value: "/",
+                                output: ""
+                            });
+                            continue;
+                        }
+                        m.output = m.output.slice(0, -B.output.length);
+                        B.type = "globstar";
+                        B.output = globstar(u);
+                        B.value += G;
+                        m.output += B.output;
+                        m.globstar = true;
+                        consume(G);
+                        continue;
+                    }
+                    const n = {
+                        type: "star",
+                        value: G,
+                        output: k
+                    };
+                    if (u.bash === true) {
+                        n.output = ".*?";
+                        if (B.type === "bos" || B.type === "slash") {
+                            n.output = T + n.output;
+                        }
+                        push(n);
+                        continue;
+                    }
+                    if (B && (B.type === "bracket" || B.type === "paren") && u.regex === true) {
+                        n.output = G;
+                        push(n);
+                        continue;
+                    }
+                    if (m.index === m.start || B.type === "slash" || B.type === "dot") {
+                        if (B.type === "dot") {
+                            m.output += x;
+                            B.output += x;
+                        } else if (u.dot === true) {
+                            m.output += S;
+                            B.output += S;
+                        } else {
+                            m.output += T;
+                            B.output += T;
+                        }
+                        if (D() !== "*") {
+                            m.output += C;
+                            B.output += C;
+                        }
+                    }
+                    push(n);
+                }
+                while(m.brackets > 0){
+                    if (u.strictBrackets === true) throw new SyntaxError(syntaxError("closing", "]"));
+                    m.output = o.escapeLast(m.output, "[");
+                    decrement("brackets");
+                }
+                while(m.parens > 0){
+                    if (u.strictBrackets === true) throw new SyntaxError(syntaxError("closing", ")"));
+                    m.output = o.escapeLast(m.output, "(");
+                    decrement("parens");
+                }
+                while(m.braces > 0){
+                    if (u.strictBrackets === true) throw new SyntaxError(syntaxError("closing", "}"));
+                    m.output = o.escapeLast(m.output, "{");
+                    decrement("braces");
+                }
+                if (u.strictSlashes !== true && (B.type === "star" || B.type === "bracket")) {
+                    push({
+                        type: "maybe_slash",
+                        value: "",
+                        output: `${b}?`
+                    });
+                }
+                if (m.backtrack === true) {
+                    m.output = "";
+                    for (const t of m.tokens){
+                        m.output += t.output != null ? t.output : t.value;
+                        if (t.suffix) {
+                            m.output += t.suffix;
+                        }
+                    }
+                }
+                return m;
+            };
+            parse.fastpaths = (t, e)=>{
+                const u = {
+                    ...e
+                };
+                const r = typeof u.maxLength === "number" ? Math.min(s, u.maxLength) : s;
+                const a = t.length;
+                if (a > r) {
+                    throw new SyntaxError(`Input length: ${a}, exceeds maximum allowed length: ${r}`);
+                }
+                t = c[t] || t;
+                const { DOT_LITERAL: i, SLASH_LITERAL: p, ONE_CHAR: l, DOTS_SLASH: f, NO_DOT: A, NO_DOTS: _, NO_DOTS_SLASH: R, STAR: E, START_ANCHOR: h } = n.globChars(u.windows);
+                const g = u.dot ? _ : A;
+                const b = u.dot ? R : A;
+                const C = u.capture ? "" : "?:";
+                const y = {
+                    negated: false,
+                    prefix: ""
+                };
+                let $ = u.bash === true ? ".*?" : E;
+                if (u.capture) {
+                    $ = `(${$})`;
+                }
+                const globstar = (t)=>{
+                    if (t.noglobstar === true) return $;
+                    return `(${C}(?:(?!${h}${t.dot ? f : i}).)*?)`;
+                };
+                const create = (t)=>{
+                    switch(t){
+                        case "*":
+                            return `${g}${l}${$}`;
+                        case ".*":
+                            return `${i}${l}${$}`;
+                        case "*.*":
+                            return `${g}${$}${i}${l}${$}`;
+                        case "*/*":
+                            return `${g}${$}${p}${l}${b}${$}`;
+                        case "**":
+                            return g + globstar(u);
+                        case "**/*":
+                            return `(?:${g}${globstar(u)}${p})?${b}${l}${$}`;
+                        case "**/*.*":
+                            return `(?:${g}${globstar(u)}${p})?${b}${$}${i}${l}${$}`;
+                        case "**/.*":
+                            return `(?:${g}${globstar(u)}${p})?${i}${l}${$}`;
+                        default:
+                            {
+                                const e = /^(.*?)\.(\w+)$/.exec(t);
+                                if (!e) return;
+                                const u = create(e[1]);
+                                if (!u) return;
+                                return u + i + e[2];
+                            }
+                    }
+                };
+                const x = o.removePrefix(t, y);
+                let S = create(x);
+                if (S && u.strictSlashes !== true) {
+                    S += `${p}?`;
+                }
+                return S;
+            };
+            t.exports = parse;
+        },
+        510: (t, e, u)=>{
+            const n = u(716);
+            const o = u(697);
+            const s = u(96);
+            const r = u(154);
+            const isObject = (t)=>t && typeof t === "object" && !Array.isArray(t);
+            const picomatch = (t, e, u = false)=>{
+                if (Array.isArray(t)) {
+                    const n = t.map((t)=>picomatch(t, e, u));
+                    const arrayMatcher = (t)=>{
+                        for (const e of n){
+                            const u = e(t);
+                            if (u) return u;
+                        }
+                        return false;
+                    };
+                    return arrayMatcher;
+                }
+                const n = isObject(t) && t.tokens && t.input;
+                if (t === "" || typeof t !== "string" && !n) {
+                    throw new TypeError("Expected pattern to be a non-empty string");
+                }
+                const o = e || {};
+                const s = o.windows;
+                const r = n ? picomatch.compileRe(t, e) : picomatch.makeRe(t, e, false, true);
+                const a = r.state;
+                delete r.state;
+                let isIgnored = ()=>false;
+                if (o.ignore) {
+                    const t = {
+                        ...e,
+                        ignore: null,
+                        onMatch: null,
+                        onResult: null
+                    };
+                    isIgnored = picomatch(o.ignore, t, u);
+                }
+                const matcher = (u, n = false)=>{
+                    const { isMatch: i, match: c, output: p } = picomatch.test(u, r, e, {
+                        glob: t,
+                        posix: s
+                    });
+                    const l = {
+                        glob: t,
+                        state: a,
+                        regex: r,
+                        posix: s,
+                        input: u,
+                        output: p,
+                        match: c,
+                        isMatch: i
+                    };
+                    if (typeof o.onResult === "function") {
+                        o.onResult(l);
+                    }
+                    if (i === false) {
+                        l.isMatch = false;
+                        return n ? l : false;
+                    }
+                    if (isIgnored(u)) {
+                        if (typeof o.onIgnore === "function") {
+                            o.onIgnore(l);
+                        }
+                        l.isMatch = false;
+                        return n ? l : false;
+                    }
+                    if (typeof o.onMatch === "function") {
+                        o.onMatch(l);
+                    }
+                    return n ? l : true;
+                };
+                if (u) {
+                    matcher.state = a;
+                }
+                return matcher;
+            };
+            picomatch.test = (t, e, u, { glob: n, posix: o } = {})=>{
+                if (typeof t !== "string") {
+                    throw new TypeError("Expected input to be a string");
+                }
+                if (t === "") {
+                    return {
+                        isMatch: false,
+                        output: ""
+                    };
+                }
+                const r = u || {};
+                const a = r.format || (o ? s.toPosixSlashes : null);
+                let i = t === n;
+                let c = i && a ? a(t) : t;
+                if (i === false) {
+                    c = a ? a(t) : t;
+                    i = c === n;
+                }
+                if (i === false || r.capture === true) {
+                    if (r.matchBase === true || r.basename === true) {
+                        i = picomatch.matchBase(t, e, u, o);
+                    } else {
+                        i = e.exec(c);
+                    }
+                }
+                return {
+                    isMatch: Boolean(i),
+                    match: i,
+                    output: c
+                };
+            };
+            picomatch.matchBase = (t, e, u)=>{
+                const n = e instanceof RegExp ? e : picomatch.makeRe(e, u);
+                return n.test(s.basename(t));
+            };
+            picomatch.isMatch = (t, e, u)=>picomatch(e, u)(t);
+            picomatch.parse = (t, e)=>{
+                if (Array.isArray(t)) return t.map((t)=>picomatch.parse(t, e));
+                return o(t, {
+                    ...e,
+                    fastpaths: false
+                });
+            };
+            picomatch.scan = (t, e)=>n(t, e);
+            picomatch.compileRe = (t, e, u = false, n = false)=>{
+                if (u === true) {
+                    return t.output;
+                }
+                const o = e || {};
+                const s = o.contains ? "" : "^";
+                const r = o.contains ? "" : "$";
+                let a = `${s}(?:${t.output})${r}`;
+                if (t && t.negated === true) {
+                    a = `^(?!${a}).*$`;
+                }
+                const i = picomatch.toRegex(a, e);
+                if (n === true) {
+                    i.state = t;
+                }
+                return i;
+            };
+            picomatch.makeRe = (t, e = {}, u = false, n = false)=>{
+                if (!t || typeof t !== "string") {
+                    throw new TypeError("Expected a non-empty string");
+                }
+                let s = {
+                    negated: false,
+                    fastpaths: true
+                };
+                if (e.fastpaths !== false && (t[0] === "." || t[0] === "*")) {
+                    s.output = o.fastpaths(t, e);
+                }
+                if (!s.output) {
+                    s = o(t, e);
+                }
+                return picomatch.compileRe(s, e, u, n);
+            };
+            picomatch.toRegex = (t, e)=>{
+                try {
+                    const u = e || {};
+                    return new RegExp(t, u.flags || (u.nocase ? "i" : ""));
+                } catch (t) {
+                    if (e && e.debug === true) throw t;
+                    return /$^/;
+                }
+            };
+            picomatch.constants = r;
+            t.exports = picomatch;
+        },
+        716: (t, e, u)=>{
+            const n = u(96);
+            const { CHAR_ASTERISK: o, CHAR_AT: s, CHAR_BACKWARD_SLASH: r, CHAR_COMMA: a, CHAR_DOT: i, CHAR_EXCLAMATION_MARK: c, CHAR_FORWARD_SLASH: p, CHAR_LEFT_CURLY_BRACE: l, CHAR_LEFT_PARENTHESES: f, CHAR_LEFT_SQUARE_BRACKET: A, CHAR_PLUS: _, CHAR_QUESTION_MARK: R, CHAR_RIGHT_CURLY_BRACE: E, CHAR_RIGHT_PARENTHESES: h, CHAR_RIGHT_SQUARE_BRACKET: g } = u(154);
+            const isPathSeparator = (t)=>t === p || t === r;
+            const depth = (t)=>{
+                if (t.isPrefix !== true) {
+                    t.depth = t.isGlobstar ? Infinity : 1;
+                }
+            };
+            const scan = (t, e)=>{
+                const u = e || {};
+                const b = t.length - 1;
+                const C = u.parts === true || u.scanToEnd === true;
+                const y = [];
+                const $ = [];
+                const x = [];
+                let S = t;
+                let H = -1;
+                let v = 0;
+                let d = 0;
+                let L = false;
+                let T = false;
+                let O = false;
+                let k = false;
+                let m = false;
+                let w = false;
+                let N = false;
+                let I = false;
+                let B = false;
+                let G = false;
+                let D = 0;
+                let M;
+                let P;
+                let K = {
+                    value: "",
+                    depth: 0,
+                    isGlob: false
+                };
+                const eos = ()=>H >= b;
+                const peek = ()=>S.charCodeAt(H + 1);
+                const advance = ()=>{
+                    M = P;
+                    return S.charCodeAt(++H);
+                };
+                while(H < b){
+                    P = advance();
+                    let t;
+                    if (P === r) {
+                        N = K.backslashes = true;
+                        P = advance();
+                        if (P === l) {
+                            w = true;
+                        }
+                        continue;
+                    }
+                    if (w === true || P === l) {
+                        D++;
+                        while(eos() !== true && (P = advance())){
+                            if (P === r) {
+                                N = K.backslashes = true;
+                                advance();
+                                continue;
+                            }
+                            if (P === l) {
+                                D++;
+                                continue;
+                            }
+                            if (w !== true && P === i && (P = advance()) === i) {
+                                L = K.isBrace = true;
+                                O = K.isGlob = true;
+                                G = true;
+                                if (C === true) {
+                                    continue;
+                                }
+                                break;
+                            }
+                            if (w !== true && P === a) {
+                                L = K.isBrace = true;
+                                O = K.isGlob = true;
+                                G = true;
+                                if (C === true) {
+                                    continue;
+                                }
+                                break;
+                            }
+                            if (P === E) {
+                                D--;
+                                if (D === 0) {
+                                    w = false;
+                                    L = K.isBrace = true;
+                                    G = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if (C === true) {
+                            continue;
+                        }
+                        break;
+                    }
+                    if (P === p) {
+                        y.push(H);
+                        $.push(K);
+                        K = {
+                            value: "",
+                            depth: 0,
+                            isGlob: false
+                        };
+                        if (G === true) continue;
+                        if (M === i && H === v + 1) {
+                            v += 2;
+                            continue;
+                        }
+                        d = H + 1;
+                        continue;
+                    }
+                    if (u.noext !== true) {
+                        const t = P === _ || P === s || P === o || P === R || P === c;
+                        if (t === true && peek() === f) {
+                            O = K.isGlob = true;
+                            k = K.isExtglob = true;
+                            G = true;
+                            if (P === c && H === v) {
+                                B = true;
+                            }
+                            if (C === true) {
+                                while(eos() !== true && (P = advance())){
+                                    if (P === r) {
+                                        N = K.backslashes = true;
+                                        P = advance();
+                                        continue;
+                                    }
+                                    if (P === h) {
+                                        O = K.isGlob = true;
+                                        G = true;
+                                        break;
+                                    }
+                                }
+                                continue;
+                            }
+                            break;
+                        }
+                    }
+                    if (P === o) {
+                        if (M === o) m = K.isGlobstar = true;
+                        O = K.isGlob = true;
+                        G = true;
+                        if (C === true) {
+                            continue;
+                        }
+                        break;
+                    }
+                    if (P === R) {
+                        O = K.isGlob = true;
+                        G = true;
+                        if (C === true) {
+                            continue;
+                        }
+                        break;
+                    }
+                    if (P === A) {
+                        while(eos() !== true && (t = advance())){
+                            if (t === r) {
+                                N = K.backslashes = true;
+                                advance();
+                                continue;
+                            }
+                            if (t === g) {
+                                T = K.isBracket = true;
+                                O = K.isGlob = true;
+                                G = true;
+                                break;
+                            }
+                        }
+                        if (C === true) {
+                            continue;
+                        }
+                        break;
+                    }
+                    if (u.nonegate !== true && P === c && H === v) {
+                        I = K.negated = true;
+                        v++;
+                        continue;
+                    }
+                    if (u.noparen !== true && P === f) {
+                        O = K.isGlob = true;
+                        if (C === true) {
+                            while(eos() !== true && (P = advance())){
+                                if (P === f) {
+                                    N = K.backslashes = true;
+                                    P = advance();
+                                    continue;
+                                }
+                                if (P === h) {
+                                    G = true;
+                                    break;
+                                }
+                            }
+                            continue;
+                        }
+                        break;
+                    }
+                    if (O === true) {
+                        G = true;
+                        if (C === true) {
+                            continue;
+                        }
+                        break;
+                    }
+                }
+                if (u.noext === true) {
+                    k = false;
+                    O = false;
+                }
+                let U = S;
+                let X = "";
+                let F = "";
+                if (v > 0) {
+                    X = S.slice(0, v);
+                    S = S.slice(v);
+                    d -= v;
+                }
+                if (U && O === true && d > 0) {
+                    U = S.slice(0, d);
+                    F = S.slice(d);
+                } else if (O === true) {
+                    U = "";
+                    F = S;
+                } else {
+                    U = S;
+                }
+                if (U && U !== "" && U !== "/" && U !== S) {
+                    if (isPathSeparator(U.charCodeAt(U.length - 1))) {
+                        U = U.slice(0, -1);
+                    }
+                }
+                if (u.unescape === true) {
+                    if (F) F = n.removeBackslashes(F);
+                    if (U && N === true) {
+                        U = n.removeBackslashes(U);
+                    }
+                }
+                const Q = {
+                    prefix: X,
+                    input: t,
+                    start: v,
+                    base: U,
+                    glob: F,
+                    isBrace: L,
+                    isBracket: T,
+                    isGlob: O,
+                    isExtglob: k,
+                    isGlobstar: m,
+                    negated: I,
+                    negatedExtglob: B
+                };
+                if (u.tokens === true) {
+                    Q.maxDepth = 0;
+                    if (!isPathSeparator(P)) {
+                        $.push(K);
+                    }
+                    Q.tokens = $;
+                }
+                if (u.parts === true || u.tokens === true) {
+                    let e;
+                    for(let n = 0; n < y.length; n++){
+                        const o = e ? e + 1 : v;
+                        const s = y[n];
+                        const r = t.slice(o, s);
+                        if (u.tokens) {
+                            if (n === 0 && v !== 0) {
+                                $[n].isPrefix = true;
+                                $[n].value = X;
+                            } else {
+                                $[n].value = r;
+                            }
+                            depth($[n]);
+                            Q.maxDepth += $[n].depth;
+                        }
+                        if (n !== 0 || r !== "") {
+                            x.push(r);
+                        }
+                        e = s;
+                    }
+                    if (e && e + 1 < t.length) {
+                        const n = t.slice(e + 1);
+                        x.push(n);
+                        if (u.tokens) {
+                            $[$.length - 1].value = n;
+                            depth($[$.length - 1]);
+                            Q.maxDepth += $[$.length - 1].depth;
+                        }
+                    }
+                    Q.slashes = y;
+                    Q.parts = x;
+                }
+                return Q;
+            };
+            t.exports = scan;
+        },
+        96: (t, e, u)=>{
+            const { REGEX_BACKSLASH: n, REGEX_REMOVE_BACKSLASH: o, REGEX_SPECIAL_CHARS: s, REGEX_SPECIAL_CHARS_GLOBAL: r } = u(154);
+            e.isObject = (t)=>t !== null && typeof t === "object" && !Array.isArray(t);
+            e.hasRegexChars = (t)=>s.test(t);
+            e.isRegexChar = (t)=>t.length === 1 && e.hasRegexChars(t);
+            e.escapeRegex = (t)=>t.replace(r, "\\$1");
+            e.toPosixSlashes = (t)=>t.replace(n, "/");
+            e.removeBackslashes = (t)=>t.replace(o, (t)=>t === "\\" ? "" : t);
+            e.escapeLast = (t, u, n)=>{
+                const o = t.lastIndexOf(u, n);
+                if (o === -1) return t;
+                if (t[o - 1] === "\\") return e.escapeLast(t, u, o - 1);
+                return `${t.slice(0, o)}\\${t.slice(o)}`;
+            };
+            e.removePrefix = (t, e = {})=>{
+                let u = t;
+                if (u.startsWith("./")) {
+                    u = u.slice(2);
+                    e.prefix = "./";
+                }
+                return u;
+            };
+            e.wrapOutput = (t, e = {}, u = {})=>{
+                const n = u.contains ? "" : "^";
+                const o = u.contains ? "" : "$";
+                let s = `${n}(?:${t})${o}`;
+                if (e.negated === true) {
+                    s = `(?:^(?!${s}).*$)`;
+                }
+                return s;
+            };
+            e.basename = (t, { windows: e } = {})=>{
+                const u = t.split(e ? /[\\/]/ : "/");
+                const n = u[u.length - 1];
+                if (n === "") {
+                    return u[u.length - 2];
+                }
+                return n;
+            };
+        }
+    };
+    var e = {};
+    function __nccwpck_require__(u) {
+        var n = e[u];
+        if (n !== undefined) {
+            return n.exports;
+        }
+        var o = e[u] = {
+            exports: {}
+        };
+        var s = true;
+        try {
+            t[u](o, o.exports, __nccwpck_require__);
+            s = false;
+        } finally{
+            if (s) delete e[u];
+        }
+        return o.exports;
+    }
+    if (typeof __nccwpck_require__ !== "undefined") __nccwpck_require__.ab = ("TURBOPACK compile-time value", "/ROOT/Desktop/kidcoin-proj/client/src/node_modules/next/dist/compiled/picomatch") + "/";
+    var u = __nccwpck_require__(170);
+    module.exports = u;
+})();
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/match-local-pattern.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+0 && (module.exports = {
+    hasLocalMatch: null,
+    matchLocalPattern: null
+});
+function _export(target, all) {
+    for(var name in all)Object.defineProperty(target, name, {
+        enumerable: true,
+        get: all[name]
+    });
+}
+_export(exports, {
+    hasLocalMatch: function() {
+        return hasLocalMatch;
+    },
+    matchLocalPattern: function() {
+        return matchLocalPattern;
+    }
+});
+const _picomatch = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/compiled/picomatch/index.js [app-ssr] (ecmascript)");
+function matchLocalPattern(pattern, url) {
+    if (pattern.search !== undefined) {
+        if (pattern.search !== url.search) {
+            return false;
+        }
+    }
+    if (!(0, _picomatch.makeRe)(pattern.pathname ?? '**', {
+        dot: true
+    }).test(url.pathname)) {
+        return false;
+    }
+    return true;
+}
+function hasLocalMatch(localPatterns, urlPathAndQuery) {
+    if (!localPatterns) {
+        // if the user didn't define "localPatterns", we allow all local images
+        return true;
+    }
+    const url = new URL(urlPathAndQuery, 'http://n');
+    return localPatterns.some((p)=>matchLocalPattern(p, url));
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/match-remote-pattern.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+0 && (module.exports = {
+    hasRemoteMatch: null,
+    matchRemotePattern: null
+});
+function _export(target, all) {
+    for(var name in all)Object.defineProperty(target, name, {
+        enumerable: true,
+        get: all[name]
+    });
+}
+_export(exports, {
+    hasRemoteMatch: function() {
+        return hasRemoteMatch;
+    },
+    matchRemotePattern: function() {
+        return matchRemotePattern;
+    }
+});
+const _picomatch = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/compiled/picomatch/index.js [app-ssr] (ecmascript)");
+function matchRemotePattern(pattern, url) {
+    if (pattern.protocol !== undefined) {
+        if (pattern.protocol.replace(/:$/, '') !== url.protocol.replace(/:$/, '')) {
+            return false;
+        }
+    }
+    if (pattern.port !== undefined) {
+        if (pattern.port !== url.port) {
+            return false;
+        }
+    }
+    if (pattern.hostname === undefined) {
+        throw Object.defineProperty(new Error(`Pattern should define hostname but found\n${JSON.stringify(pattern)}`), "__NEXT_ERROR_CODE", {
+            value: "E410",
+            enumerable: false,
+            configurable: true
+        });
+    } else {
+        if (!(0, _picomatch.makeRe)(pattern.hostname).test(url.hostname)) {
+            return false;
+        }
+    }
+    if (pattern.search !== undefined) {
+        if (pattern.search !== url.search) {
+            return false;
+        }
+    }
+    // Should be the same as writeImagesManifest()
+    if (!(0, _picomatch.makeRe)(pattern.pathname ?? '**', {
+        dot: true
+    }).test(url.pathname)) {
+        return false;
+    }
+    return true;
+}
+function hasRemoteMatch(domains, remotePatterns, url) {
+    return domains.some((domain)=>url.hostname === domain) || remotePatterns.some((p)=>matchRemotePattern(p, url));
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/image-loader.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+Object.defineProperty(exports, "default", {
+    enumerable: true,
+    get: function() {
+        return _default;
+    }
+});
+const _findclosestquality = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/find-closest-quality.js [app-ssr] (ecmascript)");
+const _deploymentid = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/deployment-id.js [app-ssr] (ecmascript)");
+function defaultLoader({ config, src, width, quality }) {
+    if ("TURBOPACK compile-time truthy", 1) {
+        const missingValues = [];
+        // these should always be provided but make sure they are
+        if (!src) missingValues.push('src');
+        if (!width) missingValues.push('width');
+        if (missingValues.length > 0) {
+            throw Object.defineProperty(new Error(`Next Image Optimization requires ${missingValues.join(', ')} to be provided. Make sure you pass them as props to the \`next/image\` component. Received: ${JSON.stringify({
+                src,
+                width,
+                quality
+            })}`), "__NEXT_ERROR_CODE", {
+                value: "E188",
+                enumerable: false,
+                configurable: true
+            });
+        }
+    }
+    // Extract dpl parameter early so validation uses the clean URL.
+    // If a immutable asset token should be used, it was already added as a query parameter and will
+    // be extracted and reused here.
+    let deploymentId = (0, _deploymentid.getDeploymentId)();
+    if (src.startsWith('/') && !src.startsWith('//')) {
+        // We unfortunately can't easily use `new URL()` here, because it normalizes the URL which causes
+        // double-encoding with the `encodeURIComponent(src)` below
+        const qIndex = src.indexOf('?');
+        if (qIndex !== -1) {
+            const params = new URLSearchParams(src.slice(qIndex + 1));
+            const srcDpl = params.get('dpl');
+            if (srcDpl) {
+                deploymentId = srcDpl;
+                params.delete('dpl');
+                const remaining = params.toString();
+                src = src.slice(0, qIndex) + (remaining ? '?' + remaining : '');
+            }
+        }
+    }
+    if (src.startsWith('/') && src.includes('?') && config.localPatterns?.length === 1 && config.localPatterns[0].pathname === '**' && config.localPatterns[0].search === '') {
+        throw Object.defineProperty(new Error(`Image with src "${src}" is using a query string which is not configured in images.localPatterns.` + `\nRead more: https://nextjs.org/docs/messages/next-image-unconfigured-localpatterns`), "__NEXT_ERROR_CODE", {
+            value: "E871",
+            enumerable: false,
+            configurable: true
+        });
+    }
+    if ("TURBOPACK compile-time truthy", 1) {
+        if (src.startsWith('//')) {
+            throw Object.defineProperty(new Error(`Failed to parse src "${src}" on \`next/image\`, protocol-relative URL (//) must be changed to an absolute URL (http:// or https://)`), "__NEXT_ERROR_CODE", {
+                value: "E360",
+                enumerable: false,
+                configurable: true
+            });
+        }
+        if (src.startsWith('/') && config.localPatterns) {
+            if ("TURBOPACK compile-time truthy", 1) {
+                // We use dynamic require because this should only error in development
+                const { hasLocalMatch } = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/match-local-pattern.js [app-ssr] (ecmascript)");
+                if (!hasLocalMatch(config.localPatterns, src)) {
+                    throw Object.defineProperty(new Error(`Invalid src prop (${src}) on \`next/image\` does not match \`images.localPatterns\` configured in your \`next.config.js\`\n` + `See more info: https://nextjs.org/docs/messages/next-image-unconfigured-localpatterns`), "__NEXT_ERROR_CODE", {
+                        value: "E426",
+                        enumerable: false,
+                        configurable: true
+                    });
+                }
+            }
+        }
+        if (!src.startsWith('/') && (config.domains || config.remotePatterns)) {
+            let parsedSrc;
+            try {
+                parsedSrc = new URL(src);
+            } catch (err) {
+                console.error(err);
+                throw Object.defineProperty(new Error(`Failed to parse src "${src}" on \`next/image\`, if using relative image it must start with a leading slash "/" or be an absolute URL (http:// or https://)`), "__NEXT_ERROR_CODE", {
+                    value: "E63",
+                    enumerable: false,
+                    configurable: true
+                });
+            }
+            if ("TURBOPACK compile-time truthy", 1) {
+                // We use dynamic require because this should only error in development
+                const { hasRemoteMatch } = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/match-remote-pattern.js [app-ssr] (ecmascript)");
+                if (!hasRemoteMatch(config.domains, config.remotePatterns, parsedSrc)) {
+                    throw Object.defineProperty(new Error(`Invalid src prop (${src}) on \`next/image\`, hostname "${parsedSrc.hostname}" is not configured under images in your \`next.config.js\`\n` + `See more info: https://nextjs.org/docs/messages/next-image-unconfigured-host`), "__NEXT_ERROR_CODE", {
+                        value: "E231",
+                        enumerable: false,
+                        configurable: true
+                    });
+                }
+            }
+        }
+    }
+    const q = (0, _findclosestquality.findClosestQuality)(quality, config);
+    return `${config.path}?url=${encodeURIComponent(src)}&w=${width}&q=${q}${src.startsWith('/') && deploymentId ? `&dpl=${deploymentId}` : ''}`;
+}
+// We use this to determine if the import is the default loader
+// or a custom loader defined by the user in next.config.js
+defaultLoader.__next_img_default = true;
+const _default = defaultLoader;
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/use-merged-ref.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+Object.defineProperty(exports, "useMergedRef", {
+    enumerable: true,
+    get: function() {
+        return useMergedRef;
+    }
+});
+const _react = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+function useMergedRef(refA, refB) {
+    const cleanupA = (0, _react.useRef)(null);
+    const cleanupB = (0, _react.useRef)(null);
+    // NOTE: In theory, we could skip the wrapping if only one of the refs is non-null.
+    // (this happens often if the user doesn't pass a ref to Link/Form/Image)
+    // But this can cause us to leak a cleanup-ref into user code (previously via `<Link legacyBehavior>`),
+    // and the user might pass that ref into ref-merging library that doesn't support cleanup refs
+    // (because it hasn't been updated for React 19)
+    // which can then cause things to blow up, because a cleanup-returning ref gets called with `null`.
+    // So in practice, it's safer to be defensive and always wrap the ref, even on React 19.
+    return (0, _react.useCallback)((current)=>{
+        if (current === null) {
+            const cleanupFnA = cleanupA.current;
+            if (cleanupFnA) {
+                cleanupA.current = null;
+                cleanupFnA();
+            }
+            const cleanupFnB = cleanupB.current;
+            if (cleanupFnB) {
+                cleanupB.current = null;
+                cleanupFnB();
+            }
+        } else {
+            if (refA) {
+                cleanupA.current = applyRef(refA, current);
+            }
+            if (refB) {
+                cleanupB.current = applyRef(refB, current);
+            }
+        }
+    }, [
+        refA,
+        refB
+    ]);
+}
+function applyRef(refA, current) {
+    if (typeof refA === 'function') {
+        const cleanup = refA(current);
+        if (typeof cleanup === 'function') {
+            return cleanup;
+        } else {
+            return ()=>refA(null);
+        }
+    } else {
+        refA.current = current;
+        return ()=>{
+            refA.current = null;
+        };
+    }
+}
+if ((typeof exports.default === 'function' || typeof exports.default === 'object' && exports.default !== null) && typeof exports.default.__esModule === 'undefined') {
+    Object.defineProperty(exports.default, '__esModule', {
+        value: true
+    });
+    Object.assign(exports.default, exports);
+    module.exports = exports.default;
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/image-component.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+Object.defineProperty(exports, "Image", {
+    enumerable: true,
+    get: function() {
+        return Image;
+    }
+});
+const _interop_require_default = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/node_modules/@swc/helpers/cjs/_interop_require_default.cjs [app-ssr] (ecmascript)");
+const _interop_require_wildcard = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/node_modules/@swc/helpers/cjs/_interop_require_wildcard.cjs [app-ssr] (ecmascript)");
+const _jsxruntime = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-runtime.js [app-ssr] (ecmascript)");
+const _react = /*#__PURE__*/ _interop_require_wildcard._(__turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)"));
+const _reactdom = /*#__PURE__*/ _interop_require_default._(__turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-dom.js [app-ssr] (ecmascript)"));
+const _head = /*#__PURE__*/ _interop_require_default._(__turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/head.js [app-ssr] (ecmascript)"));
+const _getimgprops = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/get-img-props.js [app-ssr] (ecmascript)");
+const _imageconfig = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/image-config.js [app-ssr] (ecmascript)");
+const _imageconfigcontextsharedruntime = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/contexts/image-config-context.js [app-ssr] (ecmascript)");
+const _warnonce = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/utils/warn-once.js [app-ssr] (ecmascript)");
+const _routercontextsharedruntime = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/contexts/router-context.js [app-ssr] (ecmascript)");
+const _imageloader = /*#__PURE__*/ _interop_require_default._(__turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/image-loader.js [app-ssr] (ecmascript)"));
+const _usemergedref = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/use-merged-ref.js [app-ssr] (ecmascript)");
+// This is replaced by webpack define plugin
+const configEnv = ("TURBOPACK compile-time value", {
+    "deviceSizes": ("TURBOPACK compile-time value", [
+        ("TURBOPACK compile-time value", 640),
+        ("TURBOPACK compile-time value", 750),
+        ("TURBOPACK compile-time value", 828),
+        ("TURBOPACK compile-time value", 1080),
+        ("TURBOPACK compile-time value", 1200),
+        ("TURBOPACK compile-time value", 1920),
+        ("TURBOPACK compile-time value", 2048),
+        ("TURBOPACK compile-time value", 3840)
+    ]),
+    "imageSizes": ("TURBOPACK compile-time value", [
+        ("TURBOPACK compile-time value", 32),
+        ("TURBOPACK compile-time value", 48),
+        ("TURBOPACK compile-time value", 64),
+        ("TURBOPACK compile-time value", 96),
+        ("TURBOPACK compile-time value", 128),
+        ("TURBOPACK compile-time value", 256),
+        ("TURBOPACK compile-time value", 384)
+    ]),
+    "qualities": ("TURBOPACK compile-time value", [
+        ("TURBOPACK compile-time value", 75)
+    ]),
+    "path": ("TURBOPACK compile-time value", "/_next/image"),
+    "loader": ("TURBOPACK compile-time value", "default"),
+    "dangerouslyAllowSVG": ("TURBOPACK compile-time value", false),
+    "unoptimized": ("TURBOPACK compile-time value", false),
+    "domains": ("TURBOPACK compile-time value", []),
+    "remotePatterns": ("TURBOPACK compile-time value", []),
+    "localPatterns": ("TURBOPACK compile-time value", [
+        ("TURBOPACK compile-time value", {
+            "pathname": ("TURBOPACK compile-time value", "**"),
+            "search": ("TURBOPACK compile-time value", "")
+        })
+    ])
+});
+if ("TURBOPACK compile-time truthy", 1) {
+    ;
+    globalThis.__NEXT_IMAGE_IMPORTED = true;
+}
+// See https://stackoverflow.com/q/39777833/266535 for why we use this ref
+// handler instead of the img's onLoad attribute.
+function handleLoading(img, placeholder, onLoadRef, onLoadingCompleteRef, setBlurComplete, unoptimized, sizesInput) {
+    const src = img?.src;
+    if (!img || img['data-loaded-src'] === src) {
+        return;
+    }
+    img['data-loaded-src'] = src;
+    const p = 'decode' in img ? img.decode() : Promise.resolve();
+    p.catch(()=>{}).then(()=>{
+        if (!img.parentElement || !img.isConnected) {
+            // Exit early in case of race condition:
+            // - onload() is called
+            // - decode() is called but incomplete
+            // - unmount is called
+            // - decode() completes
+            return;
+        }
+        if (placeholder !== 'empty') {
+            setBlurComplete(true);
+        }
+        if (onLoadRef?.current) {
+            // Since we don't have the SyntheticEvent here,
+            // we must create one with the same shape.
+            // See https://reactjs.org/docs/events.html
+            const event = new Event('load');
+            Object.defineProperty(event, 'target', {
+                writable: false,
+                value: img
+            });
+            let prevented = false;
+            let stopped = false;
+            onLoadRef.current({
+                ...event,
+                nativeEvent: event,
+                currentTarget: img,
+                target: img,
+                isDefaultPrevented: ()=>prevented,
+                isPropagationStopped: ()=>stopped,
+                persist: ()=>{},
+                preventDefault: ()=>{
+                    prevented = true;
+                    event.preventDefault();
+                },
+                stopPropagation: ()=>{
+                    stopped = true;
+                    event.stopPropagation();
+                }
+            });
+        }
+        if (onLoadingCompleteRef?.current) {
+            onLoadingCompleteRef.current(img);
+        }
+        if ("TURBOPACK compile-time truthy", 1) {
+            const origSrc = new URL(src, 'http://n').searchParams.get('url') || src;
+            if (img.getAttribute('data-nimg') === 'fill') {
+                if (!unoptimized && (!sizesInput || sizesInput === '100vw')) {
+                    let widthViewportRatio = img.getBoundingClientRect().width / window.innerWidth;
+                    if (widthViewportRatio < 0.6) {
+                        if (sizesInput === '100vw') {
+                            (0, _warnonce.warnOnce)(`Image with src "${origSrc}" has "fill" prop and "sizes" prop of "100vw", but image is not rendered at full viewport width. Please adjust "sizes" to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes`);
+                        } else {
+                            (0, _warnonce.warnOnce)(`Image with src "${origSrc}" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes`);
+                        }
+                    }
+                }
+                if (img.parentElement) {
+                    const { position } = window.getComputedStyle(img.parentElement);
+                    const valid = [
+                        'absolute',
+                        'fixed',
+                        'relative'
+                    ];
+                    if (!valid.includes(position)) {
+                        (0, _warnonce.warnOnce)(`Image with src "${origSrc}" has "fill" and parent element with invalid "position". Provided "${position}" should be one of ${valid.map(String).join(',')}.`);
+                    }
+                }
+                if (img.height === 0) {
+                    (0, _warnonce.warnOnce)(`Image with src "${origSrc}" has "fill" and a height value of 0. This is likely because the parent element of the image has not been styled to have a set height.`);
+                }
+            }
+            const heightModified = img.height.toString() !== img.getAttribute('height');
+            const widthModified = img.width.toString() !== img.getAttribute('width');
+            if (heightModified && !widthModified || !heightModified && widthModified) {
+                (0, _warnonce.warnOnce)(`Image with src "${origSrc}" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.`);
+            }
+        }
+    });
+}
+function getDynamicProps(fetchPriority) {
+    if (Boolean(_react.use)) {
+        // In React 19.0.0 or newer, we must use camelCase
+        // prop to avoid "Warning: Invalid DOM property".
+        // See https://github.com/facebook/react/pull/25927
+        return {
+            fetchPriority
+        };
+    }
+    // In React 18.2.0 or older, we must use lowercase prop
+    // to avoid "Warning: Invalid DOM property".
+    return {
+        fetchpriority: fetchPriority
+    };
+}
+const ImageElement = /*#__PURE__*/ (0, _react.forwardRef)(({ src, srcSet, sizes, height, width, decoding, className, style, fetchPriority, placeholder, loading, unoptimized, fill, onLoadRef, onLoadingCompleteRef, setBlurComplete, setShowAltText, sizesInput, onLoad, onError, ...rest }, forwardedRef)=>{
+    const ownRef = (0, _react.useCallback)((img)=>{
+        if (!img) {
+            return;
+        }
+        if (onError) {
+            // If the image has an error before react hydrates, then the error is lost.
+            // The workaround is to wait until the image is mounted which is after hydration,
+            // then we set the src again to trigger the error handler (if there was an error).
+            // eslint-disable-next-line no-self-assign
+            img.src = img.src;
+        }
+        if ("TURBOPACK compile-time truthy", 1) {
+            if (!src) {
+                console.error(`Image is missing required "src" property:`, img);
+            }
+            if (img.getAttribute('alt') === null) {
+                console.error(`Image is missing required "alt" property. Please add Alternative Text to describe the image for screen readers and search engines.`);
+            }
+        }
+        if (img.complete) {
+            handleLoading(img, placeholder, onLoadRef, onLoadingCompleteRef, setBlurComplete, unoptimized, sizesInput);
+        }
+    }, [
+        src,
+        placeholder,
+        onLoadRef,
+        onLoadingCompleteRef,
+        setBlurComplete,
+        onError,
+        unoptimized,
+        sizesInput
+    ]);
+    const ref = (0, _usemergedref.useMergedRef)(forwardedRef, ownRef);
+    return /*#__PURE__*/ (0, _jsxruntime.jsx)("img", {
+        ...rest,
+        ...getDynamicProps(fetchPriority),
+        // It's intended to keep `loading` before `src` because React updates
+        // props in order which causes Safari/Firefox to not lazy load properly.
+        // See https://github.com/facebook/react/issues/25883
+        loading: loading,
+        width: width,
+        height: height,
+        decoding: decoding,
+        "data-nimg": fill ? 'fill' : '1',
+        className: className,
+        style: style,
+        // It's intended to keep `src` the last attribute because React updates
+        // attributes in order. If we keep `src` the first one, Safari will
+        // immediately start to fetch `src`, before `sizes` and `srcSet` are even
+        // updated by React. That causes multiple unnecessary requests if `srcSet`
+        // and `sizes` are defined.
+        // This bug cannot be reproduced in Chrome or Firefox.
+        sizes: sizes,
+        srcSet: srcSet,
+        src: src,
+        ref: ref,
+        onLoad: (event)=>{
+            const img = event.currentTarget;
+            handleLoading(img, placeholder, onLoadRef, onLoadingCompleteRef, setBlurComplete, unoptimized, sizesInput);
+        },
+        onError: (event)=>{
+            // if the real image fails to load, this will ensure "alt" is visible
+            setShowAltText(true);
+            if (placeholder !== 'empty') {
+                // If the real image fails to load, this will still remove the placeholder.
+                setBlurComplete(true);
+            }
+            if (onError) {
+                onError(event);
+            }
+        }
+    });
+});
+function ImagePreload({ isAppRouter, imgAttributes }) {
+    const opts = {
+        as: 'image',
+        imageSrcSet: imgAttributes.srcSet,
+        imageSizes: imgAttributes.sizes,
+        crossOrigin: imgAttributes.crossOrigin,
+        referrerPolicy: imgAttributes.referrerPolicy,
+        ...getDynamicProps(imgAttributes.fetchPriority)
+    };
+    if (isAppRouter && _reactdom.default.preload) {
+        _reactdom.default.preload(imgAttributes.src, opts);
+        return null;
+    }
+    return /*#__PURE__*/ (0, _jsxruntime.jsx)(_head.default, {
+        children: /*#__PURE__*/ (0, _jsxruntime.jsx)("link", {
+            rel: "preload",
+            // Note how we omit the `href` attribute, as it would only be relevant
+            // for browsers that do not support `imagesrcset`, and in those cases
+            // it would cause the incorrect image to be preloaded.
+            //
+            // https://html.spec.whatwg.org/multipage/semantics.html#attr-link-imagesrcset
+            href: imgAttributes.srcSet ? undefined : imgAttributes.src,
+            ...opts
+        }, '__nimg-' + imgAttributes.src + imgAttributes.srcSet + imgAttributes.sizes)
+    });
+}
+const Image = /*#__PURE__*/ (0, _react.forwardRef)((props, forwardedRef)=>{
+    const pagesRouter = (0, _react.useContext)(_routercontextsharedruntime.RouterContext);
+    // We're in the app directory if there is no pages router.
+    const isAppRouter = !pagesRouter;
+    const configContext = (0, _react.useContext)(_imageconfigcontextsharedruntime.ImageConfigContext);
+    const config = (0, _react.useMemo)(()=>{
+        const c = configEnv || configContext || _imageconfig.imageConfigDefault;
+        const allSizes = [
+            ...c.deviceSizes,
+            ...c.imageSizes
+        ].sort((a, b)=>a - b);
+        const deviceSizes = c.deviceSizes.sort((a, b)=>a - b);
+        const qualities = c.qualities?.sort((a, b)=>a - b);
+        return {
+            ...c,
+            allSizes,
+            deviceSizes,
+            qualities,
+            // During the SSR, configEnv (__NEXT_IMAGE_OPTS) does not include
+            // security sensitive configs like `localPatterns`, which is needed
+            // during the server render to ensure it's validated. Therefore use
+            // configContext, which holds the config from the server for validation.
+            localPatterns: ("TURBOPACK compile-time truthy", 1) ? configContext?.localPatterns : "TURBOPACK unreachable"
+        };
+    }, [
+        configContext
+    ]);
+    const { onLoad, onLoadingComplete } = props;
+    const onLoadRef = (0, _react.useRef)(onLoad);
+    (0, _react.useEffect)(()=>{
+        onLoadRef.current = onLoad;
+    }, [
+        onLoad
+    ]);
+    const onLoadingCompleteRef = (0, _react.useRef)(onLoadingComplete);
+    (0, _react.useEffect)(()=>{
+        onLoadingCompleteRef.current = onLoadingComplete;
+    }, [
+        onLoadingComplete
+    ]);
+    const [blurComplete, setBlurComplete] = (0, _react.useState)(false);
+    const [showAltText, setShowAltText] = (0, _react.useState)(false);
+    const { props: imgAttributes, meta: imgMeta } = (0, _getimgprops.getImgProps)(props, {
+        defaultLoader: _imageloader.default,
+        imgConf: config,
+        blurComplete,
+        showAltText
+    });
+    return /*#__PURE__*/ (0, _jsxruntime.jsxs)(_jsxruntime.Fragment, {
+        children: [
+            /*#__PURE__*/ (0, _jsxruntime.jsx)(ImageElement, {
+                ...imgAttributes,
+                unoptimized: imgMeta.unoptimized,
+                placeholder: imgMeta.placeholder,
+                fill: imgMeta.fill,
+                onLoadRef: onLoadRef,
+                onLoadingCompleteRef: onLoadingCompleteRef,
+                setBlurComplete: setBlurComplete,
+                setShowAltText: setShowAltText,
+                sizesInput: props.sizes,
+                ref: forwardedRef
+            }),
+            imgMeta.preload ? /*#__PURE__*/ (0, _jsxruntime.jsx)(ImagePreload, {
+                isAppRouter: isAppRouter,
+                imgAttributes: imgAttributes
+            }) : null
+        ]
+    });
+});
+if ((typeof exports.default === 'function' || typeof exports.default === 'object' && exports.default !== null) && typeof exports.default.__esModule === 'undefined') {
+    Object.defineProperty(exports.default, '__esModule', {
+        value: true
+    });
+    Object.assign(exports.default, exports);
+    module.exports = exports.default;
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/image-external.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+0 && (module.exports = {
+    default: null,
+    getImageProps: null
+});
+function _export(target, all) {
+    for(var name in all)Object.defineProperty(target, name, {
+        enumerable: true,
+        get: all[name]
+    });
+}
+_export(exports, {
+    default: function() {
+        return _default;
+    },
+    getImageProps: function() {
+        return getImageProps;
+    }
+});
+const _interop_require_default = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/node_modules/@swc/helpers/cjs/_interop_require_default.cjs [app-ssr] (ecmascript)");
+const _getimgprops = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/get-img-props.js [app-ssr] (ecmascript)");
+const _imagecomponent = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/client/image-component.js [app-ssr] (ecmascript)");
+const _imageloader = /*#__PURE__*/ _interop_require_default._(__turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/image-loader.js [app-ssr] (ecmascript)"));
+function getImageProps(imgProps) {
+    const { props } = (0, _getimgprops.getImgProps)(imgProps, {
+        defaultLoader: _imageloader.default,
+        // This is replaced by webpack define plugin
+        imgConf: ("TURBOPACK compile-time value", {
+            "deviceSizes": ("TURBOPACK compile-time value", [
+                ("TURBOPACK compile-time value", 640),
+                ("TURBOPACK compile-time value", 750),
+                ("TURBOPACK compile-time value", 828),
+                ("TURBOPACK compile-time value", 1080),
+                ("TURBOPACK compile-time value", 1200),
+                ("TURBOPACK compile-time value", 1920),
+                ("TURBOPACK compile-time value", 2048),
+                ("TURBOPACK compile-time value", 3840)
+            ]),
+            "imageSizes": ("TURBOPACK compile-time value", [
+                ("TURBOPACK compile-time value", 32),
+                ("TURBOPACK compile-time value", 48),
+                ("TURBOPACK compile-time value", 64),
+                ("TURBOPACK compile-time value", 96),
+                ("TURBOPACK compile-time value", 128),
+                ("TURBOPACK compile-time value", 256),
+                ("TURBOPACK compile-time value", 384)
+            ]),
+            "qualities": ("TURBOPACK compile-time value", [
+                ("TURBOPACK compile-time value", 75)
+            ]),
+            "path": ("TURBOPACK compile-time value", "/_next/image"),
+            "loader": ("TURBOPACK compile-time value", "default"),
+            "dangerouslyAllowSVG": ("TURBOPACK compile-time value", false),
+            "unoptimized": ("TURBOPACK compile-time value", false),
+            "domains": ("TURBOPACK compile-time value", []),
+            "remotePatterns": ("TURBOPACK compile-time value", []),
+            "localPatterns": ("TURBOPACK compile-time value", [
+                ("TURBOPACK compile-time value", {
+                    "pathname": ("TURBOPACK compile-time value", "**"),
+                    "search": ("TURBOPACK compile-time value", "")
+                })
+            ])
+        })
+    });
+    // Normally we don't care about undefined props because we pass to JSX,
+    // but this exported function could be used by the end user for anything
+    // so we delete undefined props to clean it up a little.
+    for (const [key, value] of Object.entries(props)){
+        if (value === undefined) {
+            delete props[key];
+        }
+    }
+    return {
+        props
+    };
+}
+const _default = _imagecomponent.Image;
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/next/image.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+
+module.exports = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/shared/lib/image-external.js [app-ssr] (ecmascript)");
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/node_modules/classnames/index.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+
+/*!
+	Copyright (c) 2018 Jed Watson.
+	Licensed under the MIT License (MIT), see
+	http://jedwatson.github.io/classnames
+*/ /* global define */ (function() {
+    'use strict';
+    var hasOwn = {}.hasOwnProperty;
+    function classNames() {
+        var classes = '';
+        for(var i = 0; i < arguments.length; i++){
+            var arg = arguments[i];
+            if (arg) {
+                classes = appendClass(classes, parseValue(arg));
+            }
+        }
+        return classes;
+    }
+    function parseValue(arg) {
+        if (typeof arg === 'string' || typeof arg === 'number') {
+            return arg;
+        }
+        if (typeof arg !== 'object') {
+            return '';
+        }
+        if (Array.isArray(arg)) {
+            return classNames.apply(null, arg);
+        }
+        if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes('[native code]')) {
+            return arg.toString();
+        }
+        var classes = '';
+        for(var key in arg){
+            if (hasOwn.call(arg, key) && arg[key]) {
+                classes = appendClass(classes, key);
+            }
+        }
+        return classes;
+    }
+    function appendClass(value, newClass) {
+        if (!newClass) {
+            return value;
+        }
+        if (value) {
+            return value + ' ' + newClass;
+        }
+        return value + newClass;
+    }
+    if (("TURBOPACK compile-time value", "object") !== 'undefined' && module.exports) {
+        classNames.default = classNames;
+        module.exports = classNames;
+    } else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
+        // register as 'classnames', consistent with npm package name
+        ((r)=>r !== undefined && __turbopack_context__.v(r))(function() {
+            return classNames;
+        }());
+    } else {
+        window.classNames = classNames;
+    }
+})();
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/react-is/cjs/react-is.development.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+/** @license React v16.13.1
+ * react-is.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */ if ("TURBOPACK compile-time truthy", 1) {
+    (function() {
+        'use strict';
+        // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+        // nor polyfill, then a plain number is used for performance.
+        var hasSymbol = typeof Symbol === 'function' && Symbol.for;
+        var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
+        var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
+        var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
+        var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
+        var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
+        var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
+        var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
+        // (unstable) APIs that have been removed. Can we remove the symbols?
+        var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
+        var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
+        var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
+        var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
+        var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
+        var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
+        var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
+        var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
+        var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
+        var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
+        var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
+        function isValidElementType(type) {
+            return typeof type === 'string' || typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
+            type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE || type.$$typeof === REACT_BLOCK_TYPE);
+        }
+        function typeOf(object) {
+            if (typeof object === 'object' && object !== null) {
+                var $$typeof = object.$$typeof;
+                switch($$typeof){
+                    case REACT_ELEMENT_TYPE:
+                        var type = object.type;
+                        switch(type){
+                            case REACT_ASYNC_MODE_TYPE:
+                            case REACT_CONCURRENT_MODE_TYPE:
+                            case REACT_FRAGMENT_TYPE:
+                            case REACT_PROFILER_TYPE:
+                            case REACT_STRICT_MODE_TYPE:
+                            case REACT_SUSPENSE_TYPE:
+                                return type;
+                            default:
+                                var $$typeofType = type && type.$$typeof;
+                                switch($$typeofType){
+                                    case REACT_CONTEXT_TYPE:
+                                    case REACT_FORWARD_REF_TYPE:
+                                    case REACT_LAZY_TYPE:
+                                    case REACT_MEMO_TYPE:
+                                    case REACT_PROVIDER_TYPE:
+                                        return $$typeofType;
+                                    default:
+                                        return $$typeof;
+                                }
+                        }
+                    case REACT_PORTAL_TYPE:
+                        return $$typeof;
+                }
+            }
+            return undefined;
+        } // AsyncMode is deprecated along with isAsyncMode
+        var AsyncMode = REACT_ASYNC_MODE_TYPE;
+        var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
+        var ContextConsumer = REACT_CONTEXT_TYPE;
+        var ContextProvider = REACT_PROVIDER_TYPE;
+        var Element = REACT_ELEMENT_TYPE;
+        var ForwardRef = REACT_FORWARD_REF_TYPE;
+        var Fragment = REACT_FRAGMENT_TYPE;
+        var Lazy = REACT_LAZY_TYPE;
+        var Memo = REACT_MEMO_TYPE;
+        var Portal = REACT_PORTAL_TYPE;
+        var Profiler = REACT_PROFILER_TYPE;
+        var StrictMode = REACT_STRICT_MODE_TYPE;
+        var Suspense = REACT_SUSPENSE_TYPE;
+        var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
+        function isAsyncMode(object) {
+            {
+                if (!hasWarnedAboutDeprecatedIsAsyncMode) {
+                    hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
+                    console['warn']('The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
+                }
+            }
+            return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
+        }
+        function isConcurrentMode(object) {
+            return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
+        }
+        function isContextConsumer(object) {
+            return typeOf(object) === REACT_CONTEXT_TYPE;
+        }
+        function isContextProvider(object) {
+            return typeOf(object) === REACT_PROVIDER_TYPE;
+        }
+        function isElement(object) {
+            return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+        }
+        function isForwardRef(object) {
+            return typeOf(object) === REACT_FORWARD_REF_TYPE;
+        }
+        function isFragment(object) {
+            return typeOf(object) === REACT_FRAGMENT_TYPE;
+        }
+        function isLazy(object) {
+            return typeOf(object) === REACT_LAZY_TYPE;
+        }
+        function isMemo(object) {
+            return typeOf(object) === REACT_MEMO_TYPE;
+        }
+        function isPortal(object) {
+            return typeOf(object) === REACT_PORTAL_TYPE;
+        }
+        function isProfiler(object) {
+            return typeOf(object) === REACT_PROFILER_TYPE;
+        }
+        function isStrictMode(object) {
+            return typeOf(object) === REACT_STRICT_MODE_TYPE;
+        }
+        function isSuspense(object) {
+            return typeOf(object) === REACT_SUSPENSE_TYPE;
+        }
+        exports.AsyncMode = AsyncMode;
+        exports.ConcurrentMode = ConcurrentMode;
+        exports.ContextConsumer = ContextConsumer;
+        exports.ContextProvider = ContextProvider;
+        exports.Element = Element;
+        exports.ForwardRef = ForwardRef;
+        exports.Fragment = Fragment;
+        exports.Lazy = Lazy;
+        exports.Memo = Memo;
+        exports.Portal = Portal;
+        exports.Profiler = Profiler;
+        exports.StrictMode = StrictMode;
+        exports.Suspense = Suspense;
+        exports.isAsyncMode = isAsyncMode;
+        exports.isConcurrentMode = isConcurrentMode;
+        exports.isContextConsumer = isContextConsumer;
+        exports.isContextProvider = isContextProvider;
+        exports.isElement = isElement;
+        exports.isForwardRef = isForwardRef;
+        exports.isFragment = isFragment;
+        exports.isLazy = isLazy;
+        exports.isMemo = isMemo;
+        exports.isPortal = isPortal;
+        exports.isProfiler = isProfiler;
+        exports.isStrictMode = isStrictMode;
+        exports.isSuspense = isSuspense;
+        exports.isValidElementType = isValidElementType;
+        exports.typeOf = typeOf;
+    })();
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/react-is/index.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+;
+else {
+    module.exports = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-is/cjs/react-is.development.js [app-ssr] (ecmascript)");
+}
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/object-assign/index.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/ /* eslint-disable no-unused-vars */ var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+function toObject(val) {
+    if (val === null || val === undefined) {
+        throw new TypeError('Object.assign cannot be called with null or undefined');
+    }
+    return Object(val);
+}
+function shouldUseNative() {
+    try {
+        if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+        ;
+        // Detect buggy property enumeration order in older V8 versions.
+        // https://bugs.chromium.org/p/v8/issues/detail?id=4118
+        var test1 = new String('abc'); // eslint-disable-line no-new-wrappers
+        test1[5] = 'de';
+        if (Object.getOwnPropertyNames(test1)[0] === '5') {
+            return false;
+        }
+        // https://bugs.chromium.org/p/v8/issues/detail?id=3056
+        var test2 = {};
+        for(var i = 0; i < 10; i++){
+            test2['_' + String.fromCharCode(i)] = i;
+        }
+        var order2 = Object.getOwnPropertyNames(test2).map(function(n) {
+            return test2[n];
+        });
+        if (order2.join('') !== '0123456789') {
+            return false;
+        }
+        // https://bugs.chromium.org/p/v8/issues/detail?id=3056
+        var test3 = {};
+        'abcdefghijklmnopqrst'.split('').forEach(function(letter) {
+            test3[letter] = letter;
+        });
+        if (Object.keys(Object.assign({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+            return false;
+        }
+        return true;
+    } catch (err) {
+        // We don't expect any of the above to throw, but better to be safe.
+        return false;
+    }
+}
+module.exports = shouldUseNative() ? Object.assign : function(target, source) {
+    var from;
+    var to = toObject(target);
+    var symbols;
+    for(var s = 1; s < arguments.length; s++){
+        from = Object(arguments[s]);
+        for(var key in from){
+            if (hasOwnProperty.call(from, key)) {
+                to[key] = from[key];
+            }
+        }
+        if (getOwnPropertySymbols) {
+            symbols = getOwnPropertySymbols(from);
+            for(var i = 0; i < symbols.length; i++){
+                if (propIsEnumerable.call(from, symbols[i])) {
+                    to[symbols[i]] = from[symbols[i]];
+                }
+            }
+        }
+    }
+    return to;
+};
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/prop-types/lib/ReactPropTypesSecret.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+module.exports = ReactPropTypesSecret;
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/prop-types/lib/has.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+
+module.exports = Function.call.bind(Object.prototype.hasOwnProperty);
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/prop-types/checkPropTypes.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */ var printWarning = function() {};
+if ("TURBOPACK compile-time truthy", 1) {
+    var ReactPropTypesSecret = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/prop-types/lib/ReactPropTypesSecret.js [app-ssr] (ecmascript)");
+    var loggedTypeFailures = {};
+    var has = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/prop-types/lib/has.js [app-ssr] (ecmascript)");
+    printWarning = function(text) {
+        var message = 'Warning: ' + text;
+        if (typeof console !== 'undefined') {
+            console.error(message);
+        }
+        try {
+            // --- Welcome to debugging React ---
+            // This error was thrown as a convenience so that you can use this stack
+            // to find the callsite that caused this warning to fire.
+            throw new Error(message);
+        } catch (x) {}
+    };
+}
+/**
+ * Assert that the values match with the type specs.
+ * Error messages are memorized and will only be shown once.
+ *
+ * @param {object} typeSpecs Map of name to a ReactPropType
+ * @param {object} values Runtime values that need to be type-checked
+ * @param {string} location e.g. "prop", "context", "child context"
+ * @param {string} componentName Name of the component for error messages.
+ * @param {?Function} getStack Returns the component stack.
+ * @private
+ */ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
+    if ("TURBOPACK compile-time truthy", 1) {
+        for(var typeSpecName in typeSpecs){
+            if (has(typeSpecs, typeSpecName)) {
+                var error;
+                // Prop type validation may throw. In case they do, we don't want to
+                // fail the render phase where it didn't fail before. So we log it.
+                // After these have been cleaned up, we'll let them throw.
+                try {
+                    // This is intentionally an invariant that gets caught. It's the same
+                    // behavior as without this statement except with a better message.
+                    if (typeof typeSpecs[typeSpecName] !== 'function') {
+                        var err = Error((componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' + 'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.' + 'This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.');
+                        err.name = 'Invariant Violation';
+                        throw err;
+                    }
+                    error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
+                } catch (ex) {
+                    error = ex;
+                }
+                if (error && !(error instanceof Error)) {
+                    printWarning((componentName || 'React class') + ': type specification of ' + location + ' `' + typeSpecName + '` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a ' + typeof error + '. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).');
+                }
+                if (error instanceof Error && !(error.message in loggedTypeFailures)) {
+                    // Only monitor this failure once because there tends to be a lot of the
+                    // same error.
+                    loggedTypeFailures[error.message] = true;
+                    var stack = getStack ? getStack() : '';
+                    printWarning('Failed ' + location + ' type: ' + error.message + (stack != null ? stack : ''));
+                }
+            }
+        }
+    }
+}
+/**
+ * Resets warning cache when testing.
+ *
+ * @private
+ */ checkPropTypes.resetWarningCache = function() {
+    if (("TURBOPACK compile-time value", "development") !== 'production') {
+        loggedTypeFailures = {};
+    }
+};
+module.exports = checkPropTypes;
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/prop-types/factoryWithTypeCheckers.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */ var ReactIs = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-is/index.js [app-ssr] (ecmascript)");
+var assign = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/object-assign/index.js [app-ssr] (ecmascript)");
+var ReactPropTypesSecret = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/prop-types/lib/ReactPropTypesSecret.js [app-ssr] (ecmascript)");
+var has = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/prop-types/lib/has.js [app-ssr] (ecmascript)");
+var checkPropTypes = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/prop-types/checkPropTypes.js [app-ssr] (ecmascript)");
+var printWarning = function() {};
+if ("TURBOPACK compile-time truthy", 1) {
+    printWarning = function(text) {
+        var message = 'Warning: ' + text;
+        if (typeof console !== 'undefined') {
+            console.error(message);
+        }
+        try {
+            // --- Welcome to debugging React ---
+            // This error was thrown as a convenience so that you can use this stack
+            // to find the callsite that caused this warning to fire.
+            throw new Error(message);
+        } catch (x) {}
+    };
+}
+function emptyFunctionThatReturnsNull() {
+    return null;
+}
+module.exports = function(isValidElement, throwOnDirectAccess) {
+    /* global Symbol */ var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+    var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
+    /**
+   * Returns the iterator method function contained on the iterable object.
+   *
+   * Be sure to invoke the function with the iterable as context:
+   *
+   *     var iteratorFn = getIteratorFn(myIterable);
+   *     if (iteratorFn) {
+   *       var iterator = iteratorFn.call(myIterable);
+   *       ...
+   *     }
+   *
+   * @param {?object} maybeIterable
+   * @return {?function}
+   */ function getIteratorFn(maybeIterable) {
+        var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
+        if (typeof iteratorFn === 'function') {
+            return iteratorFn;
+        }
+    }
+    /**
+   * Collection of methods that allow declaration and validation of props that are
+   * supplied to React components. Example usage:
+   *
+   *   var Props = require('ReactPropTypes');
+   *   var MyArticle = React.createClass({
+   *     propTypes: {
+   *       // An optional string prop named "description".
+   *       description: Props.string,
+   *
+   *       // A required enum prop named "category".
+   *       category: Props.oneOf(['News','Photos']).isRequired,
+   *
+   *       // A prop named "dialog" that requires an instance of Dialog.
+   *       dialog: Props.instanceOf(Dialog).isRequired
+   *     },
+   *     render: function() { ... }
+   *   });
+   *
+   * A more formal specification of how these methods are used:
+   *
+   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
+   *   decl := ReactPropTypes.{type}(.isRequired)?
+   *
+   * Each and every declaration produces a function with the same signature. This
+   * allows the creation of custom validation functions. For example:
+   *
+   *  var MyLink = React.createClass({
+   *    propTypes: {
+   *      // An optional string or URI prop named "href".
+   *      href: function(props, propName, componentName) {
+   *        var propValue = props[propName];
+   *        if (propValue != null && typeof propValue !== 'string' &&
+   *            !(propValue instanceof URI)) {
+   *          return new Error(
+   *            'Expected a string or an URI for ' + propName + ' in ' +
+   *            componentName
+   *          );
+   *        }
+   *      }
+   *    },
+   *    render: function() {...}
+   *  });
+   *
+   * @internal
+   */ var ANONYMOUS = '<<anonymous>>';
+    // Important!
+    // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
+    var ReactPropTypes = {
+        array: createPrimitiveTypeChecker('array'),
+        bigint: createPrimitiveTypeChecker('bigint'),
+        bool: createPrimitiveTypeChecker('boolean'),
+        func: createPrimitiveTypeChecker('function'),
+        number: createPrimitiveTypeChecker('number'),
+        object: createPrimitiveTypeChecker('object'),
+        string: createPrimitiveTypeChecker('string'),
+        symbol: createPrimitiveTypeChecker('symbol'),
+        any: createAnyTypeChecker(),
+        arrayOf: createArrayOfTypeChecker,
+        element: createElementTypeChecker(),
+        elementType: createElementTypeTypeChecker(),
+        instanceOf: createInstanceTypeChecker,
+        node: createNodeChecker(),
+        objectOf: createObjectOfTypeChecker,
+        oneOf: createEnumTypeChecker,
+        oneOfType: createUnionTypeChecker,
+        shape: createShapeTypeChecker,
+        exact: createStrictShapeTypeChecker
+    };
+    /**
+   * inlined Object.is polyfill to avoid requiring consumers ship their own
+   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+   */ /*eslint-disable no-self-compare*/ function is(x, y) {
+        // SameValue algorithm
+        if (x === y) {
+            // Steps 1-5, 7-10
+            // Steps 6.b-6.e: +0 != -0
+            return x !== 0 || 1 / x === 1 / y;
+        } else {
+            // Step 6.a: NaN == NaN
+            return x !== x && y !== y;
+        }
+    }
+    /*eslint-enable no-self-compare*/ /**
+   * We use an Error-like object for backward compatibility as people may call
+   * PropTypes directly and inspect their output. However, we don't use real
+   * Errors anymore. We don't inspect their stack anyway, and creating them
+   * is prohibitively expensive if they are created too often, such as what
+   * happens in oneOfType() for any type before the one that matched.
+   */ function PropTypeError(message, data) {
+        this.message = message;
+        this.data = data && typeof data === 'object' ? data : {};
+        this.stack = '';
+    }
+    // Make `instanceof Error` still work for returned errors.
+    PropTypeError.prototype = Error.prototype;
+    function createChainableTypeChecker(validate) {
+        if (("TURBOPACK compile-time value", "development") !== 'production') {
+            var manualPropTypeCallCache = {};
+            var manualPropTypeWarningCount = 0;
+        }
+        function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
+            componentName = componentName || ANONYMOUS;
+            propFullName = propFullName || propName;
+            if (secret !== ReactPropTypesSecret) {
+                if (throwOnDirectAccess) {
+                    // New behavior only for users of `prop-types` package
+                    var err = new Error('Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use `PropTypes.checkPropTypes()` to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
+                    err.name = 'Invariant Violation';
+                    throw err;
+                } else if (("TURBOPACK compile-time value", "development") !== 'production' && typeof console !== 'undefined') {
+                    // Old behavior for people using React.PropTypes
+                    var cacheKey = componentName + ':' + propName;
+                    if (!manualPropTypeCallCache[cacheKey] && // Avoid spamming the console because they are often not actionable except for lib authors
+                    manualPropTypeWarningCount < 3) {
+                        printWarning('You are manually calling a React.PropTypes validation ' + 'function for the `' + propFullName + '` prop on `' + componentName + '`. This is deprecated ' + 'and will throw in the standalone `prop-types` package. ' + 'You may be seeing this warning due to a third-party PropTypes ' + 'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.');
+                        manualPropTypeCallCache[cacheKey] = true;
+                        manualPropTypeWarningCount++;
+                    }
+                }
+            }
+            if (props[propName] == null) {
+                if (isRequired) {
+                    if (props[propName] === null) {
+                        return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
+                    }
+                    return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
+                }
+                return null;
+            } else {
+                return validate(props, propName, componentName, location, propFullName);
+            }
+        }
+        var chainedCheckType = checkType.bind(null, false);
+        chainedCheckType.isRequired = checkType.bind(null, true);
+        return chainedCheckType;
+    }
+    function createPrimitiveTypeChecker(expectedType) {
+        function validate(props, propName, componentName, location, propFullName, secret) {
+            var propValue = props[propName];
+            var propType = getPropType(propValue);
+            if (propType !== expectedType) {
+                // `propValue` being instance of, say, date/regexp, pass the 'object'
+                // check, but we can offer a more precise error message here rather than
+                // 'of type `object`'.
+                var preciseType = getPreciseType(propValue);
+                return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'), {
+                    expectedType: expectedType
+                });
+            }
+            return null;
+        }
+        return createChainableTypeChecker(validate);
+    }
+    function createAnyTypeChecker() {
+        return createChainableTypeChecker(emptyFunctionThatReturnsNull);
+    }
+    function createArrayOfTypeChecker(typeChecker) {
+        function validate(props, propName, componentName, location, propFullName) {
+            if (typeof typeChecker !== 'function') {
+                return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
+            }
+            var propValue = props[propName];
+            if (!Array.isArray(propValue)) {
+                var propType = getPropType(propValue);
+                return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
+            }
+            for(var i = 0; i < propValue.length; i++){
+                var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
+                if (error instanceof Error) {
+                    return error;
+                }
+            }
+            return null;
+        }
+        return createChainableTypeChecker(validate);
+    }
+    function createElementTypeChecker() {
+        function validate(props, propName, componentName, location, propFullName) {
+            var propValue = props[propName];
+            if (!isValidElement(propValue)) {
+                var propType = getPropType(propValue);
+                return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
+            }
+            return null;
+        }
+        return createChainableTypeChecker(validate);
+    }
+    function createElementTypeTypeChecker() {
+        function validate(props, propName, componentName, location, propFullName) {
+            var propValue = props[propName];
+            if (!ReactIs.isValidElementType(propValue)) {
+                var propType = getPropType(propValue);
+                return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement type.'));
+            }
+            return null;
+        }
+        return createChainableTypeChecker(validate);
+    }
+    function createInstanceTypeChecker(expectedClass) {
+        function validate(props, propName, componentName, location, propFullName) {
+            if (!(props[propName] instanceof expectedClass)) {
+                var expectedClassName = expectedClass.name || ANONYMOUS;
+                var actualClassName = getClassName(props[propName]);
+                return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
+            }
+            return null;
+        }
+        return createChainableTypeChecker(validate);
+    }
+    function createEnumTypeChecker(expectedValues) {
+        if (!Array.isArray(expectedValues)) {
+            if ("TURBOPACK compile-time truthy", 1) {
+                if (arguments.length > 1) {
+                    printWarning('Invalid arguments supplied to oneOf, expected an array, got ' + arguments.length + ' arguments. ' + 'A common mistake is to write oneOf(x, y, z) instead of oneOf([x, y, z]).');
+                } else {
+                    printWarning('Invalid argument supplied to oneOf, expected an array.');
+                }
+            }
+            return emptyFunctionThatReturnsNull;
+        }
+        function validate(props, propName, componentName, location, propFullName) {
+            var propValue = props[propName];
+            for(var i = 0; i < expectedValues.length; i++){
+                if (is(propValue, expectedValues[i])) {
+                    return null;
+                }
+            }
+            var valuesString = JSON.stringify(expectedValues, function replacer(key, value) {
+                var type = getPreciseType(value);
+                if (type === 'symbol') {
+                    return String(value);
+                }
+                return value;
+            });
+            return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + String(propValue) + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
+        }
+        return createChainableTypeChecker(validate);
+    }
+    function createObjectOfTypeChecker(typeChecker) {
+        function validate(props, propName, componentName, location, propFullName) {
+            if (typeof typeChecker !== 'function') {
+                return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
+            }
+            var propValue = props[propName];
+            var propType = getPropType(propValue);
+            if (propType !== 'object') {
+                return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
+            }
+            for(var key in propValue){
+                if (has(propValue, key)) {
+                    var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+                    if (error instanceof Error) {
+                        return error;
+                    }
+                }
+            }
+            return null;
+        }
+        return createChainableTypeChecker(validate);
+    }
+    function createUnionTypeChecker(arrayOfTypeCheckers) {
+        if (!Array.isArray(arrayOfTypeCheckers)) {
+            ("TURBOPACK compile-time truthy", 1) ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : "TURBOPACK unreachable";
+            return emptyFunctionThatReturnsNull;
+        }
+        for(var i = 0; i < arrayOfTypeCheckers.length; i++){
+            var checker = arrayOfTypeCheckers[i];
+            if (typeof checker !== 'function') {
+                printWarning('Invalid argument supplied to oneOfType. Expected an array of check functions, but ' + 'received ' + getPostfixForTypeWarning(checker) + ' at index ' + i + '.');
+                return emptyFunctionThatReturnsNull;
+            }
+        }
+        function validate(props, propName, componentName, location, propFullName) {
+            var expectedTypes = [];
+            for(var i = 0; i < arrayOfTypeCheckers.length; i++){
+                var checker = arrayOfTypeCheckers[i];
+                var checkerResult = checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret);
+                if (checkerResult == null) {
+                    return null;
+                }
+                if (checkerResult.data && has(checkerResult.data, 'expectedType')) {
+                    expectedTypes.push(checkerResult.data.expectedType);
+                }
+            }
+            var expectedTypesMessage = expectedTypes.length > 0 ? ', expected one of type [' + expectedTypes.join(', ') + ']' : '';
+            return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`' + expectedTypesMessage + '.'));
+        }
+        return createChainableTypeChecker(validate);
+    }
+    function createNodeChecker() {
+        function validate(props, propName, componentName, location, propFullName) {
+            if (!isNode(props[propName])) {
+                return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
+            }
+            return null;
+        }
+        return createChainableTypeChecker(validate);
+    }
+    function invalidValidatorError(componentName, location, propFullName, key, type) {
+        return new PropTypeError((componentName || 'React class') + ': ' + location + ' type `' + propFullName + '.' + key + '` is invalid; ' + 'it must be a function, usually from the `prop-types` package, but received `' + type + '`.');
+    }
+    function createShapeTypeChecker(shapeTypes) {
+        function validate(props, propName, componentName, location, propFullName) {
+            var propValue = props[propName];
+            var propType = getPropType(propValue);
+            if (propType !== 'object') {
+                return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+            }
+            for(var key in shapeTypes){
+                var checker = shapeTypes[key];
+                if (typeof checker !== 'function') {
+                    return invalidValidatorError(componentName, location, propFullName, key, getPreciseType(checker));
+                }
+                var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+                if (error) {
+                    return error;
+                }
+            }
+            return null;
+        }
+        return createChainableTypeChecker(validate);
+    }
+    function createStrictShapeTypeChecker(shapeTypes) {
+        function validate(props, propName, componentName, location, propFullName) {
+            var propValue = props[propName];
+            var propType = getPropType(propValue);
+            if (propType !== 'object') {
+                return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+            }
+            // We need to check all keys in case some are required but missing from props.
+            var allKeys = assign({}, props[propName], shapeTypes);
+            for(var key in allKeys){
+                var checker = shapeTypes[key];
+                if (has(shapeTypes, key) && typeof checker !== 'function') {
+                    return invalidValidatorError(componentName, location, propFullName, key, getPreciseType(checker));
+                }
+                if (!checker) {
+                    return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' + '\nBad object: ' + JSON.stringify(props[propName], null, '  ') + '\nValid keys: ' + JSON.stringify(Object.keys(shapeTypes), null, '  '));
+                }
+                var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+                if (error) {
+                    return error;
+                }
+            }
+            return null;
+        }
+        return createChainableTypeChecker(validate);
+    }
+    function isNode(propValue) {
+        switch(typeof propValue){
+            case 'number':
+            case 'string':
+            case 'undefined':
+                return true;
+            case 'boolean':
+                return !propValue;
+            case 'object':
+                if (Array.isArray(propValue)) {
+                    return propValue.every(isNode);
+                }
+                if (propValue === null || isValidElement(propValue)) {
+                    return true;
+                }
+                var iteratorFn = getIteratorFn(propValue);
+                if (iteratorFn) {
+                    var iterator = iteratorFn.call(propValue);
+                    var step;
+                    if (iteratorFn !== propValue.entries) {
+                        while(!(step = iterator.next()).done){
+                            if (!isNode(step.value)) {
+                                return false;
+                            }
+                        }
+                    } else {
+                        // Iterator will provide entry [k,v] tuples rather than values.
+                        while(!(step = iterator.next()).done){
+                            var entry = step.value;
+                            if (entry) {
+                                if (!isNode(entry[1])) {
+                                    return false;
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    return false;
+                }
+                return true;
+            default:
+                return false;
+        }
+    }
+    function isSymbol(propType, propValue) {
+        // Native Symbol.
+        if (propType === 'symbol') {
+            return true;
+        }
+        // falsy value can't be a Symbol
+        if (!propValue) {
+            return false;
+        }
+        // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
+        if (propValue['@@toStringTag'] === 'Symbol') {
+            return true;
+        }
+        // Fallback for non-spec compliant Symbols which are polyfilled.
+        if (typeof Symbol === 'function' && propValue instanceof Symbol) {
+            return true;
+        }
+        return false;
+    }
+    // Equivalent of `typeof` but with special handling for array and regexp.
+    function getPropType(propValue) {
+        var propType = typeof propValue;
+        if (Array.isArray(propValue)) {
+            return 'array';
+        }
+        if (propValue instanceof RegExp) {
+            // Old webkits (at least until Android 4.0) return 'function' rather than
+            // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
+            // passes PropTypes.object.
+            return 'object';
+        }
+        if (isSymbol(propType, propValue)) {
+            return 'symbol';
+        }
+        return propType;
+    }
+    // This handles more types than `getPropType`. Only used for error messages.
+    // See `createPrimitiveTypeChecker`.
+    function getPreciseType(propValue) {
+        if (typeof propValue === 'undefined' || propValue === null) {
+            return '' + propValue;
+        }
+        var propType = getPropType(propValue);
+        if (propType === 'object') {
+            if (propValue instanceof Date) {
+                return 'date';
+            } else if (propValue instanceof RegExp) {
+                return 'regexp';
+            }
+        }
+        return propType;
+    }
+    // Returns a string that is postfixed to a warning about an invalid type.
+    // For example, "undefined" or "of type array"
+    function getPostfixForTypeWarning(value) {
+        var type = getPreciseType(value);
+        switch(type){
+            case 'array':
+            case 'object':
+                return 'an ' + type;
+            case 'boolean':
+            case 'date':
+            case 'regexp':
+                return 'a ' + type;
+            default:
+                return type;
+        }
+    }
+    // Returns class name of the object, if any.
+    function getClassName(propValue) {
+        if (!propValue.constructor || !propValue.constructor.name) {
+            return ANONYMOUS;
+        }
+        return propValue.constructor.name;
+    }
+    ReactPropTypes.checkPropTypes = checkPropTypes;
+    ReactPropTypes.resetWarningCache = checkPropTypes.resetWarningCache;
+    ReactPropTypes.PropTypes = ReactPropTypes;
+    return ReactPropTypes;
+};
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/prop-types/index.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */ if ("TURBOPACK compile-time truthy", 1) {
+    var ReactIs = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-is/index.js [app-ssr] (ecmascript)");
+    // By explicitly using `prop-types` you are opting into new development behavior.
+    // http://fb.me/prop-types-in-prod
+    var throwOnDirectAccess = true;
+    module.exports = __turbopack_context__.r("[project]/Desktop/kidcoin-proj/client/src/node_modules/prop-types/factoryWithTypeCheckers.js [app-ssr] (ecmascript)")(ReactIs.isElement, throwOnDirectAccess);
+} else //TURBOPACK unreachable
+;
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/Feedback.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__default__export__
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$node_modules$2f$classnames$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/node_modules/classnames/index.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$prop$2d$types$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/prop-types/index.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-runtime.js [app-ssr] (ecmascript)");
+;
+;
+;
+;
+const propTypes = {
+    /**
+   * Specify whether the feedback is for valid or invalid fields
+   *
+   * @type {('valid'|'invalid')}
+   */ type: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$prop$2d$types$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].string,
+    /** Display feedback as a tooltip. */ tooltip: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$prop$2d$types$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].bool,
+    as: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$prop$2d$types$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].elementType
+};
+const Feedback = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["forwardRef"](// Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+({ as: Component = 'div', className, type = 'valid', tooltip = false, ...props }, ref)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])(Component, {
+        ...props,
+        ref: ref,
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$node_modules$2f$classnames$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(className, `${type}-${tooltip ? 'tooltip' : 'feedback'}`)
+    }));
+Feedback.displayName = 'Feedback';
+Feedback.propTypes = propTypes;
+const __TURBOPACK__default__export__ = Feedback;
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormContext.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__default__export__
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+"use client";
+;
+// TODO
+const FormContext = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createContext"]({});
+const __TURBOPACK__default__export__ = FormContext;
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/ThemeProvider.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "DEFAULT_BREAKPOINTS",
+    ()=>DEFAULT_BREAKPOINTS,
+    "DEFAULT_MIN_BREAKPOINT",
+    ()=>DEFAULT_MIN_BREAKPOINT,
+    "ThemeConsumer",
+    ()=>Consumer,
+    "createBootstrapComponent",
+    ()=>createBootstrapComponent,
+    "default",
+    ()=>__TURBOPACK__default__export__,
+    "useBootstrapBreakpoints",
+    ()=>useBootstrapBreakpoints,
+    "useBootstrapMinBreakpoint",
+    ()=>useBootstrapMinBreakpoint,
+    "useBootstrapPrefix",
+    ()=>useBootstrapPrefix,
+    "useIsRTL",
+    ()=>useIsRTL
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-runtime.js [app-ssr] (ecmascript)");
+"use client";
+;
+;
+;
+const DEFAULT_BREAKPOINTS = [
+    'xxl',
+    'xl',
+    'lg',
+    'md',
+    'sm',
+    'xs'
+];
+const DEFAULT_MIN_BREAKPOINT = 'xs';
+const ThemeContext = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createContext"]({
+    prefixes: {},
+    breakpoints: DEFAULT_BREAKPOINTS,
+    minBreakpoint: DEFAULT_MIN_BREAKPOINT
+});
+const { Consumer, Provider } = ThemeContext;
+function ThemeProvider({ prefixes = {}, breakpoints = DEFAULT_BREAKPOINTS, minBreakpoint = DEFAULT_MIN_BREAKPOINT, dir, children }) {
+    const contextValue = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>({
+            prefixes: {
+                ...prefixes
+            },
+            breakpoints,
+            minBreakpoint,
+            dir
+        }), [
+        prefixes,
+        breakpoints,
+        minBreakpoint,
+        dir
+    ]);
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])(Provider, {
+        value: contextValue,
+        children: children
+    });
+}
+function useBootstrapPrefix(prefix, defaultPrefix) {
+    const { prefixes } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useContext"])(ThemeContext);
+    return prefix || prefixes[defaultPrefix] || defaultPrefix;
+}
+function useBootstrapBreakpoints() {
+    const { breakpoints } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useContext"])(ThemeContext);
+    return breakpoints;
+}
+function useBootstrapMinBreakpoint() {
+    const { minBreakpoint } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useContext"])(ThemeContext);
+    return minBreakpoint;
+}
+function useIsRTL() {
+    const { dir } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useContext"])(ThemeContext);
+    return dir === 'rtl';
+}
+function createBootstrapComponent(Component, opts) {
+    if (typeof opts === 'string') opts = {
+        prefix: opts
+    };
+    const isClassy = Component.prototype && Component.prototype.isReactComponent;
+    // If it's a functional component make sure we don't break it with a ref
+    const { prefix, forwardRefAs = isClassy ? 'ref' : 'innerRef' } = opts;
+    const Wrapped = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["forwardRef"](({ ...props }, ref)=>{
+        props[forwardRefAs] = ref;
+        const bsPrefix = useBootstrapPrefix(props.bsPrefix, prefix);
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])(Component, {
+            ...props,
+            bsPrefix: bsPrefix
+        });
+    });
+    Wrapped.displayName = `Bootstrap(${Component.displayName || Component.name})`;
+    return Wrapped;
+}
+;
+const __TURBOPACK__default__export__ = ThemeProvider;
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormCheckInput.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__default__export__
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$node_modules$2f$classnames$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/node_modules/classnames/index.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormContext.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$ThemeProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/ThemeProvider.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-runtime.js [app-ssr] (ecmascript)");
+"use client";
+;
+;
+;
+;
+;
+;
+const FormCheckInput = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["forwardRef"](({ id, bsPrefix, className, type = 'checkbox', isValid = false, isInvalid = false, // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+as: Component = 'input', ...props }, ref)=>{
+    const { controlId } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useContext"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]);
+    bsPrefix = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$ThemeProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useBootstrapPrefix"])(bsPrefix, 'form-check-input');
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])(Component, {
+        ...props,
+        ref: ref,
+        type: type,
+        id: id || controlId,
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$node_modules$2f$classnames$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(className, bsPrefix, isValid && 'is-valid', isInvalid && 'is-invalid')
+    });
+});
+FormCheckInput.displayName = 'FormCheckInput';
+const __TURBOPACK__default__export__ = FormCheckInput;
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormCheckLabel.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__default__export__
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$node_modules$2f$classnames$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/node_modules/classnames/index.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormContext.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$ThemeProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/ThemeProvider.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-runtime.js [app-ssr] (ecmascript)");
+"use client";
+;
+;
+;
+;
+;
+;
+const FormCheckLabel = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["forwardRef"](({ bsPrefix, className, htmlFor, ...props }, ref)=>{
+    const { controlId } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useContext"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]);
+    bsPrefix = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$ThemeProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useBootstrapPrefix"])(bsPrefix, 'form-check-label');
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])("label", {
+        ...props,
+        ref: ref,
+        htmlFor: htmlFor || controlId,
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$node_modules$2f$classnames$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(className, bsPrefix)
+    });
+});
+FormCheckLabel.displayName = 'FormCheckLabel';
+const __TURBOPACK__default__export__ = FormCheckLabel;
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/ElementChildren.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "forEach",
+    ()=>forEach,
+    "hasChildOfType",
+    ()=>hasChildOfType,
+    "map",
+    ()=>map
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+;
+/**
+ * Iterates through children that are typically specified as `props.children`,
+ * but only maps over children that are "valid elements".
+ *
+ * The mapFunction provided index will be normalised to the components mapped,
+ * so an invalid component would not increase the index.
+ *
+ */ function map(children, func) {
+    let index = 0;
+    return __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Children"].map(children, (child)=>/*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["isValidElement"](child) ? func(child, index++) : child);
+}
+/**
+ * Iterates through children that are "valid elements".
+ *
+ * The provided forEachFunc(child, index) will be called for each
+ * leaf child with the index reflecting the position relative to "valid components".
+ */ function forEach(children, func) {
+    let index = 0;
+    __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Children"].forEach(children, (child)=>{
+        if (/*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["isValidElement"](child)) func(child, index++);
+    });
+}
+/**
+ * Finds whether a component's `children` prop includes a React element of the
+ * specified type.
+ */ function hasChildOfType(children, type) {
+    return __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Children"].toArray(children).some((child)=>/*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["isValidElement"](child) && child.type === type);
+}
+;
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormCheck.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__default__export__
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$node_modules$2f$classnames$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/node_modules/classnames/index.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$Feedback$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/Feedback.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormCheckInput$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormCheckInput.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormCheckLabel$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormCheckLabel.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormContext.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$ThemeProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/ThemeProvider.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$ElementChildren$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/ElementChildren.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-runtime.js [app-ssr] (ecmascript)");
+"use client";
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+const FormCheck = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["forwardRef"](({ id, bsPrefix, bsSwitchPrefix, inline = false, reverse = false, disabled = false, isValid = false, isInvalid = false, feedbackTooltip = false, feedback, feedbackType, className, style, title = '', type = 'checkbox', label, children, // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+as = 'input', ...props }, ref)=>{
+    bsPrefix = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$ThemeProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useBootstrapPrefix"])(bsPrefix, 'form-check');
+    bsSwitchPrefix = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$ThemeProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useBootstrapPrefix"])(bsSwitchPrefix, 'form-switch');
+    const { controlId } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useContext"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]);
+    const innerFormContext = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>({
+            controlId: id || controlId
+        }), [
+        controlId,
+        id
+    ]);
+    const hasLabel = !children && label != null && label !== false || (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$ElementChildren$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["hasChildOfType"])(children, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormCheckLabel$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]);
+    const input = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormCheckInput$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+        ...props,
+        type: type === 'switch' ? 'checkbox' : type,
+        ref: ref,
+        isValid: isValid,
+        isInvalid: isInvalid,
+        disabled: disabled,
+        as: as
+    });
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].Provider, {
+        value: innerFormContext,
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])("div", {
+            style: style,
+            className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$node_modules$2f$classnames$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(className, hasLabel && bsPrefix, inline && `${bsPrefix}-inline`, reverse && `${bsPrefix}-reverse`, type === 'switch' && bsSwitchPrefix),
+            children: children || /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxs"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
+                children: [
+                    input,
+                    hasLabel && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormCheckLabel$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                        title: title,
+                        children: label
+                    }),
+                    feedback && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$Feedback$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                        type: feedbackType,
+                        tooltip: feedbackTooltip,
+                        children: feedback
+                    })
+                ]
+            })
+        })
+    });
+});
+FormCheck.displayName = 'FormCheck';
+const __TURBOPACK__default__export__ = Object.assign(FormCheck, {
+    Input: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormCheckInput$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"],
+    Label: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormCheckLabel$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]
+});
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/warning/warning.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */ /**
+ * Similar to invariant but only logs a warning if the condition is not met.
+ * This can be used to log issues in development environments in critical
+ * paths. Removing the logging code for production environments will keep the
+ * same logic and follow the same code paths.
+ */ var __DEV__ = ("TURBOPACK compile-time value", "development") !== 'production';
+var warning = function() {};
+if ("TURBOPACK compile-time truthy", 1) {
+    var printWarning = function printWarning(format, args) {
+        var len = arguments.length;
+        args = new Array(len > 1 ? len - 1 : 0);
+        for(var key = 1; key < len; key++){
+            args[key - 1] = arguments[key];
+        }
+        var argIndex = 0;
+        var message = 'Warning: ' + format.replace(/%s/g, function() {
+            return args[argIndex++];
+        });
+        if (typeof console !== 'undefined') {
+            console.error(message);
+        }
+        try {
+            // --- Welcome to debugging React ---
+            // This error was thrown as a convenience so that you can use this stack
+            // to find the callsite that caused this warning to fire.
+            throw new Error(message);
+        } catch (x) {}
+    };
+    warning = function(condition, format, args) {
+        var len = arguments.length;
+        args = new Array(len > 2 ? len - 2 : 0);
+        for(var key = 2; key < len; key++){
+            args[key - 2] = arguments[key];
+        }
+        if (format === undefined) {
+            throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
+        }
+        if (!condition) {
+            printWarning.apply(null, [
+                format
+            ].concat(args));
+        }
+    };
+}
+module.exports = warning;
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormControl.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__default__export__
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$node_modules$2f$classnames$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/node_modules/classnames/index.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$warning$2f$warning$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/warning/warning.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$Feedback$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/Feedback.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormContext.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$ThemeProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/ThemeProvider.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-runtime.js [app-ssr] (ecmascript)");
+"use client";
+;
+;
+;
+;
+;
+;
+;
+;
+const FormControl = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["forwardRef"](({ bsPrefix, type, size, htmlSize, id, className, isValid = false, isInvalid = false, plaintext, readOnly, // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+as: Component = 'input', ...props }, ref)=>{
+    const { controlId } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useContext"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]);
+    bsPrefix = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$ThemeProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useBootstrapPrefix"])(bsPrefix, 'form-control');
+    ("TURBOPACK compile-time truthy", 1) ? (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$warning$2f$warning$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(controlId == null || !id, '`controlId` is ignored on `<FormControl>` when `id` is specified.') : "TURBOPACK unreachable";
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])(Component, {
+        ...props,
+        type: type,
+        size: htmlSize,
+        ref: ref,
+        readOnly: readOnly,
+        id: id || controlId,
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$node_modules$2f$classnames$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(className, plaintext ? `${bsPrefix}-plaintext` : bsPrefix, size && `${bsPrefix}-${size}`, type === 'color' && `${bsPrefix}-color`, isValid && 'is-valid', isInvalid && 'is-invalid')
+    });
+});
+FormControl.displayName = 'FormControl';
+const __TURBOPACK__default__export__ = Object.assign(FormControl, {
+    Feedback: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$Feedback$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]
+});
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormFloating.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__default__export__
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$node_modules$2f$classnames$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/node_modules/classnames/index.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$ThemeProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/ThemeProvider.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-runtime.js [app-ssr] (ecmascript)");
+"use client";
+;
+;
+;
+;
+const FormFloating = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["forwardRef"](({ className, bsPrefix, as: Component = 'div', ...props }, ref)=>{
+    bsPrefix = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$ThemeProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useBootstrapPrefix"])(bsPrefix, 'form-floating');
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])(Component, {
+        ref: ref,
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$node_modules$2f$classnames$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(className, bsPrefix),
+        ...props
+    });
+});
+FormFloating.displayName = 'FormFloating';
+const __TURBOPACK__default__export__ = FormFloating;
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormGroup.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__default__export__
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormContext.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-runtime.js [app-ssr] (ecmascript)");
+;
+;
+;
+;
+const FormGroup = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["forwardRef"](({ controlId, // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+as: Component = 'div', ...props }, ref)=>{
+    const context = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>({
+            controlId
+        }), [
+        controlId
+    ]);
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].Provider, {
+        value: context,
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])(Component, {
+            ...props,
+            ref: ref
+        })
+    });
+});
+FormGroup.displayName = 'FormGroup';
+const __TURBOPACK__default__export__ = FormGroup;
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/Col.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__default__export__,
+    "useCol",
+    ()=>useCol
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$node_modules$2f$classnames$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/node_modules/classnames/index.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$ThemeProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/ThemeProvider.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-runtime.js [app-ssr] (ecmascript)");
+"use client";
+;
+;
+;
+;
+function useCol({ as, bsPrefix, className, ...props }) {
+    bsPrefix = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$ThemeProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useBootstrapPrefix"])(bsPrefix, 'col');
+    const breakpoints = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$ThemeProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useBootstrapBreakpoints"])();
+    const minBreakpoint = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$ThemeProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useBootstrapMinBreakpoint"])();
+    const spans = [];
+    const classes = [];
+    breakpoints.forEach((brkPoint)=>{
+        const propValue = props[brkPoint];
+        delete props[brkPoint];
+        let span;
+        let offset;
+        let order;
+        if (typeof propValue === 'object' && propValue != null) {
+            ({ span, offset, order } = propValue);
+        } else {
+            span = propValue;
+        }
+        const infix = brkPoint !== minBreakpoint ? `-${brkPoint}` : '';
+        if (span) spans.push(span === true ? `${bsPrefix}${infix}` : `${bsPrefix}${infix}-${span}`);
+        if (order != null) classes.push(`order${infix}-${order}`);
+        if (offset != null) classes.push(`offset${infix}-${offset}`);
+    });
+    return [
+        {
+            ...props,
+            className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$node_modules$2f$classnames$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(className, ...spans, ...classes)
+        },
+        {
+            as,
+            bsPrefix,
+            spans
+        }
+    ];
+}
+const Col = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["forwardRef"](// Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+(props, ref)=>{
+    const [{ className, ...colProps }, { as: Component = 'div', bsPrefix, spans }] = useCol(props);
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])(Component, {
+        ...colProps,
+        ref: ref,
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$node_modules$2f$classnames$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(className, !spans.length && bsPrefix)
+    });
+});
+Col.displayName = 'Col';
+const __TURBOPACK__default__export__ = Col;
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormLabel.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__default__export__
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$node_modules$2f$classnames$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/node_modules/classnames/index.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$warning$2f$warning$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/warning/warning.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$Col$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/Col.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormContext.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$ThemeProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/ThemeProvider.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-runtime.js [app-ssr] (ecmascript)");
+"use client";
+;
+;
+;
+;
+;
+;
+;
+;
+const FormLabel = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["forwardRef"](({ // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+as: Component = 'label', bsPrefix, column = false, visuallyHidden = false, className, htmlFor, ...props }, ref)=>{
+    const { controlId } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useContext"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]);
+    bsPrefix = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$ThemeProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useBootstrapPrefix"])(bsPrefix, 'form-label');
+    let columnClass = 'col-form-label';
+    if (typeof column === 'string') columnClass = `${columnClass} ${columnClass}-${column}`;
+    const classes = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$node_modules$2f$classnames$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(className, bsPrefix, visuallyHidden && 'visually-hidden', column && columnClass);
+    ("TURBOPACK compile-time truthy", 1) ? (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$warning$2f$warning$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(controlId == null || !htmlFor, '`controlId` is ignored on `<FormLabel>` when `htmlFor` is specified.') : "TURBOPACK unreachable";
+    htmlFor = htmlFor || controlId;
+    if (column) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$Col$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+        ref: ref,
+        as: "label",
+        className: classes,
+        htmlFor: htmlFor,
+        ...props
+    });
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])(Component, {
+        ref: ref,
+        className: classes,
+        htmlFor: htmlFor,
+        ...props
+    });
+});
+FormLabel.displayName = 'FormLabel';
+const __TURBOPACK__default__export__ = FormLabel;
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormRange.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__default__export__
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$node_modules$2f$classnames$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/node_modules/classnames/index.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$ThemeProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/ThemeProvider.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormContext.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-runtime.js [app-ssr] (ecmascript)");
+"use client";
+;
+;
+;
+;
+;
+;
+const FormRange = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["forwardRef"](({ bsPrefix, className, id, ...props }, ref)=>{
+    const { controlId } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useContext"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]);
+    bsPrefix = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$ThemeProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useBootstrapPrefix"])(bsPrefix, 'form-range');
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])("input", {
+        ...props,
+        type: "range",
+        ref: ref,
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$node_modules$2f$classnames$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(className, bsPrefix),
+        id: id || controlId
+    });
+});
+FormRange.displayName = 'FormRange';
+const __TURBOPACK__default__export__ = FormRange;
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormSelect.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__default__export__
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$node_modules$2f$classnames$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/node_modules/classnames/index.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$ThemeProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/ThemeProvider.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormContext.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-runtime.js [app-ssr] (ecmascript)");
+"use client";
+;
+;
+;
+;
+;
+;
+const FormSelect = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["forwardRef"](({ bsPrefix, size, htmlSize, className, isValid = false, isInvalid = false, id, ...props }, ref)=>{
+    const { controlId } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useContext"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]);
+    bsPrefix = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$ThemeProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useBootstrapPrefix"])(bsPrefix, 'form-select');
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])("select", {
+        ...props,
+        size: htmlSize,
+        ref: ref,
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$node_modules$2f$classnames$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(className, bsPrefix, size && `${bsPrefix}-${size}`, isValid && `is-valid`, isInvalid && `is-invalid`),
+        id: id || controlId
+    });
+});
+FormSelect.displayName = 'FormSelect';
+const __TURBOPACK__default__export__ = FormSelect;
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormText.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__default__export__
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$node_modules$2f$classnames$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/node_modules/classnames/index.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$ThemeProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/ThemeProvider.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-runtime.js [app-ssr] (ecmascript)");
+"use client";
+;
+;
+;
+;
+const FormText = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["forwardRef"](// Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+({ bsPrefix, className, as: Component = 'small', muted, ...props }, ref)=>{
+    bsPrefix = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$ThemeProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useBootstrapPrefix"])(bsPrefix, 'form-text');
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])(Component, {
+        ...props,
+        ref: ref,
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$node_modules$2f$classnames$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(className, bsPrefix, muted && 'text-muted')
+    });
+});
+FormText.displayName = 'FormText';
+const __TURBOPACK__default__export__ = FormText;
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/Switch.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__default__export__
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormCheck$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormCheck.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-runtime.js [app-ssr] (ecmascript)");
+;
+;
+;
+const Switch = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["forwardRef"]((props, ref)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormCheck$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+        ...props,
+        ref: ref,
+        type: "switch"
+    }));
+Switch.displayName = 'Switch';
+const __TURBOPACK__default__export__ = Object.assign(Switch, {
+    Input: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormCheck$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].Input,
+    Label: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormCheck$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].Label
+});
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FloatingLabel.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__default__export__
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$node_modules$2f$classnames$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/node_modules/classnames/index.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormGroup$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormGroup.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$ThemeProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/ThemeProvider.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-runtime.js [app-ssr] (ecmascript)");
+"use client";
+;
+;
+;
+;
+;
+;
+const FloatingLabel = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["forwardRef"](({ bsPrefix, className, children, controlId, label, ...props }, ref)=>{
+    bsPrefix = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$ThemeProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useBootstrapPrefix"])(bsPrefix, 'form-floating');
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxs"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormGroup$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+        ref: ref,
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$node_modules$2f$classnames$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(className, bsPrefix),
+        controlId: controlId,
+        ...props,
+        children: [
+            children,
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])("label", {
+                htmlFor: controlId,
+                children: label
+            })
+        ]
+    });
+});
+FloatingLabel.displayName = 'FloatingLabel';
+const __TURBOPACK__default__export__ = FloatingLabel;
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/Form.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__default__export__
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$node_modules$2f$classnames$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/node_modules/classnames/index.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$prop$2d$types$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/prop-types/index.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormCheck$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormCheck.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormControl$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormControl.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormFloating$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormFloating.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormGroup$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormGroup.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormLabel$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormLabel.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormRange$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormRange.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormSelect$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormSelect.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormText$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FormText.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$Switch$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/Switch.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FloatingLabel$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/FloatingLabel.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-runtime.js [app-ssr] (ecmascript)");
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+const propTypes = {
+    /**
+   * The Form `ref` will be forwarded to the underlying element,
+   * which means, unless it's rendered `as` a composite component,
+   * it will be a DOM node, when resolved.
+   *
+   * @type {ReactRef}
+   * @alias ref
+   */ _ref: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$prop$2d$types$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].any,
+    /**
+   * Mark a form as having been validated. Setting it to `true` will
+   * toggle any validation styles on the forms elements.
+   */ validated: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$prop$2d$types$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].bool,
+    as: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$prop$2d$types$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].elementType
+};
+const Form = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["forwardRef"](({ className, validated, // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+as: Component = 'form', ...props }, ref)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])(Component, {
+        ...props,
+        ref: ref,
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$node_modules$2f$classnames$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(className, validated && 'was-validated')
+    }));
+Form.displayName = 'Form';
+Form.propTypes = propTypes;
+const __TURBOPACK__default__export__ = Object.assign(Form, {
+    Group: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormGroup$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"],
+    Control: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormControl$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"],
+    Floating: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormFloating$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"],
+    Check: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormCheck$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"],
+    Switch: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$Switch$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"],
+    Label: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormLabel$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"],
+    Text: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormText$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"],
+    Range: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormRange$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"],
+    Select: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FormSelect$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"],
+    FloatingLabel: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$FloatingLabel$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]
+});
+}),
+"[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/Form.js [app-ssr] (ecmascript) <export default as Form>", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "Form",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$Form$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$kidcoin$2d$proj$2f$client$2f$src$2f$node_modules$2f$react$2d$bootstrap$2f$esm$2f$Form$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/kidcoin-proj/client/src/node_modules/react-bootstrap/esm/Form.js [app-ssr] (ecmascript)");
+}),
+];
+
+//# sourceMappingURL=0m3t_08d7-kd._.js.map
