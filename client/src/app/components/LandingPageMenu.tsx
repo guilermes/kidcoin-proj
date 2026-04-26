@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import PrimaryBtn from "./PrimaryBtn"
+import Image from "next/image";
 
 export default function LandingPageMenu() {
     const router = useRouter();
@@ -15,7 +16,7 @@ export default function LandingPageMenu() {
             <nav className="landing_page_menu">
                 <div>
                     <a href="/home">
-                        <img src="/assets/kidcoin-logo.png" alt="KidCoin Logo" />
+                        <Image src="/@public/assets/kidcoin-logo.png" width="20" height="20" alt="KidCoin Logo" />
                     </a>
                 </div>
                 <ul>
