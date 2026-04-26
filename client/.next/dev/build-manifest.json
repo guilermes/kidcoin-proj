@@ -1,0 +1,26 @@
+{
+  "pages": {
+    "/_app": []
+  },
+  "devFiles": [],
+  "polyfillFiles": [
+    "static/chunks/0c4s_next_dist_build_polyfills_polyfill-nomodule.js"
+  ],
+  "lowPriorityFiles": [
+    "static/development/_buildManifest.js",
+    "static/development/_ssgManifest.js",
+    "static/development/_clientMiddlewareManifest.js"
+  ],
+  "rootMainFiles": [
+    "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_06lpo3j._.js",
+    "static/chunks/0c4s_next_dist_compiled_next-devtools_index_0mk6c6k.js",
+    "static/chunks/0c4s_next_dist_compiled_react-dom_0-hc0xq._.js",
+    "static/chunks/0c4s_next_dist_compiled_react-server-dom-turbopack_10mmymi._.js",
+    "static/chunks/0c4s_next_dist_compiled_0womcd9._.js",
+    "static/chunks/0c4s_next_dist_client_103fbo9._.js",
+    "static/chunks/0c4s_next_dist_0m4ibyv._.js",
+    "static/chunks/10qz_@swc_helpers_cjs_0tht_nu._.js",
+    "static/chunks/Desktop_kidcoin-proj_client_0rqeker._.js",
+    "static/chunks/turbopack-Desktop_kidcoin-proj_client_0~o5r89._.js"
+  ]
+}
