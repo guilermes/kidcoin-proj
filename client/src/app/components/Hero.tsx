@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import PrimaryBtnLG from "./PrimaryBtnLG";
+import Image from "next/image";
 
 export default function Hero (){
 
@@ -19,7 +20,7 @@ export default function Hero (){
                 <PrimaryBtnLG onClick={toLoginPage}>JOGAR AGORA</PrimaryBtnLG>
             </div>
             <div>
-                <img src="../../public/assets/main-char.png" alt="Personagem Kidcoin" className="img-animation"/>
+                <Image src="/@public/assets/main-char.png" width="20" height="20"alt="Personagem Kidcoin" className="img-animation"/>
             </div>
         </div>
         </>
