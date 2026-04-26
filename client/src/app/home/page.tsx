@@ -9,14 +9,14 @@ import RightDecoratorLP from "../components/RightDecoratorLP";
 export default function Home() {
   return (
     <>
-    <head>
-      <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Passion+One:wght@400;700;900&display=swap" rel="stylesheet"></link>
-    </head>
-     <LandingPageMenu />
-     <Hero />
-     <LeftDecoratorLP />
-     <RightDecoratorLP />
-     <Footer />
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Passion+One:wght@400;700;900&display=swap" rel="stylesheet"></link>
+      </head>
+      <LandingPageMenu />
+      <Hero />
+      <LeftDecoratorLP />
+      <RightDecoratorLP />
+      <Footer />
     </>
   );
 }
