@@ -1,3 +1,5 @@
+'use client'
+
 import LandingPageMenu from "../components/LandingPageMenu";
 import Footer from "../components/Footer";
 import PrimaryBtn from "../components/PrimaryBtn";
