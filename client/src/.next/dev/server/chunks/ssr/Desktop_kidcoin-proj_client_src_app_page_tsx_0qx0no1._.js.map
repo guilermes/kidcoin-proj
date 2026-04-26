@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/guilh/Desktop/kidcoin-proj/client/src/app/page.tsx"],"sourcesContent":["'use client'\r\n\r\nimport { useRouter } from \"next/navigation\";\r\nimport { useEffect } from \"react\";\r\n\r\n\r\nexport default function Inicio() {\r\n    const router = useRouter();\r\n\r\n    useEffect(()=> {\r\n        router.push(\"/home\");\r\n    }, []);\r\n\r\n    return <></>;\r\n}"],"names":["Inicio","router","push"],"mappings":";;;;;AAEA;AACA;AAHA;;;;AAMe,SAASA;IACpB,MAAMC,SAAS,IAAA,8LAAS;IAExB,IAAA,iQAAS,EAAC;QACNA,OAAOC,IAAI,CAAC;IAChB,GAAG,EAAE;IAEL,qBAAO;AACX"}}]
+}

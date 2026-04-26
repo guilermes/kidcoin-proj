@@ -1,4 +1,5 @@
 import { Form } from "react-bootstrap";
+import PrimaryBtn from "./PrimaryBtn";
 
 
 export default function AlunoForm() {
@@ -14,6 +15,7 @@ export default function AlunoForm() {
                 <label>Confirme sua senha:</label>
                 <input type="password" name="senha" id="senha"></input>
             </Form>
+            <PrimaryBtn>Cadastrar</PrimaryBtn>
         </>
     )
 }
