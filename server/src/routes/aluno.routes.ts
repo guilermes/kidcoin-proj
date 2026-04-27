@@ -17,7 +17,7 @@ const userRoutes = Router();
 const userController = new AlunoController();
 
 /* cadastro */
-userRoutes.post("/alunoCadastro", userController.create);
+userRoutes.post("/cadastro/aluno", userController.create);
 
 
 userRoutes.get("/me", authMiddleware, (req: any, res) => {

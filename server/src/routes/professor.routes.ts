@@ -17,7 +17,7 @@ const userRoutes = Router();
 const userController = new ProfessorController();
 
 /* cadastro */
-userRoutes.post("/profCadastro", userController.create);
+userRoutes.post("/cadastro/professor", userController.create);
 
 
 userRoutes.get("/me", authMiddleware, (req: any, res) => {
