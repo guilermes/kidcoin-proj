@@ -6,6 +6,7 @@ export class ProfessorService {
     name: string;
     email: string;
     password: string;
+    salt: string;
   }) {
     // Verifica se email já existe
     const userExists = await prisma.professor.findUnique({
@@ -17,9 +18,10 @@ export class ProfessorService {
     }
 
     // Gera hash + salt
+    const salt = (await bcrypt.genSalt()).toString();
     const hashedPassword = await bcrypt.hash(
       data.password,
-      10
+      salt
     );
 
     // Cria usuário
@@ -28,6 +30,7 @@ export class ProfessorService {
         name: data.name,
         email: data.email,
         password: hashedPassword,
+        salt: salt
       }
     });
 

@@ -4,7 +4,7 @@ import { ProfessorService } from "../services/ProfessorService";
 export class ProfessorController {
     async create(req: Request, res: Response) {
         try {
-            const { name, email, password } = req.body;
+            const { name, email, password, salt } = req.body;
 
             if (!name || !email || !password) {
                 return res.status(400).json({
@@ -15,7 +15,8 @@ export class ProfessorController {
             const professor = await ProfessorService.create({
                 name,
                 email,
-                password
+                password,
+                salt
             });
 
             return res.status(201).json(professor);
