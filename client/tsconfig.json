@@ -35,7 +35,7 @@
     ".next/types/**/*.ts",
     "server/src/server.js",
     ".next/dev/types/**/*.ts"
-  ],
+, "postcss.config.ts"  ],
   "exclude": [
     "node_modules"
   ]
