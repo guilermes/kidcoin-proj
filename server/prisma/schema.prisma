@@ -14,16 +14,30 @@ datasource db {
 
 
 
-model User {
+model Aluno {
   id        Int      @id @default(autoincrement())
   name      String   @db.VarChar(150)
   email     String   @unique @db.VarChar(150)
   password  String   @db.VarChar(255)
-  role      String   @db.VarChar(20) // "ADMIN" | "ALUNO"
+  salt      String   @db.VarChar(255)
   isActive  Boolean  @default(true)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@map("usuario")
+  @@map("Aluno")
+} 
+
+model Professor {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(150)
+  email     String   @unique @db.VarChar(150)
+  password  String   @db.VarChar(255)
+  salt      String   @db.VarChar(255)
+  isActive  Boolean  @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("Professor")
 } 

@@ -1,15 +1,14 @@
 import bcrypt from "bcrypt";
 import { prisma } from "../../prisma";
 
-export class UserService {
+export class ProfessorService {
   static async create(data: {
     name: string;
     email: string;
     password: string;
-    role: string;
   }) {
     // Verifica se email já existe
-    const userExists = await prisma.user.findUnique({
+    const userExists = await prisma.professor.findUnique({
       where: { email: data.email }
     });
 
@@ -24,17 +23,16 @@ export class UserService {
     );
 
     // Cria usuário
-    const user = await prisma.user.create({
+    const professor = await prisma.professor.create({
       data: {
         name: data.name,
         email: data.email,
         password: hashedPassword,
-        role: data.role ?? "USER"
       }
     });
 
     // Nunca retornar senha
-    const { password, ...userWithoutPassword } = user;
+    const { password, ...userWithoutPassword } = professor;
     return userWithoutPassword;
   }
 }

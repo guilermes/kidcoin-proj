@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { UserService } from "../services/UserService";
+import { AlunoService } from "../services/AlunoService";
 
-export class UserController {
+export class AlunoController {
   async create(req: Request, res: Response) {
     try {
       const { name, email, password, role } = req.body;
@@ -12,14 +12,13 @@ export class UserController {
         });
       }
 
-      const user = await UserService.create({
+      const aluno = await AlunoService.create({
         name,
         email,
-        password,
-        role
+        password
       });
 
-      return res.status(201).json(user);
+      return res.status(201).json(aluno);
 
     } catch (error: any) {
       return res.status(400).json({
