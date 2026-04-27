@@ -16,7 +16,7 @@ export default function LandingPageMenu() {
             <nav className="landing_page_menu">
                 <div>
                     <a href="/home">
-                        <Image src="/assets/kidcoin-logo.png" width="20" height="20" alt="KidCoin Logo" />
+                        <Image src="/assets/kidcoin-logo.png" width="200" height="200" alt="KidCoin Logo" />
                     </a>
                 </div>
                 <ul>

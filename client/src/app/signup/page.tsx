@@ -14,17 +14,16 @@ export default function Signup() {
 
     return (
         <>
-        <LandingPageMenu></LandingPageMenu>
+        <LandingPageMenu />
             {!tipoUsuario && (
                 <>
-                    
                     <PrimaryBtnLG onClick={() => { setTipoUsuario('Professor') }}>Sou Professor!</PrimaryBtnLG>
                     <PrimaryBtnLG onClick={() => { setTipoUsuario('Aluno') }}>Sou Aluno!</PrimaryBtnLG>
                 </>
             )}
             {tipoUsuario === 'Aluno' && (<><AlunoForm /> <PrimaryBtn onClick={() => setTipoUsuario(null)}>Voltar</PrimaryBtn></>)}
             {tipoUsuario === 'Professor' && (<><ProfessorForm /> <PrimaryBtn onClick={() => setTipoUsuario(null)}>Voltar</PrimaryBtn></>)}
-            <Footer></Footer>
+            <Footer />
         </>
     )
 }

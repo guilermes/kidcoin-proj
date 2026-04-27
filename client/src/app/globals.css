@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root {
+  font-family: "Geist", sans-serif;
   --background: #FDF1D6;
   --foreground: #171717;
   --blue-kidcoin: #7FB5B5;
