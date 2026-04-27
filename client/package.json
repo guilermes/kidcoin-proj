@@ -48,25 +48,6 @@
     "eslint-config-next": "15.5.4",
     "postcss": "^8.5.12",
     "tailwindcss": "^4.2.4",
-<<<<<<< HEAD
     "typescript": "^5.9.3"
   }
-=======
-    "typescript": "^5"
-  },
-  "description": "",
-  "main": "page.tsx",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/guilermes/kidcoin-proj.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module",
-  "bugs": {
-    "url": "https://github.com/guilermes/kidcoin-proj/issues"
-  },
-  "homepage": "https://github.com/guilermes/kidcoin-proj#readme"
->>>>>>> 762b4885d829676ec32fff54e3c73253adfcee4f
 }

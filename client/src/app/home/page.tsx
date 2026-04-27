@@ -16,7 +16,6 @@ export default function Home() {
       <RightDecoratorLP />
       <Footer />
 
-<<<<<<< HEAD
       
         <LandingPageMenu />
         <Hero />
@@ -24,8 +23,6 @@ export default function Home() {
         <RightDecoratorLP />
         <Footer />
       
-=======
->>>>>>> 762b4885d829676ec32fff54e3c73253adfcee4f
     </>
   );
 }
