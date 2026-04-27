@@ -10,14 +10,14 @@
 
 
 import { Router } from "express";
-import { UserController } from "../controllers/AlunoController";
+import { AlunoController } from "../controllers/AlunoController";
 import { authMiddleware } from "../middleware/authMiddleware";
 
 const userRoutes = Router();
-const userController = new UserController();
+const userController = new AlunoController();
 
 /* cadastro */
-userRoutes.post("/users", userController.create);
+userRoutes.post("/alunoCadastro", userController.create);
 
 
 userRoutes.get("/me", authMiddleware, (req: any, res) => {
