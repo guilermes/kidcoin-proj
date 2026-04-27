@@ -43,6 +43,7 @@
     --color-yellow-800: #874b00;
     --color-green-700: #008138;
     --color-blue-500: #3080ff;
+    --color-blue-600: #155dfc;
     --color-gray-50: #f9fafb;
     --color-gray-300: #d1d5dc;
     --color-gray-400: #99a1af;
@@ -51,6 +52,7 @@
     --color-black: #000;
     --color-white: #fff;
     --spacing: .25rem;
+    --container-sm: 24rem;
     --container-md: 28rem;
     --container-3xl: 48rem;
     --text-sm: .875rem;
@@ -86,6 +88,7 @@
       --color-yellow-800: lab(38.7484% 23.5833 51.4916);
       --color-green-700: lab(47.0329% -47.0239 31.4788);
       --color-blue-500: lab(54.1736% 13.3368 -74.6839);
+      --color-blue-600: lab(44.0605% 29.0279 -86.0352);
       --color-gray-50: lab(98.2596% -.247031 -.706708);
       --color-gray-300: lab(85.1236% -.612259 -3.7138);
       --color-gray-400: lab(65.9269% -.832707 -8.17474);
@@ -390,10 +393,6 @@
     margin-top: calc(var(--spacing) * 1);
   }
 
-  .mt-2 {
-    margin-top: calc(var(--spacing) * 2);
-  }
-
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
   }
@@ -424,10 +423,6 @@
 
   .mb-auto {
     margin-bottom: auto;
-  }
-
-  .ml-4 {
-    margin-left: calc(var(--spacing) * 4);
   }
 
   .flex {
@@ -482,6 +477,10 @@
     height: 100vh;
   }
 
+  .min-h-\[80vh\] {
+    min-height: 80vh;
+  }
+
   .min-h-screen {
     min-height: 100vh;
   }
@@ -530,14 +529,6 @@
     width: calc(var(--spacing) * 300);
   }
 
-  .w-\[10vw\] {
-    width: 10vw;
-  }
-
-  .w-\[20vw\] {
-    width: 20vw;
-  }
-
   .w-full {
     width: 100%;
   }
@@ -548,6 +539,10 @@
 
   .max-w-md {
     max-width: var(--container-md);
+  }
+
+  .max-w-sm {
+    max-width: var(--container-sm);
   }
 
   .flex-1 {
@@ -743,6 +738,10 @@
     padding: calc(var(--spacing) * 8);
   }
 
+  .p-10 {
+    padding: calc(var(--spacing) * 10);
+  }
+
   .px-3 {
     padding-inline: calc(var(--spacing) * 3);
   }
@@ -759,12 +758,12 @@
     padding-block: calc(var(--spacing) * 2);
   }
 
-  .py-3 {
-    padding-block: calc(var(--spacing) * 3);
-  }
-
   .py-5 {
     padding-block: calc(var(--spacing) * 5);
+  }
+
+  .py-6 {
+    padding-block: calc(var(--spacing) * 6);
   }
 
   .py-10 {
@@ -825,6 +824,10 @@
 
   .text-black {
     color: var(--color-black);
+  }
+
+  .text-blue-600 {
+    color: var(--color-blue-600);
   }
 
   .text-gray-400 {
@@ -927,6 +930,12 @@
       --tw-scale-y: 110%;
       --tw-scale-z: 110%;
       scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+  }
+
+  @media (hover: hover) {
+    .hover\:underline:hover {
+      text-decoration-line: underline;
     }
   }
 
