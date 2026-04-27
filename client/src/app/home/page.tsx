@@ -14,15 +14,7 @@ export default function Home() {
       <Hero />
       <LeftDecoratorLP />
       <RightDecoratorLP />
-      <Footer />
-
-      
-        <LandingPageMenu />
-        <Hero />
-        <LeftDecoratorLP />
-        <RightDecoratorLP />
-        <Footer />
-      
+      <Footer />      
     </>
   );
 }
