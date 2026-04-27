@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LandingPageMenu from "../components/LandingPageMenu";
 import Footer from "../components/Footer";
 import PrimaryBtnLG from "../components/PrimaryBtnLG";
@@ -14,15 +14,17 @@ export default function Signup() {
 
     return (
         <>
-        <LandingPageMenu />
-            {!tipoUsuario && (
-                <>
-                    <PrimaryBtnLG onClick={() => { setTipoUsuario('Professor') }}>Sou Professor!</PrimaryBtnLG>
-                    <PrimaryBtnLG onClick={() => { setTipoUsuario('Aluno') }}>Sou Aluno!</PrimaryBtnLG>
-                </>
-            )}
-            {tipoUsuario === 'Aluno' && (<><AlunoForm /> <PrimaryBtn onClick={() => setTipoUsuario(null)}>Voltar</PrimaryBtn></>)}
-            {tipoUsuario === 'Professor' && (<><ProfessorForm /> <PrimaryBtn onClick={() => setTipoUsuario(null)}>Voltar</PrimaryBtn></>)}
+            <LandingPageMenu />
+            <div className="flex flx-col items-center justify-center">
+                {!tipoUsuario && (
+                    <>
+                        <PrimaryBtnLG onClick={() => { setTipoUsuario('Professor') }}>Sou Professor!</PrimaryBtnLG>
+                        <PrimaryBtnLG onClick={() => { setTipoUsuario('Aluno') }}>Sou Aluno!</PrimaryBtnLG>
+                    </>
+                )}
+                {tipoUsuario === 'Aluno' && (<><AlunoForm /><PrimaryBtn onClick={() => setTipoUsuario(null)}>Voltar</PrimaryBtn></>)}
+                {tipoUsuario === 'Professor' && (<><ProfessorForm /> <PrimaryBtn onClick={() => setTipoUsuario(null)}>Voltar</PrimaryBtn></>)}
+            </div>
             <Footer />
         </>
     )
