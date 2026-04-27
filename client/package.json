@@ -2,6 +2,20 @@
   "name": "kidcoin",
   "version": "0.1.0",
   "private": true,
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/guilermes/kidcoin-proj#readme",
+  "bugs": {
+    "url": "https://github.com/guilermes/kidcoin-proj/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guilermes/kidcoin-proj.git"
+  },
+  "license": "ISC",
+  "author": "CODEMonkey",
+  "type": "module",
+  "main": "page.tsx",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
@@ -9,6 +23,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "babel": "^6.23.0",
     "bcrypt": "^6.0.0",
     "bootstrap": "^5.3.8",
     "dotenv": "^17.4.2",
@@ -17,9 +32,10 @@
     "mssql": "^7.2.0",
     "next": "^16.2.4",
     "path": "^0.12.7",
-    "react": "19.1.0",
+    "react": "^19.2.5",
     "react-bootstrap": "^2.10.10",
-    "react-dom": "19.1.0"
+    "react-dom": "^19.2.5",
+    "tsx": "^4.21.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -27,23 +43,11 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "autoprefixer": "^10.5.0",
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
-    "tailwindcss": "^4",
-    "typescript": "^5"
-  },
-  "description": "",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/guilermes/kidcoin-proj.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/guilermes/kidcoin-proj/issues"
-  },
-  "homepage": "https://github.com/guilermes/kidcoin-proj#readme"
+    "postcss": "^8.5.12",
+    "tailwindcss": "^4.2.4",
+    "typescript": "^5.9.3"
+  }
 }

@@ -12,13 +12,13 @@ export default function Home() {
     <>
       <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Passion+One:wght@400;700;900&display=swap" rel="stylesheet"></link>
 
-      <body>
+      
         <LandingPageMenu />
         <Hero />
         <LeftDecoratorLP />
         <RightDecoratorLP />
         <Footer />
-      </body>
+      
     </>
   );
 }

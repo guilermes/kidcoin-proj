@@ -1,5 +1,7 @@
 'use client'
 
+import Button from "react-bootstrap";
+
 interface BtnProps {
   onClick?: () => void;
   children: React.ReactNode;

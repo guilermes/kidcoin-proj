@@ -47,27 +47,29 @@ export default function AlunoSkinsLojaReal({
   };
 
   return (
-    <section className="flex flex-col justify-center items-center gap-6 p-4 w-1/2">
-      <h2 className="text-3xl font-bold">🐟 Animaizinhos do Real</h2>
-      <span className="text-lg font-semibold">Saldo: {dinheiro}$</span>
-      {msg && <div className="text-yellow-800 font-bold">{msg}</div>}
-      <div className="flex flex-wrap justify-center py-10 gap-5">
-        {skins.map((skin, i) => {
-          const isSelected = selectedAvatar === skin.src;
-          return (
-            <div
-              key={skin.src}
-              onClick={() => handleClickSkin(skin)}
-              className={`flex flex-col justify-center items-center bg-amber-200 rounded-lg  p-2 shadow-[-4px_4px_#3b3b3b] cursor-pointer active:translate-y-[2px]
+    <>
+      <section className="flex flex-col justify-center items-center gap-6 p-4 w-1/2">
+        <h2 className="text-3xl font-bold">🐟 Animaizinhos do Real</h2>
+        <span className="text-lg font-semibold">Saldo: {dinheiro}$</span>
+        {msg && <div className="text-yellow-800 font-bold">{msg}</div>}
+        <div className="flex flex-wrap justify-center py-10 gap-5">
+          {skins.map((skin, i) => {
+            const isSelected = selectedAvatar === skin.src;
+            return (
+              <div
+                key={skin.src}
+                onClick={() => handleClickSkin(skin)}
+                className={`flex flex-col justify-center items-center bg-amber-200 rounded-lg  p-2 shadow-[-4px_4px_#3b3b3b] cursor-pointer active:translate-y-[2px]
                 ${isSelected ? "ring-4 ring-offset-2 ring-yellow-400" : ""}`}
-            >
-              <h4 className="font-bold text-sm py-1">{skin.nome}</h4>
-              <img src={skin.src} alt={skin.nome} className="h-40 object-contain" />
-              <span className="text-sm font-semibold">{skin.preco}$</span>
-            </div>
-          );
-        })}
-      </div>
-    </section>
+              >
+                <h4 className="font-bold text-sm py-1">{skin.nome}</h4>
+                <img src={skin.src} alt={skin.nome} className="h-40 object-contain" />
+                <span className="text-sm font-semibold">{skin.preco}$</span>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+    </>
   );
 }
