@@ -17,7 +17,7 @@
     "mssql": "^7.2.0",
     "next": "^16.2.4",
     "path": "^0.12.7",
-    "react": "19.1.0",
+    "react": "^19.2.5",
     "react-bootstrap": "^2.10.10",
     "react-dom": "19.1.0"
   },
@@ -27,13 +27,15 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "autoprefixer": "^10.5.0",
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
-    "tailwindcss": "^4",
+    "postcss": "^8.5.12",
+    "tailwindcss": "^4.2.4",
     "typescript": "^5"
   },
   "description": "",
-  "main": "index.js",
+  "main": "page.tsx",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/guilermes/kidcoin-proj.git"
@@ -41,7 +43,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/guilermes/kidcoin-proj/issues"
   },

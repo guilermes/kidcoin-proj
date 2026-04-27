@@ -1,0 +1,16 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/aluno-perfil/page": "app/aluno-perfil/page.js",
+  "/aluno/page": "app/aluno/page.js",
+  "/api/aluno/route": "app/api/aluno/route.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/home/page": "app/home/page.js",
+  "/login/page": "app/login/page.js",
+  "/lojinha/page": "app/lojinha/page.js",
+  "/mapa/page": "app/mapa/page.js",
+  "/page": "app/page.js",
+  "/professor/page": "app/professor/page.js",
+  "/signup/page": "app/signup/page.js"
+}

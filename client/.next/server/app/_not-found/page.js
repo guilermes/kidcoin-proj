@@ -1,0 +1,13 @@
+var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/_not-found/page.js")
+R.c("server/chunks/ssr/[root-of-the-server]__0e2i.1-._.js")
+R.c("server/chunks/ssr/0c4s_09_nt_v._.js")
+R.c("server/chunks/ssr/0c4s_next_dist_esm_build_templates_app-page_13ps2q1.js")
+R.c("server/chunks/ssr/[root-of-the-server]__0mqeibd._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__1182l-j._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__0n.m170._.js")
+R.c("server/chunks/ssr/0c4s_next_dist_client_components_0356~fi._.js")
+R.c("server/chunks/ssr/0c4s_next_dist_client_components_builtin_forbidden_0q0nqc-.js")
+R.c("server/chunks/ssr/0c4s_next_dist_client_components_builtin_unauthorized_0xma6c_.js")
+R.c("server/chunks/ssr/0amv_kidcoin-proj_client__next-internal_server_app__not-found_page_actions_0toon.8.js")
+R.m(1362)
+module.exports=R.m(1362).exports
