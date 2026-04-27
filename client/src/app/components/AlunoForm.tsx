@@ -29,9 +29,7 @@ export default function AlunoForm() {
         try {
             const response = await fetch("http://localhost:3000/cadastro/aluno", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     nome: formData.nome,
                     email: formData.email,
@@ -40,9 +38,7 @@ export default function AlunoForm() {
             });
 
             if (response.ok) {
-                const resultado = await response.json();
                 alert("Aluno cadastrado com sucesso!");
-                console.log(resultado);
             } else {
                 alert("Erro ao cadastrar aluno.");
             }
@@ -52,42 +48,58 @@ export default function AlunoForm() {
         }
     };
 
+    const inputStyle = "w-full p-2 mb-4 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black";
+
     return (
-        <>
-            <Form onSubmit={alunoSubmit}>
-                <label>Nome:</label>
-                <input
-                    type="text"
-                    name="nome"
-                    value={formData.nome}
-                    onChange={handleChange}
-                />
+        <Form
+            onSubmit={alunoSubmit}
+            className="flex flex-col w-full max-w-md p-6 bg-gray-50 rounded-xl shadow-sm"
+        >
+            <label className="mb-1 font-semibold text-gray-700">Nome:</label>
+            <input
+                type="text"
+                name="nome"
+                className={inputStyle}
+                value={formData.nome}
+                onChange={handleChange}
+                placeholder="Seu nome completo"
+            />
 
-                <label>Email:</label>
-                <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                />
+            <label className="mb-1 font-semibold text-gray-700">Email:</label>
+            <input
+                type="email"
+                name="email"
+                className={inputStyle}
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="exemplo@email.com"
+            />
 
-                <label>Senha:</label>
-                <input
-                    type="password"
-                    name="senha"
-                    value={formData.senha}
-                    onChange={handleChange}
-                />
+            <label className="mb-1 font-semibold text-gray-700">Senha:</label>
+            <input
+                type="password"
+                name="senha"
+                className={inputStyle}
+                value={formData.senha}
+                onChange={handleChange}
+                placeholder="********"
+            />
 
-                <label>Confirme sua senha:</label>
-                <input
-                    type="password"
-                    name="confirmarSenha"
-                    value={formData.confirmarSenha}
-                    onChange={handleChange}
-                />
-                <PrimaryBtn onClick={()=>alunoSubmit}>Cadastrar</PrimaryBtn>
-            </Form>
-        </>
+            <label className="mb-1 font-semibold text-gray-700">Confirme sua senha:</label>
+            <input
+                type="password"
+                name="confirmarSenha"
+                className={inputStyle}
+                value={formData.confirmarSenha}
+                onChange={handleChange}
+                placeholder="********"
+            />
+
+            <div className="mt-6 flex justify-center w-full">
+                <PrimaryBtn type="submit">
+                    Cadastrar
+                </PrimaryBtn>
+            </div>
+        </Form>
     );
 }
