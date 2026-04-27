@@ -20,7 +20,7 @@ export default function Hero() {
                     <PrimaryBtnLG onClick={toLoginPage}>JOGAR AGORA</PrimaryBtnLG>
                 </div>
                 <div>
-                    <Image src="/assets/main-char.png" width="20" height="20" alt="Personagem Kidcoin" className="img-animation" />
+                    <Image src="/assets/main-char.png" width="400" height="400" alt="Personagem Kidcoin" className="img-animation" />
                 </div>
             </div>
         </>

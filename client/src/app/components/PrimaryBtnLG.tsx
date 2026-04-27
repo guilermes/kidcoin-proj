@@ -1,5 +1,7 @@
 'use client'
 
+import { Button } from "react-bootstrap";
+
 interface BtnProps {
   onClick?: () => void;
   children: React.ReactNode;
@@ -12,12 +14,12 @@ export default function PrimaryBtnLG({
   type = "button",
 }: BtnProps) {
   return (
-    <button
+    <Button
       type={type}
       onClick={onClick}
       className="text-white font-bold text-xl bg-(--yellow-kidcoin) px-6 py-2 rounded-md shadow-[0_4px_#3b3b3b] cursor-pointer active:translate-y-[2px]"
     >
       {children}
-    </button>
+    </Button>
   );
 }
