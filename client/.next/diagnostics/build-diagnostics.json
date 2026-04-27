@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
-  "buildStage": "static-generation",
-=======
   "buildStage": "type-checking",
->>>>>>> 762b4885d829676ec32fff54e3c73253adfcee4f
   "buildOptions": {
     "useBuildWorker": "true"
   }

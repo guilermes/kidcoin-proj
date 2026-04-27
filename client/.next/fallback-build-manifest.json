@@ -5,15 +5,9 @@
   "devFiles": [],
   "polyfillFiles": [],
   "lowPriorityFiles": [
-<<<<<<< HEAD
-    "static/1FufEJd-jF3kzqQRXhPqS/_buildManifest.js",
-    "static/1FufEJd-jF3kzqQRXhPqS/_ssgManifest.js",
-    "static/1FufEJd-jF3kzqQRXhPqS/_clientMiddlewareManifest.js"
-=======
-    "static/IOwS8gTm73ScN0w4Mn-Bt/_buildManifest.js",
-    "static/IOwS8gTm73ScN0w4Mn-Bt/_ssgManifest.js",
-    "static/IOwS8gTm73ScN0w4Mn-Bt/_clientMiddlewareManifest.js"
->>>>>>> 762b4885d829676ec32fff54e3c73253adfcee4f
+    "static/eG-TDVhZGSZcVn8RQrzQ4/_buildManifest.js",
+    "static/eG-TDVhZGSZcVn8RQrzQ4/_ssgManifest.js",
+    "static/eG-TDVhZGSZcVn8RQrzQ4/_clientMiddlewareManifest.js"
   ],
   "rootMainFiles": []
 }

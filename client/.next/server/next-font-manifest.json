@@ -1,6 +1,5 @@
 {
   "app": {
-<<<<<<< HEAD
     "[project]/src/app/_not-found/page": [
       "static/media/caa3a2e1cccd8315-s.p.16t1db8_9y2o~.woff2",
       "static/media/797e433ab948586e-s.p.0.q-h669a_dqa.woff2"
@@ -42,49 +41,6 @@
       "static/media/797e433ab948586e-s.p.0.q-h669a_dqa.woff2"
     ],
     "[project]/src/app/signup/page": [
-=======
-    "[project]/Desktop/kidcoin-proj/client/src/app/_not-found/page": [
-      "static/media/caa3a2e1cccd8315-s.p.16t1db8_9y2o~.woff2",
-      "static/media/797e433ab948586e-s.p.0.q-h669a_dqa.woff2"
-    ],
-    "[project]/Desktop/kidcoin-proj/client/src/app/aluno-perfil/page": [
-      "static/media/caa3a2e1cccd8315-s.p.16t1db8_9y2o~.woff2",
-      "static/media/797e433ab948586e-s.p.0.q-h669a_dqa.woff2"
-    ],
-    "[project]/Desktop/kidcoin-proj/client/src/app/aluno/page": [
-      "static/media/caa3a2e1cccd8315-s.p.16t1db8_9y2o~.woff2",
-      "static/media/797e433ab948586e-s.p.0.q-h669a_dqa.woff2"
-    ],
-    "[project]/Desktop/kidcoin-proj/client/src/app/dashboard/page": [
-      "static/media/caa3a2e1cccd8315-s.p.16t1db8_9y2o~.woff2",
-      "static/media/797e433ab948586e-s.p.0.q-h669a_dqa.woff2"
-    ],
-    "[project]/Desktop/kidcoin-proj/client/src/app/home/page": [
-      "static/media/caa3a2e1cccd8315-s.p.16t1db8_9y2o~.woff2",
-      "static/media/797e433ab948586e-s.p.0.q-h669a_dqa.woff2"
-    ],
-    "[project]/Desktop/kidcoin-proj/client/src/app/login/page": [
-      "static/media/caa3a2e1cccd8315-s.p.16t1db8_9y2o~.woff2",
-      "static/media/797e433ab948586e-s.p.0.q-h669a_dqa.woff2"
-    ],
-    "[project]/Desktop/kidcoin-proj/client/src/app/lojinha/page": [
-      "static/media/caa3a2e1cccd8315-s.p.16t1db8_9y2o~.woff2",
-      "static/media/797e433ab948586e-s.p.0.q-h669a_dqa.woff2"
-    ],
-    "[project]/Desktop/kidcoin-proj/client/src/app/mapa/page": [
-      "static/media/caa3a2e1cccd8315-s.p.16t1db8_9y2o~.woff2",
-      "static/media/797e433ab948586e-s.p.0.q-h669a_dqa.woff2"
-    ],
-    "[project]/Desktop/kidcoin-proj/client/src/app/page": [
-      "static/media/caa3a2e1cccd8315-s.p.16t1db8_9y2o~.woff2",
-      "static/media/797e433ab948586e-s.p.0.q-h669a_dqa.woff2"
-    ],
-    "[project]/Desktop/kidcoin-proj/client/src/app/professor/page": [
-      "static/media/caa3a2e1cccd8315-s.p.16t1db8_9y2o~.woff2",
-      "static/media/797e433ab948586e-s.p.0.q-h669a_dqa.woff2"
-    ],
-    "[project]/Desktop/kidcoin-proj/client/src/app/signup/page": [
->>>>>>> 762b4885d829676ec32fff54e3c73253adfcee4f
       "static/media/caa3a2e1cccd8315-s.p.16t1db8_9y2o~.woff2",
       "static/media/797e433ab948586e-s.p.0.q-h669a_dqa.woff2"
     ]

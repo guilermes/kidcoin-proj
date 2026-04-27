@@ -1,11 +1,7 @@
 {
   "pages": {},
   "app": {
-<<<<<<< HEAD
     "[project]/src/app/lojinha/page": [
-=======
-    "[project]/Desktop/kidcoin-proj/client/src/app/lojinha/page": [
->>>>>>> 762b4885d829676ec32fff54e3c73253adfcee4f
       "static/media/caa3a2e1cccd8315-s.p.16t1db8_9y2o~.woff2",
       "static/media/797e433ab948586e-s.p.0.q-h669a_dqa.woff2"
     ]

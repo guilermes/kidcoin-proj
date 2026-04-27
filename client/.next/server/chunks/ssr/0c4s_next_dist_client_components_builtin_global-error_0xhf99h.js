@@ -1,3 +1,0 @@
-module.exports=[38928,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(95884);a.n(d("[project]/Desktop/kidcoin-proj/client/node_modules/next/dist/client/components/builtin/global-error.js <module evaluation>"))},10314,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(95884);a.n(d("[project]/Desktop/kidcoin-proj/client/node_modules/next/dist/client/components/builtin/global-error.js"))},79770,a=>{"use strict";a.i(38928);var b=a.i(10314);a.n(b)},64377,a=>{a.n(a.i(79770))}];
-
-//# sourceMappingURL=0c4s_next_dist_client_components_builtin_global-error_0xhf99h.js.map
