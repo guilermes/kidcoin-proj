@@ -1,4 +1,5 @@
 var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/signup/page.js")
+<<<<<<< HEAD
 R.c("server/chunks/ssr/[root-of-the-server]__00jsfj1._.js")
 R.c("server/chunks/ssr/node_modules_next_0vij5kv._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_esm_build_templates_app-page_05balh5.js")
@@ -12,3 +13,18 @@ R.c("server/chunks/ssr/node_modules_next_dist_client_components_builtin_global-e
 R.c("server/chunks/ssr/_next-internal_server_app_signup_page_actions_01t.ngc.js")
 R.m(68893)
 module.exports=R.m(68893).exports
+=======
+R.c("server/chunks/ssr/[root-of-the-server]__0zsmg0l._.js")
+R.c("server/chunks/ssr/0c4s_09_nt_v._.js")
+R.c("server/chunks/ssr/0c4s_next_dist_esm_build_templates_app-page_09r6vlm.js")
+R.c("server/chunks/ssr/[root-of-the-server]__0mqeibd._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__1182l-j._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__0n.m170._.js")
+R.c("server/chunks/ssr/0c4s_next_dist_client_components_0356~fi._.js")
+R.c("server/chunks/ssr/0c4s_next_dist_client_components_builtin_forbidden_0q0nqc-.js")
+R.c("server/chunks/ssr/0c4s_next_dist_client_components_builtin_unauthorized_0xma6c_.js")
+R.c("server/chunks/ssr/0c4s_next_dist_client_components_builtin_global-error_0xhf99h.js")
+R.c("server/chunks/ssr/0amv_kidcoin-proj_client__next-internal_server_app_signup_page_actions_0vvc7mh.js")
+R.m(12711)
+module.exports=R.m(12711).exports
+>>>>>>> 762b4885d829676ec32fff54e3c73253adfcee4f

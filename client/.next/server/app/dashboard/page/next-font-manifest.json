@@ -1,7 +1,15 @@
 {
   "pages": {},
   "app": {
+<<<<<<< HEAD
+<<<<<<<< HEAD:client/.next/server/app/dashboard/page/next-font-manifest.json
     "[project]/src/app/dashboard/page": [
+========
+    "[project]/Desktop/kidcoin-proj/client/src/app/login/page": [
+>>>>>>>> 762b4885d829676ec32fff54e3c73253adfcee4f:client/.next/server/app/login/page/next-font-manifest.json
+=======
+    "[project]/Desktop/kidcoin-proj/client/src/app/dashboard/page": [
+>>>>>>> 762b4885d829676ec32fff54e3c73253adfcee4f
       "static/media/caa3a2e1cccd8315-s.p.16t1db8_9y2o~.woff2",
       "static/media/797e433ab948586e-s.p.0.q-h669a_dqa.woff2"
     ]

@@ -1,4 +1,5 @@
 var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/aluno-perfil/page.js")
+<<<<<<< HEAD
 R.c("server/chunks/ssr/[root-of-the-server]__134wpy2._.js")
 R.c("server/chunks/ssr/node_modules_next_0vij5kv._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_esm_build_templates_app-page_093hjka.js")
@@ -12,3 +13,18 @@ R.c("server/chunks/ssr/node_modules_next_dist_client_components_builtin_global-e
 R.c("server/chunks/ssr/_next-internal_server_app_aluno-perfil_page_actions_0~-unlv.js")
 R.m(12671)
 module.exports=R.m(12671).exports
+=======
+R.c("server/chunks/ssr/[root-of-the-server]__09-y_3b._.js")
+R.c("server/chunks/ssr/0c4s_09_nt_v._.js")
+R.c("server/chunks/ssr/0c4s_next_dist_esm_build_templates_app-page_0eb3v12.js")
+R.c("server/chunks/ssr/[root-of-the-server]__0mqeibd._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__1182l-j._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__0n.m170._.js")
+R.c("server/chunks/ssr/0c4s_next_dist_client_components_0356~fi._.js")
+R.c("server/chunks/ssr/0c4s_next_dist_client_components_builtin_forbidden_0q0nqc-.js")
+R.c("server/chunks/ssr/0c4s_next_dist_client_components_builtin_unauthorized_0xma6c_.js")
+R.c("server/chunks/ssr/0c4s_next_dist_client_components_builtin_global-error_0xhf99h.js")
+R.c("server/chunks/ssr/0amv_kidcoin-proj_client__next-internal_server_app_aluno-perfil_page_actions_0zxcmnf.js")
+R.m(65192)
+module.exports=R.m(65192).exports
+>>>>>>> 762b4885d829676ec32fff54e3c73253adfcee4f
